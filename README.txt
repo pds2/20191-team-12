@@ -23,7 +23,7 @@ Sou uma jogadora experiente de RPG e quero jogar um jogo com um tema diferenciad
 - Possibilidade de escolher as habilidades a serem melhoradas
 - Possibilidade de comprar armas e objetos diferentes para o personagem
 - Upar o nivel do personagem com o passar das fases
-- Comprar melhoria especifica em um atributo
+- Escolher um atributo a ser melhorado a cada nivel subido 
 
 
 #4
