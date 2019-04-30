@@ -1,0 +1,36 @@
+
+class Personagem(){
+private:
+    std::string name;
+    std::string casa;
+    
+    float life;
+    float attack;
+    float defense;
+    float attack_speed;
+    float honor;
+    float block_rate;
+    // Bonus a ser adicionado em equipamentos e armas;
+    float bonus_life;
+    float bonus_attack;
+    float bonus_defense;
+    float bonus_attack_speed;
+    float bonus_honor;
+    float bonus_block_rate;
+
+public:
+    Personagem(std::string, std::string casa); //Construtor
+
+    std::string get_name();
+    float get_life();
+    float get_attack();
+    float get_defense();
+    float get_attack_speed();
+    float get_honor();
+    equipament equiped; // A ser desenvolvido em equipament.h / equipament.cpp;
+}
+
+A minha ideia inicial é criar um personagem principal e personalizar os atributos a partir da casa;
+Vantagens: reduzir o número de classes;
+Desvantagens: casas não influenciam diretamente na jogabilidade;
+
