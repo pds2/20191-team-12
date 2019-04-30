@@ -21,7 +21,9 @@ Sou muito fã de Game of Thrones e fiquei sabendo de um RPG inspirado na série.
 Sou uma jogadora experiente de RPG e quero jogar um jogo com um tema diferenciado. Quero poder melhorar as habilidades do meu personagem de acordo com o meu gosto. Porém, assisti somente uma temporada de game of thrones (ainda não superei a morte do meu personagem favorito), então conheço pouco de referencias
 
 - Possibilidade de escolher as habilidades a serem melhoradas
-- 
+- Possibilidade de comprar armas e objetos diferentes para o personagem
+- Upar o nivel do personagem com o passar das fases
+- Comprar melhoria especifica em um atributo
 
 
 #4
