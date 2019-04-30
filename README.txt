@@ -25,10 +25,17 @@ Sou uma jogadora experiente de RPG e quero jogar um jogo com um tema diferenciad
 - Upar o nivel do personagem com o passar das fases
 - Escolher um atributo a ser melhorado a cada nivel subido 
 
-
 #4
 Sou um entusiasta de jogos de RPG e quero jogar um jogo com um sistema de batalha simples e divertido mas que seja desafiador com a evolução do jogo.
 - Batalhas por turnos e com tempo
 - Opções de escolha na batalha claras e simples
 - Atributos e Habilidades divertidas
 - Inimigos com grau de dificuldade crescente 
+
+#5
+Sou um jogador de diferentes tipos de RPG e quero jogar um jogo que me permita comprar itens e equipamentos para personalizar meu personagem ao longo das fases. 
+
+- Ter um tutorial que explique o funcionamento básico da loja.
+- Ter uma loja com diferentes equipamentos, divididos em classes/casas.
+- Balancear os equipamentos para que não deixem o jogo muito fácil nem muito difícil.
+- Atualizar a loja com novos equipamentos à medida que o jogo progride. 
