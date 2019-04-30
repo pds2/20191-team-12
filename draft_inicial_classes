@@ -28,9 +28,13 @@ public:
     float get_attack_speed();
     float get_honor();
     equipament equiped; // A ser desenvolvido em equipament.h / equipament.cpp;
+    weapon equiped; // A ser desenvolvido em weapon.h / weapon.cpp;
 }
 
 A minha ideia inicial é criar um personagem principal e personalizar os atributos a partir da casa;
 Vantagens: reduzir o número de classes;
 Desvantagens: casas não influenciam diretamente na jogabilidade;
+
+Sugestões:
+#1 - Usar frases das casas, setadas juntamente com os atributos, e usá-las durante as lutas (começo, fim);
 
