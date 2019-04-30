@@ -6,7 +6,7 @@ Sou um jogador iniciante, não tenho conhecimento do funcionamento de RPGs e gos
 - Ter uma interface clara
 - Interação para explicar o funcionamento do jogo
 - Possuir desafios (quiz) para incrementar o funcionamento do jogo
-- As primeiras batalhas devem ter uma dificuldade mais baixa ara treinar os jogadores 
+- As primeiras batalhas devem ter uma dificuldade mais baixa para treinar os jogadores 
 
 #2
 Sou muito fã de Game of Thrones e fiquei sabendo de um RPG inspirado na série. Já sei como funcionam os RPGs e gosto de jogar sozinho. Quero poder incorporar aspectos da minha casa favorita.
@@ -22,3 +22,11 @@ Sou uma jogadora experiente de RPG e quero jogar um jogo com um tema diferenciad
 
 - Possibilidade de escolher as habilidades a serem melhoradas
 - 
+
+
+#4
+Sou um entusiasta de jogos de RPG e quero jogar um jogo com um sistema de batalha simples e divertido mas que seja desafiador com a evolução do jogo.
+- Batalhas por turnos e com tempo
+- Opções de escolha na batalha claras e simples
+- Atributos e Habilidades divertidas
+- Inimigos com grau de dificuldade crescente 
