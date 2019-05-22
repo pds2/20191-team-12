@@ -14,18 +14,15 @@ protected:
     //std::vector<Armadura> unused_armor;
 public:
 	Inventario();
-	int get_gold();
-	void set_gold();
 
-	int get_pot_life(Pocao *C);
-	int get_pot_stamina(Pocao *C);
-	int get_pot_quantity2(Pocao *C);
-	void set_pot_quantity2(Pocao *C, int num2);
-	int get_gold2();
-	void set_gold2(int num2);
-	Pocao* get_life_pointer();
-	Pocao* get_stamina_pointer();
-	
+	int get_life();
+	int get_stamina();
+	int get_life_quantity();
+	int get_stamina_quantity();
+	void set_life_quantity(int num);
+	void set_stamina_quantity(int num);
+	int get_gold();
+	void set_gold(int num);
 };
 
 #endif // INVENTARIO_H
