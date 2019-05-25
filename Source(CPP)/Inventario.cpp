@@ -1,8 +1,9 @@
 #include <iostream>
-//#include "Arma.h"
-//#include "Armadura.h"
+#include "Arma.h"
+#include "Armadura.h"
 #include "Pocao.h"
 #include "Inventario.h"
+#include <vector>
 
 Inventario::Inventario(){ // Todos os números abaixo podem ser mudados para balancear o inicio de jogo*
 	this->gold = 50; 
@@ -40,4 +41,41 @@ int Inventario::get_gold(){
 
 void Inventario::set_gold(int _gold){
 	this->gold += _gold;
+}
+
+void Inventario::add_armor(Armadura A){
+	Armadura tobeadded = A;
+	this->unused_armor.push_back(tobeadded);
+}
+
+void Inventario::add_weapon(Arma A){
+	Arma tobeadded = A;
+	this->unused_weapons.push_back(tobeadded);
+}
+
+Armadura Inventario::get_x_armor(int num){
+	//if(unused_armor.size() < num){
+	return this->unused_armor[num];
+	//}else{
+	//	std::cout << "Failed acessing " << num << "position on armor inventory" << std::endl;
+}
+
+Arma Inventario::get_x_weapon(int num){
+	return this->unused_weapons[num];
+}
+
+void Inventario::display_inventory(){
+	int i;
+
+	std::cout << "Armor: " << std::endl; 
+	for(i = 0; i<unused_armor.size(); i++){
+		this->unused_armor[i].display_armor();
+	}
+	std::cout << "Weapons: " << std::endl;
+	for(i = 0; i<unused_weapons.size(); i++){
+		this->unused_weapons[i].display_weapon();
+	}
+
+	std::cout << "Pocao de vida - Tamanho: " << this->life_pot.get_life() << " - Quantidade: " << this->get_life_quantity() << std::endl;
+	std::cout << "Pocao de stamina - Tamanho: " << this->stamina_pot.get_stamina() << " - Quantidade: " << this->get_stamina_quantity() << std::endl;
 }

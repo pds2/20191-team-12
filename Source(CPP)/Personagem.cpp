@@ -1,23 +1,30 @@
 #include "Pocao.h"
 #include "Inventario.h"
 #include "Personagem.h"
+#include "Arma.h"
+#include "Armadura.h"
 
-//#include "Arma.h"
-//#include "Armadura.h"
 #include <iostream>
+#include <string>
+
 
 // CONSTRUTOR
 
-Personagem::Personagem(std::string _obj_name, int _life, int _deffense, int _attack, int _stamina){
+Personagem::Personagem(std::string _obj_name, std::string _casa, int _life, int _defense, int _attack, int _stamina, Armadura _armor, Arma _weapon){
 	this->object_name = _obj_name;
+	this->casa = _casa;
 	this->life = _life;
-	this->deffense = _deffense;
+	this->defense = _defense;
 	this->attack = _attack;
 	this->stamina = _stamina;
 	
 	Inventario _inventory = Inventario();
-	inventory = _inventory;
+	this->inventory = _inventory;
 
+	this->armor = _armor;
+
+	equip_armor(_armor);
+	equip_weapon(_weapon);
 }
 
 // ACESSO E MUDANÇA DE ATRIBUTOS GERAIS
@@ -45,13 +52,13 @@ void Personagem::set_life(int life_change){
 	}
 }
 
-int Personagem::get_deffense(){
-	return this->deffense;
+int Personagem::get_defense(){
+	return this->defense;
 }
 
-void Personagem::set_deffense(int def_change){
-	this->deffense += def_change;
-	std::cout << "Deffense updated" << std::endl;
+void Personagem::set_defense(int def_change){
+	this->defense += def_change;
+	std::cout << "Defense updated" << std::endl;
 }
 
 int Personagem::get_attack(){
@@ -122,32 +129,71 @@ void Personagem::set_gold(int num){
 	this->inventory.set_gold(num);
 }
 
-/*
-
 void Personagem::equip_armor(Armadura toequip){
-	B->equip();
+	unequip_armor();
+	this->armor.equip(toequip);
+	set_defense(this->armor.get_defense());
 }
 
 void Personagem::unequip_armor(){
-	B->unequip();
+	set_defense((-1) * this->armor.get_defense());
+	this->inventory.add_armor(this->armor);
+	this->armor.unequip();
 }
 
-void Personagem::equip_weapon(Arma toequip){
-	B->equip(toequip);
+void Personagem::equip_weapon(Arma toequip){ // Ainda precisa fazer checagem de inventário ou direto da loja!!!
+	unequip_weapon();
+	this->weapon.equip(toequip);
+	set_attack(this->weapon.get_attack());
 }
 
 void Personagem::unequip_weapon(){
-	B->unequip();
+	set_attack((-1) * this->weapon.get_attack());
+	this->inventory.add_weapon(this->weapon);
+	this->weapon.unequip();
 }
 
-void apply_armor_stats(){
-	
+std::string Personagem::get_armor_name(){
+	return this->armor.get_name();
 }
 
-void apply_weapon_stats(){
-
+int Personagem::get_armor_defense(){
+	return this->armor.get_defense();
 }
 
-*/ 
+int Personagem::get_armor_id(){
+	return this->armor.get_id();
+}
 
+int Personagem::get_armor_price(){
+	return this->armor.get_price();
+}
 
+std::string Personagem::get_weapon_name(){
+	return this->weapon.get_name();
+}
+
+int Personagem::get_weapon_attack(){
+	return this->weapon.get_attack();
+}
+
+int Personagem::get_weapon_id(){
+	return this->weapon.get_id();
+}
+
+int Personagem::get_weapon_price(){
+	return this->weapon.get_price();
+}
+
+void Personagem::display_inventory(){
+	std::cout << "**Your itens**:" << std::endl;
+	this->inventory.display_inventory();
+}
+
+void Personagem::add_armor(Armadura A){
+	this->inventory.add_armor(A);
+}
+
+void Personagem::add_weapon(Arma A){
+	this->inventory.add_weapon(A);
+}
