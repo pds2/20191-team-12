@@ -3,9 +3,11 @@
 #include "Personagem.h"
 #include "Arma.h"
 #include "Armadura.h"
+#include "Habilidade.h"
 
 #include <iostream>
 #include <string>
+#include <vector>
 
 
 // CONSTRUTOR
@@ -157,6 +159,34 @@ void Personagem::display_weapon(){
 	std::cout << "Sua arma: ";
 	this->weapon.display_weapon();
 }
+//FUNÇÕES HABILIDADES
+void Personagem::add_skill(&Habilidade x){
+	this-> skill.pushback(x);
+}
+
+void Personagem::remove_skill(int y){
+	if(this->skill.size() >= y){
+		this-> skill.erase(y);
+	}else{
+		std::cout<<"Opção Invalida"
+	}
+	return;
+}
+
+void Personagem::display_skill(){
+	for(int i = 0; this->skill.size() > i; i++){
+		std::cout<<"HABILIDADES:          (Dano/Stamina)"<<std::endl;
+		std::cout<<"#"<<i<<this->skill[i].get_name()<<"("<<this->skill[i].get_damage()<<"/"<<this->skill[i].get_spend()<<")"<<std::endl;
+	}
+
+}
+int Personagem::get_nskill(){
+	return this->skill.size();
+}
+
+Habilidade Personagem::get_skill(int k){
+	return this->skill[k];
+}
 
 // Funcoes de uso direto
 
@@ -218,3 +248,4 @@ void Personagem::display_stats(){
 	std::cout << "\nGuerreiro " << get_name() << " da casa " << get_casa() << "\nVida: " << get_life() << "\t Stamina: " << get_stamina() << "\nAtaque: " << get_attack() <<
 	"\tDefesa: " << get_defense() << "\n\n";
 }
+
