@@ -2,10 +2,13 @@
 #define PERSONAGEM_H
 
 #include<string>
+#include<vector>
 
 #include "Inventario.h"
 #include "Armadura.h"
 #include "Arma.h"
+#include "Habilidade.h"
+
 
 
 class Personagem{
@@ -19,6 +22,7 @@ class Personagem{
     Inventario inventory; 
     Armadura armor;
     Arma weapon;
+    std::vector<&Habilidade> skill;
 
   public:
   	//Construtor
@@ -59,6 +63,13 @@ class Personagem{
     int get_weapon_id();
     int get_weapon_price();
     void display_weapon();
+
+    //Acesso a Habilidades
+    void add_skill(&Habilidade);
+    void remove_skill(int);
+    void display_skill();
+    int get_nskill();
+    Habilidade get_skill(int); 
 
     // Funções de uso direto
     void use_life_potion();
