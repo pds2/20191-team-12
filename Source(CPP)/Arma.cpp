@@ -49,7 +49,7 @@ void Arma::set_price(int _price){
 }
 
 void Arma::display_weapon(){
-	std::cout << "    Id: " << get_id() << " - Name: " << get_name() << " - Attack: " << get_attack() << " - Price: " << get_price() << "\n\n";
+	std::cout << "    Id: " << get_id() << " - Nome: " << get_name() << " - Ataque: " << get_attack() << " - Preco: " << get_price() << "\n";
 }
 
 void Arma::equip(Arma toequip){

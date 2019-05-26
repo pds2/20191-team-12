@@ -67,15 +67,15 @@ Arma Inventario::get_x_weapon(int num){
 void Inventario::display_inventory(){
 	int i;
 
-	std::cout << "Armor: " << std::endl; 
+	std::cout << "Armaduras: " << std::endl; 
 	for(i = 0; i<unused_armor.size(); i++){
 		this->unused_armor[i].display_armor();
 	}
-	std::cout << "Weapons: " << std::endl;
+	std::cout << "Armas: " << std::endl;
 	for(i = 0; i<unused_weapons.size(); i++){
 		this->unused_weapons[i].display_weapon();
 	}
 
-	std::cout << "Pocao de vida - Tamanho: " << this->life_pot.get_life() << " - Quantidade: " << this->get_life_quantity() << std::endl;
-	std::cout << "Pocao de stamina - Tamanho: " << this->stamina_pot.get_stamina() << " - Quantidade: " << this->get_stamina_quantity() << std::endl;
+	std::cout << "Pocoes de vida - Tamanho: " << this->life_pot.get_life() << " - Quantidade: " << this->get_life_quantity() << std::endl;
+	std::cout << "Pocoes de stamina - Tamanho: " << this->stamina_pot.get_stamina() << " - Quantidade: " << this->get_stamina_quantity() << std::endl;
 }

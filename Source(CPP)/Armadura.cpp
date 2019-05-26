@@ -49,7 +49,7 @@ void Armadura::set_price(int _price){
 }
 
 void Armadura::display_armor(){
-	std::cout << "    Id: " << get_id() << " - Name: " << get_name() << " - Defense: " << get_defense() << " - Price: " << get_price() << "\n\n";
+	std::cout << "    Id: " << get_id() << " - Nome: " << get_name() << " - Defesa: " << get_defense() << " - Preco: " << get_price() << "\n";
 }
 
 void Armadura::equip(Armadura toequip){
