@@ -6,11 +6,12 @@ Npc::Npc(std::string n){
 	this->name = n;
 }
 
-Npc::Npc(std::string n, float atk_max, float atk_min, float def){
+Npc::Npc(std::string n, float atk_max, float atk_min, float def, float lf){
 	this-> name = n;
 	this-> max_attack = atk_max;
 	this-> min_attack = atk_min;
 	this->defense = def;
+	this-> life = lf;
 	//this->armor = arm;
 }
 

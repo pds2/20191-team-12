@@ -160,24 +160,35 @@ void Personagem::display_weapon(){
 	this->weapon.display_weapon();
 }
 //FUNÇÕES HABILIDADES
-void Personagem::add_skill(&Habilidade x){
-	this-> skill.pushback(x);
+void Personagem::add_skill(Habilidade hab){
+	Habilidade A = Habilidade(hab.get_name(),hab.get_damage(),hab.get_spend());
+	this-> skill.push_back(A);
 }
 
 void Personagem::remove_skill(int y){
 	if(this->skill.size() >= y){
-		this-> skill.erase(y);
+		if(y == 0){
+			this-> skill.erase(skill.begin());
+			return;
+		}
+		this-> skill.erase(skill.begin() + y);
 	}else{
-		std::cout<<"Opção Invalida"
+		std::cout<<"Opcão Invalida"<<std::endl;
 	}
 	return;
 }
 
 void Personagem::display_skill(){
-	for(int i = 0; this->skill.size() > i; i++){
-		std::cout<<"HABILIDADES:          (Dano/Stamina)"<<std::endl;
-		std::cout<<"#"<<i<<this->skill[i].get_name()<<"("<<this->skill[i].get_damage()<<"/"<<this->skill[i].get_spend()<<")"<<std::endl;
+	if(get_nskill() == 0){
+		std::cout<<"Voce nao possui habilidades ainda!"<<std::endl;
+		return;
 	}
+	std::cout<<std::endl;
+	std::cout<<"HABILIDADES:          (Dano/Stamina)"<<std::endl;
+	for(int i = 0; this->skill.size() > i; i++){
+		std::cout<<"#"<< i << this->skill[i].get_name()<<"  ("<< this->skill[i].get_damage() <<"/"<< this->skill[i].get_spend() <<")"<<std::endl;
+	}
+	return;
 
 }
 int Personagem::get_nskill(){

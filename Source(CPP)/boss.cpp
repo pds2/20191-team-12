@@ -1,11 +1,35 @@
 #include "boss.h"
+#include "Habilidade.h"
 #include <string>
 #include <iostream>
+/*
 
-Boss::Boss(std::string n, &Habilidade x){
+Boss::Boss(std::string n){
 	this->name = n;
-	this->skill = x;
+	//this->skill = x;
 }
+
+
+
+
+
+Boss::Boss(std::string n, float a, float b, float c, float d, float e):
+ name(a),
+ max_attack(b),
+ min_attack(c),
+ defense(d),
+ life(e)
+{
+}
+*/
+Boss::Boss(std::string n, float MinAtk, float MaxAtk, float def, float lf){
+	this -> name = n;
+	this -> max_attack = MaxAtk;
+	this -> min_attack = MinAtk;
+	this -> defense = def;
+	this -> life = lf;
+}
+
 
 std::string Boss::get_name(){
 	return this->name;
@@ -34,24 +58,10 @@ int Boss::get_hspend(){
 	this-> skill.get_spend();
 }
 
-/*
-Habilidade Boss::get_skill(){
- return this->skill()
-}
 
-void Boss::set_skill(Habilidade &x){
-	
+void Boss::set_skill(Habilidade k){
+	this->skill = Habilidade(k.get_name(),k.get_damage(),k.get_spend());
 }
-
-
-Armadura Boss::get_armadura(){
-	
-}
-
-void Boss::set_armor(Armadura &x){
-	
-}
-*/
 
 void Boss::set_max_attack(float MaxAtk){
 	this-> max_attack = MaxAtk;
