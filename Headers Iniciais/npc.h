@@ -13,7 +13,7 @@ class Npc : public Mob{
 		float life;
 		//float armor;
 	public:
-		Npc(std::string, float, float, float);
+		Npc(std::string, float, float, float, float);
 		Npc(std::string);
 		virtual float get_max_attack() override;
 		virtual float get_min_attack() override;
