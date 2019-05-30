@@ -16,12 +16,12 @@ void batalha(Personagem &heroi, Mob &npc){
 	std::cout << "Inimigo: " << npc.get_name() << "\nDano de ataque: " << npc.get_max_attack() << "\nDefesa: " << npc.get_defense() << "\n\n";
 	do{
 		do{
-			std::cout << "Vida: " << heroi.get_life() << "    Vida Inimigo: " << npc.get_life() >> "\n";
-			std::cout << "Stamina: " << heroi.get_stamina() << "Stamina Inimigo: " << npc.get_stamina() >> "\n";
+			std::cout << "Vida: " << heroi.get_life() << "    Vida Inimigo: " << npc.get_life() << "\n";
+			std::cout << "Stamina: " << heroi.get_stamina() << "\n";
 			std::cout << "-------------------------------------------------\n";
 			std::cout << "| 1 - Atacar                      2 - Habildade |\n";
 			std::cout << "|                                               |\n";
-			std::cout << "| 3 - Inventário                  4 - Fugir     |\n";
+			std::cout << "| 3 - Inventario                  4 - Fugir     |\n";
 			std::cout << "-------------------------------------------------\n Sua escolha: ";
 			std::cin >> op;
 			if(op<1 || op>4) std::cout << "Opção inválida, escolha entre 1 e 4!\n";
@@ -30,11 +30,11 @@ void batalha(Personagem &heroi, Mob &npc){
 			case 1: atacar(heroi, npc);
 					atacar_mob(heroi, npc);
 					break;
-			case 2: void menu2(heroi, npc);
+			case 2: menu2(heroi, npc);
 					break;
-			case 3: void menu3(heroi, npc);
+			case 3: menu3(heroi, npc);
 					break;
-			case 4: void fugir(heroi);
+			case 4: fugir(heroi);
 					break;
 		}
 	}while(npc.get_life() > 0 && heroi.get_life() > 0 && op!=4);
@@ -48,12 +48,12 @@ void batalha(Personagem &heroi, Mob &npc){
 
 void atacar(Personagem& heroi, Mob& npc){
 	srand (time(NULL));
-	int ataque = rand() % 11 + heroi.get_min_attack();
+	int ataque = rand() % 11 + (heroi.get_attack()-5);
 	float defesa = rand() % 11 + (npc.get_defense() - 5);
 	defesa = (1-(defesa/100));
 	ataque = ataque*defesa;
 	npc.set_life(npc.get_life() - ataque);
-	std::cout << "Seu ataque causou " << ataque << " de dano!\n";
+	std::cout << "Seu ataque causou " << ataque << " de dano!\n\n";
 }
 
 void atacar_mob(Personagem &heroi, Mob &npc){
@@ -71,18 +71,19 @@ void menu2(Personagem &heroi, Mob &npc){
 	do{
 		heroi.display_skill();
 		std::cin >> op;
-		if( (op < 0) &&(op > heroi.get_nskill() ) ){
-			std::cout<<"Habilidade não existente"<<std::endl;
+		if( (op < 0) ||(op > heroi.get_nskill() ) ){
+			std::cout<<"Habilidade nao existente"<<std::endl;
 		}else{
 			atacar_hab(heroi, npc, heroi.get_skill(op));
 			if(npc.get_life() > 0){
 				atacar_mob(heroi, npc);
+				return;
 			}else{
 				std::cout<< "Inimigo morto!"<<std::endl;
 				return;
 			}
 		}
-	}while( (op > 0) && (op < heroi.get_nskill()) );
+	}while( (op < 0) || (op > heroi.get_nskill()) );
 	return;
 }
 
@@ -102,7 +103,7 @@ void menu3(Personagem &heroi, Mob &npc){
 		case 2: heroi.use_stamina_potion();
 				break;
 	}
-	atacar_mob(Personagem& heroi, Mob& npc);
+	atacar_mob(heroi,npc);
 }
 
 void fugir(Personagem& heroi){
