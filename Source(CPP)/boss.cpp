@@ -2,27 +2,8 @@
 #include "Habilidade.h"
 #include <string>
 #include <iostream>
-/*
 
-Boss::Boss(std::string n){
-	this->name = n;
-	//this->skill = x;
-}
-
-
-
-
-
-Boss::Boss(std::string n, float a, float b, float c, float d, float e):
- name(a),
- max_attack(b),
- min_attack(c),
- defense(d),
- life(e)
-{
-}
-*/
-Boss::Boss(std::string n, float MinAtk, float MaxAtk, float def, float lf){
+Boss::Boss(std::string n, float MaxAtk, float MinAtk, float def, float lf){
 	this -> name = n;
 	this -> max_attack = MaxAtk;
 	this -> min_attack = MinAtk;
@@ -49,6 +30,10 @@ float Boss::get_defense(){
 
 float Boss::get_life(){
 	return this-> life;
+}
+
+int Boss::type(){
+	return 1;
 }
 
 int Boss::get_hdamage(){

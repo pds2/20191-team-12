@@ -34,6 +34,10 @@ float Npc::get_life(){
 	return this-> life;
 }
 
+int Npc::type(){
+	return 0;
+}
+
 void Npc::set_life(float lf){
 	this-> life = lf;
 }

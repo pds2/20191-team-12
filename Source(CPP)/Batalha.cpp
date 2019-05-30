@@ -4,6 +4,7 @@
 #include "boss.h"
 #include "Personagem.h"
 #include "Habilidade.h"
+
 #include <string>
 #include <iostream>
 #include <time.h>
@@ -61,7 +62,7 @@ void atacar_mob(Personagem &heroi, Mob &npc){
 	int ataque = rand() % 11 + npc.get_min_attack();
 	float defesa = rand() % 11 + (heroi.get_defense() - 5);
 	defesa = (1-(defesa/100));
-	ataque = ataque*defesa;
+	ataque = ataque*((-1)*defesa);
 	heroi.set_life(heroi.get_life() - ataque);
 	std::cout << "Você recebeu " << ataque << " de dano do inimigo!\n";
 }
@@ -76,8 +77,14 @@ void menu2(Personagem &heroi, Mob &npc){
 		}else{
 			atacar_hab(heroi, npc, heroi.get_skill(op));
 			if(npc.get_life() > 0){
-				atacar_mob(heroi, npc);
-				return;
+				
+				if(npc.type() == 1){
+					Boss chief = dynamic_cast<Boss&>(npc);
+					atacar_hab_boss(heroi, chief);
+				}else{
+					atacar_mob(heroi, npc);
+				}
+				return;	
 			}else{
 				std::cout<< "Inimigo morto!"<<std::endl;
 				return;
@@ -118,7 +125,7 @@ void atacar_hab(Personagem &heroi, Mob &npc, Habilidade hab){
 	int ataque = hab.get_damage();
 	float defesa = rand() % 11 + (npc.get_defense() - 5);
 	defesa = (1 - (defesa/100));
-	ataque *= -defesa;
+	ataque *= defesa;
 	npc.set_life(npc.get_life() - ataque);
 	int gasto = heroi.get_stamina() - hab.get_spend();
 	heroi.set_stamina(gasto);
@@ -130,7 +137,7 @@ void atacar_hab_boss(Personagem& heroi, Boss& x){
 	int ataque = x.get_hdamage();
 	float defesa = rand() % 11 + (heroi.get_defense() - 5);
 	defesa = (1 - (defesa/100));
-	ataque *= defesa;
+	ataque *= ((-1)*defesa);
 	heroi.set_life(heroi.get_life() - ataque);
 	std::cout<< x.get_name() <<" te causou um dano de "<< ataque <<" com uma habilidade"<< std::endl;
 }
