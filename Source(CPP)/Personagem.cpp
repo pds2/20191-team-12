@@ -168,7 +168,7 @@ void Personagem::display_weapon(){
 }
 //FUNÇÕES HABILIDADES
 void Personagem::add_skill(Habilidade hab){
-	Habilidade A = hab;
+	Habilidade A = Habilidade(hab.get_name(),hab.get_damage(),hab.get_spend());
 	this-> skill.push_back(A);
 }
 
@@ -178,7 +178,6 @@ void Personagem::remove_skill(int y){
 			this-> skill.erase(skill.begin());
 			return;
 		}
-		y--;
 		this-> skill.erase(skill.begin() + y);
 	}else{
 		std::cout<<"Opcão Invalida"<<std::endl;
@@ -191,9 +190,10 @@ void Personagem::display_skill(){
 		std::cout<<"Voce nao possui habilidades ainda!"<<std::endl;
 		return;
 	}
+	std::cout<<std::endl;
 	std::cout<<"HABILIDADES:          (Dano/Stamina)"<<std::endl;
 	for(int i = 0; this->skill.size() > i; i++){
-		std::cout<<"#"<< i << this->skill[i].get_name()<<"  "<< this->skill[i].get_damage() <<" "<< this->skill[i].get_spend() <<" "<<std::endl;
+		std::cout<<"#"<< i << this->skill[i].get_name()<<"  ("<< this->skill[i].get_damage() <<"/"<< this->skill[i].get_spend() <<")"<<std::endl;
 	}
 	return;
 
