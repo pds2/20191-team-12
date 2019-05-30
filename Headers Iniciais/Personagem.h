@@ -31,13 +31,13 @@ class Personagem{
  	std::string get_name();
   	std::string get_casa();
   	int get_life();
-	void set_life(int life_change); // soma, não substitui o valor;
+	void set_life(int life_change); 
 	int get_defense();
-	void set_defense(int def_change); // soma, não substitui o valor;
+	void set_defense(int def_change); 
 	int get_attack();
-	void set_attack(int attack_change); // soma, não substitui o valor;
+	void set_attack(int attack_change);
   	int get_stamina();
-  	void set_stamina(int stamina_change); // soma, não substitui o valor;
+  	void set_stamina(int stamina_change); 
 
     //Acesso Pocoes
     int get_life_pot_quantity();
@@ -49,9 +49,9 @@ class Personagem{
     int get_gold();
 	void set_gold(int num);
 	void display_inventory();
+    bool check_gold(int price);
 
     // Acesso Armadura e Arma
-    
     std::string get_armor_name();
     int get_armor_defense();
     int get_armor_id();

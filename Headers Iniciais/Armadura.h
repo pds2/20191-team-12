@@ -21,11 +21,12 @@ class Armadura{
     void set_name(std::string _name);
     int get_price();
    	void set_price(int _price);
+    std::string adjust_square(std::string toprint, int num);
    	void display_armor();
 
     void equip(Armadura toequip);
     void unequip();
-        
+
 };
 
 #endif // ARMADURA_H
