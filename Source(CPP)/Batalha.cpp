@@ -13,7 +13,7 @@ void batalha(Personagem &heroi, Mob &npc){
 	int op;
 
 	std::cout << "Prepare-se para a batalha!\n";
-	std::cout << "Inimigo: " >> npc.get_name() >> "\nDano de ataque: " >> npc.get_max_attack() >> "\nDefesa: " >> npc.get_defense() >> "\n\n";
+	std::cout << "Inimigo: " << npc.get_name() << "\nDano de ataque: " << npc.get_max_attack() << "\nDefesa: " << npc.get_defense() << "\n\n";
 	do{
 		do{
 			std::cout << "Vida: " << heroi.get_life() << "    Vida Inimigo: " << npc.get_life() >> "\n";
@@ -56,7 +56,7 @@ void atacar(Personagem& heroi, Mob& npc){
 	std::cout << "Seu ataque causou " << ataque << " de dano!\n";
 }
 
-void atacar_mob(Personagem& heroi, Mob& npc){
+void atacar_mob(Personagem &heroi, Mob &npc){
 	srand (time(NULL));
 	int ataque = rand() % 11 + npc.get_min_attack();
 	float defesa = rand() % 11 + (heroi.get_defense() - 5);
@@ -66,7 +66,7 @@ void atacar_mob(Personagem& heroi, Mob& npc){
 	std::cout << "Você recebeu " << ataque << " de dano do inimigo!\n";
 }
 
-void menu2(Personagem& heroi, Mob& npc){
+void menu2(Personagem &heroi, Mob &npc){
 	int op;
 	do{
 		heroi.display_skill();
@@ -86,7 +86,7 @@ void menu2(Personagem& heroi, Mob& npc){
 	return;
 }
 
-void menu3(Personagem& heroi, &Mob npc){
+void menu3(Personagem &heroi, Mob &npc){
 	int op;
 	do{
 		std::cout << "-------------------------------------------------\n";
@@ -102,7 +102,7 @@ void menu3(Personagem& heroi, &Mob npc){
 		case 2: heroi.use_stamina_potion();
 				break;
 	}
-	atacar_mob(Personagem& heroi, &Mob npc);
+	atacar_mob(Personagem& heroi, Mob& npc);
 }
 
 void fugir(Personagem& heroi){
@@ -112,23 +112,26 @@ void fugir(Personagem& heroi){
 	std::cout << "Você comprou sua misericórdia por " << perda << " moedas.\nEssa foi por pouco!\n";
 }
 
-void atacar_hab(Personagem& heroi, &Mob npc, &Habilidade hab){
+void atacar_hab(Personagem &heroi, Mob &npc, Habilidade hab){
 	srand(time(NULL));
 	int ataque = hab.get_damage();
 	float defesa = rand() % 11 + (npc.get_defense() - 5);
 	defesa = (1 - (defesa/100));
-	ataque *= defesa;
+	ataque *= -defesa;
 	npc.set_life(npc.get_life() - ataque);
-	heroi.set_stamina(heroi.get_stamina() - hab.get_spend());
-	std::cout<< hab.get_name() <<"deu dano de"<< ataque << "no inimigo!"<<std::endl;
+	int gasto = heroi.get_stamina() - hab.get_spend();
+	heroi.set_stamina(gasto);
+	std::cout<<hab.get_name()<<" deu dano de "<<ataque<< " no inimigo!"<<std::endl;
 }
 
-void atacar_hab_boss(Personagem& heroi, &Boss x){
+void atacar_hab_boss(Personagem& heroi, Boss& x){
 	srand(time(NULL));
 	int ataque = x.get_hdamage();
+	std::cout<<"ATAQUE1->"<<ataque<<std::endl;
 	float defesa = rand() % 11 + (heroi.get_defense() - 5);
 	defesa = (1 - (defesa/100));
 	ataque *= defesa;
+	std::cout<<"ATAQUE1->"<<ataque<<std::endl;
 	heroi.set_life(heroi.get_life() - ataque);
 	std::cout<< x.get_name() <<" te causou um dano de "<< ataque <<" com uma habilidade"<< std::endl;
 }

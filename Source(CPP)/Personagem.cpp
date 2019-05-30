@@ -39,13 +39,17 @@ int Personagem::get_life(){
 }
 
 void Personagem::set_life(int life_change){
+	/*
 	if(this->life + life_change <= 0){
 		std::cout << "Your character died." << std::endl;
 		// call fim de jogo...
 	} else{
-		this->life += life_change;
+
+		this->life = life_change;
 		std::cout << "Life updated" << std::endl;
 	}
+	*/
+	this->life = life_change;
 }
 
 int Personagem::get_defense(){
@@ -71,7 +75,7 @@ int Personagem::get_stamina(){
 }
 
 void Personagem::set_stamina(int stamina_change){
-	this->stamina += stamina_change;
+	this->stamina = stamina_change;
 	std::cout << "Stamina updated" << std::endl;
 }
 
