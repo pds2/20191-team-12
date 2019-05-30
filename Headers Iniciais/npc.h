@@ -27,6 +27,7 @@ class Npc : public Mob{
 		virtual void set_defense(float) override;
 		virtual void set_life(float) override;
 		//virtual void set_armor(float ) override;
+		virtual int type() override;
 };
 
 #endif

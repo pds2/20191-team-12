@@ -17,6 +17,8 @@ class Mob{
 		virtual void set_defense(float) = 0;
 		virtual void set_life(float) = 0;
 		//virtual void set_armor() = 0;
+
+		virtual int type() = 0;
 };
 
 #endif

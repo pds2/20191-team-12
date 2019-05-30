@@ -32,7 +32,8 @@ class Boss : public Mob{
 		virtual void set_max_attack(float) override;
 		virtual void set_min_attack(float) override;
 		virtual void set_defense(float) override;
-		virtual void set_life(float) override;	
+		virtual void set_life(float) override;
+		virtual int type() override;	
 		void set_skill(Habilidade);
 		//void set_armor(Armadura &);
 
