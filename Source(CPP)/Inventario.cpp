@@ -40,7 +40,7 @@ int Inventario::get_gold(){
 }
 
 void Inventario::set_gold(int _gold){
-	this->gold += _gold;
+	this->gold = _gold;
 }
 
 void Inventario::add_armor(Armadura A){

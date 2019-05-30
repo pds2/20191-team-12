@@ -26,6 +26,6 @@ int Pocao::get_quantity(){
 }
 
 void Pocao::set_quantity(int num){
-	this->quantity += num;
+	this->quantity = num;
 	std::cout << "Pot quantity updated" << std::endl;
 }

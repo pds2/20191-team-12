@@ -39,17 +39,13 @@ int Personagem::get_life(){
 }
 
 void Personagem::set_life(int life_change){
-	/*
-	if(this->life + life_change <= 0){
+	if(life_change <= 0){
 		std::cout << "Your character died." << std::endl;
+		this->life = 0;
 		// call fim de jogo...
 	} else{
-
 		this->life = life_change;
-		std::cout << "Life updated" << std::endl;
 	}
-	*/
-	this->life = life_change;
 }
 
 int Personagem::get_defense(){
@@ -57,8 +53,7 @@ int Personagem::get_defense(){
 }
 
 void Personagem::set_defense(int def_change){
-	this->defense += def_change;
-	std::cout << "Defense updated" << std::endl;
+	this->defense = def_change;
 }
 
 int Personagem::get_attack(){
@@ -66,8 +61,7 @@ int Personagem::get_attack(){
 }
 
 void Personagem::set_attack(int attack_change){
-	this->attack += attack_change;
-	std::cout << "Attack updated" << std::endl;
+	this->attack = attack_change;
 }
 
 int Personagem::get_stamina(){
@@ -76,7 +70,6 @@ int Personagem::get_stamina(){
 
 void Personagem::set_stamina(int stamina_change){
 	this->stamina = stamina_change;
-	std::cout << "Stamina updated" << std::endl;
 }
 
 // ACESSO E MUDANÇA DE POCOES
@@ -90,16 +83,18 @@ int Personagem::get_stamina_pot_quantity(){
 }
 
 void Personagem::set_life_pot_quantity(int num){
-	if(this->inventory.get_life_quantity() + num < 0){
-		std::cout << "O personagem não pode ter um numero negativo de poções" << std::endl;
+	if(num < 0){
+		std::cout << "O personagem nao pode ter um numero negativo de pocoes. Pocoes reduzidas a 0." << std::endl;
+		this->inventory.set_life_quantity(0);
 	} else{
 		this->inventory.set_life_quantity(num);
 	}
 }
 
 void Personagem::set_stamina_pot_quantity(int num){
-	if(this->inventory.get_stamina_quantity() + num < 0){
-		std::cout << "O personagem não pode ter um numero negativo de poções" << std::endl;
+	if(num < 0){
+		std::cout << "O personagem nao pode ter um numero negativo de pocoes. Pocoes reduzidas a 0." << std::endl;
+		this->inventory.set_stamina_quantity(0);
 	} else{
 		this->inventory.set_stamina_quantity(num);
 	}
@@ -118,6 +113,14 @@ void Personagem::set_gold(int num){
 void Personagem::display_inventory(){
 	std::cout << "**Inventario**:" << std::endl;
 	this->inventory.display_inventory();
+}
+
+bool Personagem::check_gold(int price){
+	if(this->inventory.get_gold() < price){
+		return false;
+	} else{
+		return true;
+	}
 }
 
 // ACESSO E MUDANÇA ARMAS E ARMADURAS
@@ -139,7 +142,7 @@ int Personagem::get_armor_price(){
 }
 
 void Personagem::display_armor(){
-	std::cout << "Sua armadura: ";
+	std::cout << "Sua armadura atual: \n";
 	this->armor.display_armor();
 }
 
@@ -160,12 +163,12 @@ int Personagem::get_weapon_price(){
 }
 
 void Personagem::display_weapon(){
-	std::cout << "Sua arma: ";
+	std::cout << "Sua arma atual: \n";
 	this->weapon.display_weapon();
 }
 //FUNÇÕES HABILIDADES
 void Personagem::add_skill(Habilidade hab){
-	Habilidade A = Habilidade(hab.get_name(),hab.get_damage(),hab.get_spend());
+	Habilidade A = hab;
 	this-> skill.push_back(A);
 }
 
@@ -175,6 +178,7 @@ void Personagem::remove_skill(int y){
 			this-> skill.erase(skill.begin());
 			return;
 		}
+		y--;
 		this-> skill.erase(skill.begin() + y);
 	}else{
 		std::cout<<"Opcão Invalida"<<std::endl;
@@ -187,10 +191,9 @@ void Personagem::display_skill(){
 		std::cout<<"Voce nao possui habilidades ainda!"<<std::endl;
 		return;
 	}
-	std::cout<<std::endl;
 	std::cout<<"HABILIDADES:          (Dano/Stamina)"<<std::endl;
 	for(int i = 0; this->skill.size() > i; i++){
-		std::cout<<"#"<< i << this->skill[i].get_name()<<"  ("<< this->skill[i].get_damage() <<"/"<< this->skill[i].get_spend() <<")"<<std::endl;
+		std::cout<<"#"<< i << this->skill[i].get_name()<<"  "<< this->skill[i].get_damage() <<" "<< this->skill[i].get_spend() <<" "<<std::endl;
 	}
 	return;
 
@@ -207,19 +210,19 @@ Habilidade Personagem::get_skill(int k){
 
 void Personagem::use_life_potion(){
 	if(this->inventory.get_life_quantity() < 1){
-		std::cout << "Não há poção para ser usada." << std::endl;
+		std::cout << "Nao ha pocao para ser usada." << std::endl;
 	} else{
-		this->set_life(this->inventory.get_life());
-		this->inventory.set_life_quantity(-1);
+		this->set_life(this->life + this->inventory.get_life());
+		this->inventory.set_life_quantity(this->inventory.get_life_quantity() - 1);
 	}
 }
 
 void Personagem::use_stamina_potion(){
 	if(this->inventory.get_stamina_quantity() < 1){
-		std::cout << "Não há poção para ser usada." << std::endl;
+		std::cout << "Nao ha pocao para ser usada." << std::endl;
 	} else{
-		this->set_stamina(this->inventory.get_stamina());
-		this->inventory.set_stamina_quantity(-1);
+		this->set_stamina(this->stamina + this->inventory.get_stamina());
+		this->inventory.set_stamina_quantity(this->inventory.get_stamina_quantity() - 1);
 	}
 }
 
@@ -234,11 +237,11 @@ void Personagem::add_weapon(Arma A){
 void Personagem::equip_armor(Armadura toequip){
 	unequip_armor();
 	this->armor.equip(toequip);
-	set_defense(this->armor.get_defense());
+	set_defense(this->defense + this->armor.get_defense());
 }
 
 void Personagem::unequip_armor(){
-	set_defense((-1) * this->armor.get_defense());
+	set_defense(this->defense - this->armor.get_defense());
 	if(this->armor.get_id() != 0){
 		this->inventory.add_armor(this->armor);
 	}
@@ -248,16 +251,18 @@ void Personagem::unequip_armor(){
 void Personagem::equip_weapon(Arma toequip){ // Ainda precisa fazer checagem de inventário ou direto da loja!!!
 	unequip_weapon();
 	this->weapon.equip(toequip);
-	set_attack(this->weapon.get_attack());
+	set_attack(this->attack + this->weapon.get_attack());
 }
 
 void Personagem::unequip_weapon(){
-	set_attack((-1) * this->weapon.get_attack());
+	set_attack(this->attack - this->weapon.get_attack());
 	if(this->weapon.get_id() != 0){
 		this->inventory.add_weapon(this->weapon);
 	}
 	this->weapon.unequip();
 }
+
+//void Personagem::equip_inventory_armor(int num){
 
 void Personagem::display_stats(){
 	std::cout << "\nGuerreiro " << get_name() << " da casa " << get_casa() << "\nVida: " << get_life() << "\t Stamina: " << get_stamina() << "\nAtaque: " << get_attack() <<
