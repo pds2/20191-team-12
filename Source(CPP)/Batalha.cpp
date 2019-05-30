@@ -127,11 +127,9 @@ void atacar_hab(Personagem &heroi, Mob &npc, Habilidade hab){
 void atacar_hab_boss(Personagem& heroi, Boss& x){
 	srand(time(NULL));
 	int ataque = x.get_hdamage();
-	std::cout<<"ATAQUE1->"<<ataque<<std::endl;
 	float defesa = rand() % 11 + (heroi.get_defense() - 5);
 	defesa = (1 - (defesa/100));
 	ataque *= defesa;
-	std::cout<<"ATAQUE1->"<<ataque<<std::endl;
 	heroi.set_life(heroi.get_life() - ataque);
 	std::cout<< x.get_name() <<" te causou um dano de "<< ataque <<" com uma habilidade"<< std::endl;
 }
