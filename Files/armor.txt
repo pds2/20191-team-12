@@ -1,0 +1,7 @@
+1,Roupa de Couro,10,5;
+2,Armadura Enferrujada,20,15;
+3,Malha de Ferro,30,30;
+4,Armadura de Aco,40,55;
+5,Armadura de Aco Reforjado,50,75;
+6,Armadura de Rocha Milenar,70,120;
+7,Armadura do Montanha,90,160;
