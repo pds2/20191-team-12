@@ -9,12 +9,10 @@
 #include "Arma.h"
 #include "Habilidade.h"
 
-
-
 class Personagem{
   private:
     std::string name;
-    std::string casa;
+    std::string house;
     int life;
     int defense;
     int attack;
@@ -26,10 +24,10 @@ class Personagem{
 
   public:
   	//Construtor
-    Personagem(std::string _obj_name, std::string _casa, int _life, int _defense, int _attack, int _stamina, Inventario _inventory, Armadura _armor, Arma _weapon);
+    Personagem(std::string _obj_name, std::string _house, int _life, int _defense, int _attack, int _stamina, Inventario _inventory, Armadura _armor, Arma _weapon);
    	//Acesso Personagem
  	std::string get_name();
-  	std::string get_casa();
+  	std::string get_house();
   	int get_life();
 	void set_life(int life_change); 
 	int get_defense();
