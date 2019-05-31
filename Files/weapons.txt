@@ -1,0 +1,7 @@
+1,Espada de Madeira,10,5;
+2,Espada de Ferro,20,10;
+3,Espada de Aco,30,20;
+4,Adaga Envenenada,40,35;
+5,Adaga Perfurante,50,50; 
+6,Espada Valiriana,60,75;
+7,Espada de Vidro de Dragao,80,120; 
