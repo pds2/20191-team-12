@@ -6,7 +6,7 @@
 void get_stage_game(int n){
 
     if (n == 1){
-        cout << "~ALGUM LUGAR NO MAR DE DORNE~"
+        cout << "~ALGUM LUGAR NO MAR DE DORNE~" <<endl;
         textcolor(YELLOW);
         cout << "Maria: Bem Vindo a sua jornada," << player.name << ". Voce foi invocado para este mundo para combater o mal eminente que assola nossos reinos" << endl;
         cout << "Maria: Eu sou a sarcedotisa Maria e vou lhe auxiliar na sua jornada. Na sua vida anterior voce era um otaku fracassado, mas de alguma forma lhe acharam digno de nos salvar" <<endl;
@@ -16,10 +16,10 @@ void get_stage_game(int n){
         
         //pressione alguma tecla para continuar
         textcolor(WHITE);
-        cout << "~DORNE - LAR DA CASA MACHADO~" << endl;
+        cout << endl << "~DORNE - LAR DA CASA MACHADO~" << endl;
         
         textcolor(YELLOW);
-        cout << "Maria: Aqui nos resolvemos os nosso conflitos com batalhas. Ao longo do caminho voce tambe podera treinar para aperfeicoar suas habilidades ou ganhar dinheiro" <<endl;
+        cout << "Maria: Aqui nos resolvemos os nossos conflitos com batalhas. Ao longo do caminho voce tambem podera treinar para aperfeicoar suas habilidades ou ganhar dinheiro" << endl;
         cout << "Maria: Mercadores tambem estao sempre disponiveis, neles voce pode comprar novas armas, armaduras e pocoes. Tais servicos estaram disponiveis sempre que precisar! Vamos fazer um teste:" <<endl;
         show_menu();
         cout << "Maria: Agora que voce ja esta preparado, podemos seguir a nossa jornada"
@@ -38,8 +38,8 @@ void get_stage_game(int n){
         cout << "Narrador:  Eliana vai embora e te deixa sozinho" << endl;
         cout << "Maria: Parabens! O que achou da sua primeira batalha? Nao importa. Vamos, pegue o dinheiro desses bandidos e vamos embora." << endl;
         cout << "Voce: Para onde vamos?" << endl;
-        cout << "Maria:  Vamos para a cidadela buscar mais informacoes" <<endl;
-        cout << "Narrador: Assim, seguiram para Cidade Velha, para encontrar com os sabios da cidadela" << endl;  
+        cout << "Maria:  Vamos para a Cidade Velha buscar mais informacoes" <<endl;
+        cout << "Narrador: Assim, seguiram para Cidade Velha, para encontrar com os sabios de la" << endl;  
 
         //limpar a tela
     
