@@ -1,28 +1,26 @@
 #include <iostream>
+#include <Personagem.h>
+#include <fases.h>
 
-
+using namespace std;
 
 //declarar variaveis globais: vidas, personagem
-
 //exibir menu de escolha e textinho
+//coletar dados do jogador (escolher o nome)
 
-//coletar dados do jogador (escolher a casa)
+int vidas = 3;
+Personagem player;
+
+cout << "Bem Vindo ao universo de Game of Thrones! Este jogo é uma paródia criada pelos alunos de PDS II. Sem fins lucrativos" << endl;
+cout << "Escolha um nome para seu personagem:";
+cin >> player.name;//ja chama o construtor passando o nome como parâmetro?
 
 
-while(vidas > 0){
+int main(){
+    while(vidas > 0){
+        get_stage_game(1);
+        //funcao menu
+        
     
-    if (personagem == dani){
-        //ganha dinheiro + vida + habilidade 
-        //menu: batalha x treinar x loja
-        //funcao de batalha
-        //menu: batalha x treinar x loja
     }
-    else if (personagem == joao){
-        //ganha dinheiro + vida + habilidade 
-        //menu: batalha x treinar x loja
-        //funcao de batalha
-        //menu: batalha x treinar x loja
-    }
-    else 
-        //personagem invalido
 }
