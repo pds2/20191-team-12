@@ -44,4 +44,6 @@ void get_stage_game(int n){
         //limpar a tela
     
     }
+    else if(n == 2){
+
 }
