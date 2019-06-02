@@ -1,6 +1,19 @@
 #include <iostream>
-#include <Personagem.h>
-#include <fases.h>
+#include "Arma.h"
+#include "Armadura.h"
+#include "Batalha.h"
+#include "boss.h"
+#include "fases.h"
+#include "FuncaoLoja.h"
+#include "FuncoesGerais.h"
+#include "mob.h"
+#include "npc.h"
+#include "Habilidade.h"
+#include "Inventario.h"
+#include "treino.h"
+#include "Personagem.h"
+#include "Pocao.h"
+
 
 using namespace std;
 
