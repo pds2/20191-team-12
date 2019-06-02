@@ -1,5 +1,5 @@
 #include <iostream>
-
+#include <allegro.h>
 
 void show_init(){
     //codigo (pagina inicial do jogo)
