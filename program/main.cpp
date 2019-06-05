@@ -22,18 +22,17 @@ using namespace std;
 //coletar dados do jogador (escolher o nome)
 
 int vidas = 3;
-Personagem player;
+std::string name;
 
-cout << "Bem Vindo ao universo de Game of Thrones! Este jogo é uma paródia criada pelos alunos de PDS II. Sem fins lucrativos" << endl;
+cout << "Bem Vindo ao universo de Game of Thrones! Este jogo é uma paródia criada pelos alunos de PDS II." << endl;
+cout << "Derrote os sete reinos e domine Westeros!" << endl;
 cout << "Escolha um nome para seu personagem:";
-cin >> player.name;//ja chama o construtor passando o nome como parâmetro?
-
+cin >> name;
+Personagem(name); //construtor
 
 int main(){
     while(vidas > 0){
         get_stage_game(1);
         //funcao menu
-        
-    
     }
 }
