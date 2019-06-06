@@ -43,7 +43,6 @@ int Boss::get_hspend(){
 	this-> skill.get_spend();
 }
 
-
 void Boss::set_skill(Habilidade k){
 	this->skill = Habilidade(k.get_name(),k.get_damage(),k.get_spend());
 }
