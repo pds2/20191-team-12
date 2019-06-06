@@ -1,13 +1,19 @@
 #include <iostream>
-#include <windows.h>
 #include <Personagem.h>
+#include <Allegro.h>
 
+bool exit(&c){
+    checker(&c, 1, 0);
+    if (c)
+        return TRUE;
+    else 
+        return FALSE;
+}
 
 void get_stage_game(int n){
 
     if (n == 1){
         cout << "~ALGUM LUGAR NO MAR DE DORNE~" <<endl;
-        textcolor(YELLOW);
         cout << "Maria: Bem Vindo a sua jornada," << player.name << ". Voce foi invocado para este mundo para combater o mal eminente que assola nossos reinos" << endl;
         cout << "Maria: Eu sou a sarcedotisa Maria e vou lhe auxiliar na sua jornada. Na sua vida anterior voce era um otaku fracassado, mas de alguma forma lhe acharam digno de nos salvar" <<endl;
         cout << "Voce: Err... " << endl;
@@ -15,10 +21,8 @@ void get_stage_game(int n){
         cout << "Maria: Nao se esqueca: O inverno esta chegando e a C&A tem varias promocoes em casacos" << endl;
         
         //pressione alguma tecla para continuar
-        textcolor(WHITE);
         cout << endl << "~DORNE - LAR DA CASA MACHADO~" << endl;
         
-        textcolor(YELLOW);
         cout << "Maria: Aqui nos resolvemos os nossos conflitos com batalhas. Ao longo do caminho voce tambem podera treinar para aperfeicoar suas habilidades ou ganhar dinheiro" << endl;
         cout << "Maria: Mercadores tambem estao sempre disponiveis, neles voce pode comprar novas armas, armaduras e pocoes. Tais servicos estaram disponiveis sempre que precisar! Vamos fazer um teste:" <<endl;
         show_menu();
