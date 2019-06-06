@@ -74,6 +74,14 @@ void Personagem::set_stamina(int stamina_change){
 
 // ACESSO E MUDANÇA DE POCOES
 
+int Personagem::get_life_on_pot(){
+	return this->inventory.get_life();
+}
+
+int Personagem::get_stamina_on_pot(){
+	return this->inventory.get_stamina();
+}
+
 int Personagem::get_life_pot_quantity(){
 	return this->inventory.get_life_quantity();
 }
@@ -212,7 +220,7 @@ void Personagem::use_life_potion(){
 	if(this->inventory.get_life_quantity() < 1){
 		std::cout << "Nao ha pocao para ser usada." << std::endl;
 	} else{
-		this->set_life(this->life + this->inventory.get_life());
+		this->set_life(this->life + this->get_life_on_pot());
 		this->inventory.set_life_quantity(this->inventory.get_life_quantity() - 1);
 	}
 }
@@ -221,7 +229,7 @@ void Personagem::use_stamina_potion(){
 	if(this->inventory.get_stamina_quantity() < 1){
 		std::cout << "Nao ha pocao para ser usada." << std::endl;
 	} else{
-		this->set_stamina(this->stamina + this->inventory.get_stamina());
+		this->set_stamina(this->stamina + this->get_stamina_on_pot());
 		this->inventory.set_stamina_quantity(this->inventory.get_stamina_quantity() - 1);
 	}
 }
