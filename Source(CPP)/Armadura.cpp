@@ -1,6 +1,7 @@
 #include "Armadura.h"
 #include <string>
 #include <iostream>
+#include "FuncoesGerais.h"
 
 Armadura::Armadura(){
 	this->id = 0;
@@ -60,19 +61,7 @@ void Armadura::display_armor(){
 	std::string to_print3 = "Attack: " + std::to_string(this->b_defense);
 	std::string to_print4 = "Price: " + std::to_string(this->price);
 
-	to_print1 = adjust_square(to_print1, 35);
-	to_print2 = adjust_square(to_print2, 35);
-	to_print3 = adjust_square(to_print3, 35);
-	to_print4 = adjust_square(to_print4, 35);
-
-
-	std::cout << R"(+-----------------------------------+
-|)" << to_print1 << R"(|
-|)" << to_print2 << R"(|
-|)" << to_print3 << R"(|
-|)" << to_print4 << R"(|
-+-----------------------------------+)" << std::endl;
-}
+	print_square(to_print1, to_print2, to_print3, to_print4);
 
 void Armadura::equip(Armadura toequip){
 	set_id(toequip.get_id());

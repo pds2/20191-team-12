@@ -12,9 +12,16 @@
 
 // CONSTRUTOR
 
-Personagem::Personagem(std::string _obj_name, std::string _casa, int _life, int _defense, int _attack, int _stamina, Inventario _inventory, Armadura _armor, Arma _weapon){
-	this->name = _obj_name;
-	this->casa = _casa;
+Personagem::Personagem(std::string _name){
+	this->name = _name;
+	this->life = 100;
+	this->defense = 20;
+	this->attack = 20;
+	this->stamina = 100;
+}
+
+Personagem::Personagem(std::string _name, int _life, int _defense, int _attack, int _stamina, Inventario _inventory, Armadura _armor, Arma _weapon){
+	this->name = _name;
 	this->life = _life;
 	this->defense = _defense;
 	this->attack = _attack;
@@ -28,10 +35,6 @@ Personagem::Personagem(std::string _obj_name, std::string _casa, int _life, int 
 
 std::string Personagem::get_name(){
 	return this->name;
-}
-
-std::string Personagem::get_casa(){
-	return this->casa;
 }
 
 int Personagem::get_life(){
@@ -273,7 +276,7 @@ void Personagem::unequip_weapon(){
 //void Personagem::equip_inventory_armor(int num){
 
 void Personagem::display_stats(){
-	std::cout << "\nGuerreiro " << get_name() << " da casa " << get_casa() << "\nVida: " << get_life() << "\t Stamina: " << get_stamina() << "\nAtaque: " << get_attack() <<
+	std::cout << "\nGuerreiro " << get_name() << "\nVida: " << get_life() << "\t Stamina: " << get_stamina() << "\nAtaque: " << get_attack() <<
 	"\tDefesa: " << get_defense() << "\n\n";
 }
 

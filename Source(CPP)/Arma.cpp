@@ -49,25 +49,19 @@ void Arma::set_price(int _price){
 	this->price = _price;
 }
 
+
+std::string Arma::adjust_square(std::string to_print, int num){
+	to_print.append((num - to_print.size()), ' ');
+	return to_print;
+}
+
 void Arma::display_weapon(){
 	std::string to_print1 = "Id:" + std::to_string(this->id);
 	std::string to_print2 = "Nome:" + this->name;
 	std::string to_print3 = "Ataque:" + std::to_string(this->b_attack);
 	std::string to_print4 = "Preco:" + std::to_string(this->price);
 
-	to_print1 = adjust_square(to_print1, 35);
-	to_print2 = adjust_square(to_print2, 35);
-	to_print3 = adjust_square(to_print3, 35);
-	to_print4 = adjust_square(to_print4, 35);
-
-
-	std::cout << R"(+-----------------------------------+
-|)" << to_print1 << R"(|
-|)" << to_print2 << R"(|
-|)" << to_print3 << R"(|
-|)" << to_print4 << R"(|
-+-----------------------------------+)" << std::endl;
-
+	print_square(to_print1, to_print2, to_print3, to_print4);
 }
 
 
