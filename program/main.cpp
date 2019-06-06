@@ -17,11 +17,9 @@
 
 using namespace std;
 
-//declarar variaveis globais: vidas, personagem
-//exibir menu de escolha e textinho
-//coletar dados do jogador (escolher o nome)
+int main(){
+int c, vidas = 3;
 
-int vidas = 3;
 std::string name;
 
 cout << "Bem Vindo ao universo de Game of Thrones! Este jogo é uma paródia criada pelos alunos de PDS II." << endl;
@@ -30,9 +28,13 @@ cout << "Escolha um nome para seu personagem:";
 cin >> name;
 Personagem(name); //construtor
 
-int main(){
-    while(vidas > 0){
-        get_stage_game(1);
-        //funcao menu
+
+    while(vidas > 0 && c == 1){
+        if(get_stage_game(&i) == 0){
+             vidas--;
+        }
+        exit(&c);
     }
+    
+    return 0;
 }
