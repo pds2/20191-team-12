@@ -38,6 +38,8 @@ class Personagem{
   	void set_stamina(int stamina_change); 
 
     //Acesso Pocoes
+    int get_life_on_pot();
+    int get_stamina_on_pot();
     int get_life_pot_quantity();
     int get_stamina_pot_quantity();
     void set_life_pot_quantity(int num);

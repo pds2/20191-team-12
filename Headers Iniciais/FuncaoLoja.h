@@ -12,7 +12,7 @@ void remaining_gold(Personagem A);
 // Função de compra
 void buy_weapon(Personagem &A, std::vector<Arma> &weapons);
 void buy_armor(Personagem &A, std::vector<Armadura> &armors);
-
+void buy_potions(Personagem &A, int price_on_potions);
 
 // Menus específicos
 void store_weapon(Personagem &A);
