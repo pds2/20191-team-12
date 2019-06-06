@@ -58,7 +58,7 @@ void atacar(Personagem& heroi, Mob& npc){ // Herói ataca o inimigo
 	int ataque = rand() % 11 + (heroi.get_attack()-5);
 	float defesa = rand() % 11 + (npc.get_defense() - 5);
 	npc.set_life(npc.get_life() - true_damage(ataque, defesa));
-	std::cout << "Seu ataque causou " << ataque << " de dano!\n\n";
+	std::cout << "Seu ataque causou " << true_damage(ataque, defesa) << " de dano!\n\n";
 }
 
 void atacar_mob(Personagem &heroi, Mob &npc){ // Inimigo ataca o herói
@@ -66,7 +66,7 @@ void atacar_mob(Personagem &heroi, Mob &npc){ // Inimigo ataca o herói
 	int ataque = rand() % 11 + npc.get_min_attack();
 	float defesa = rand() % 11 + (heroi.get_defense() - 5);
 	heroi.set_life(heroi.get_life() - true_damage(ataque, defesa));
-	std::cout << "Você recebeu " << ataque << " de dano do inimigo!\n";
+	std::cout << "Você recebeu " << true_damage(ataque, defesa) << " de dano do inimigo!\n";
 }
 
 void menu2(Personagem &heroi, Mob &npc){ // Menu da opção 2
@@ -78,22 +78,15 @@ void menu2(Personagem &heroi, Mob &npc){ // Menu da opção 2
 			std::cout<<"Habilidade nao existente"<<std::endl;
 		}else{
 			atacar_hab(heroi, npc, heroi.get_skill(op));
-			if(npc.get_life() > 0){
-				
-				if(npc.type() == 1){
-					Boss chief = dynamic_cast<Boss&>(npc);
-					atacar_hab_boss(heroi, chief);
-				}else{
-					atacar_mob(heroi, npc);
-				}
-				return;	
+			if(npc.type() == 1){ //Testa o tipo da subclasse
+				Boss chief = dynamic_cast<Boss&>(npc); //Converte a interface em endereço de Boss para a função
+				atacar_hab_boss(heroi, chief);
 			}else{
-				std::cout<< "Inimigo morto!"<<std::endl;
-				return;
+				atacar_mob(heroi, npc);
 			}
 		}
 	}while( (op < 0) || (op > heroi.get_nskill()) );
-	return;
+
 }
 
 void menu3(Personagem &heroi, Mob &npc){ // Display do inventário de poções
@@ -119,20 +112,16 @@ void atacar_hab(Personagem &heroi, Mob &npc, Habilidade hab){ // Herói ataca ha
 	srand(time(NULL));
 	int ataque = hab.get_damage();
 	float defesa = rand() % 11 + (npc.get_defense() - 5);
-	defesa = (1 - (defesa/100));
-	ataque *= defesa;
-	npc.set_life(npc.get_life() - ataque);
+	npc.set_life(npc.get_life() - true_damage(ataque,defesa));
 	int gasto = heroi.get_stamina() - hab.get_spend();
 	heroi.set_stamina(gasto);
-	std::cout<<hab.get_name()<<" deu dano de "<<ataque<< " no inimigo!"<<std::endl;
+	std::cout<<hab.get_name()<<" deu dano de "<< true_damage(ataque,defesa) << " no inimigo!"<<std::endl;
 }
 
 void atacar_hab_boss(Personagem& heroi, Boss& x){ // Boss ataca habilidade no herói
 	srand(time(NULL));
 	int ataque = x.get_hdamage();
 	float defesa = rand() % 11 + (heroi.get_defense() - 5);
-	defesa = (1 - (defesa/100));
-	ataque *= ((-1)*defesa);
-	heroi.set_life(heroi.get_life() - ataque);
-	std::cout<< x.get_name() <<" te causou um dano de "<< ataque <<" com uma habilidade"<< std::endl;
+	heroi.set_life(heroi.get_life() - true_damage(ataque, defesa));
+	std::cout<< x.get_name() <<" te causou um dano de "<< true_damage(ataque,defesa) <<" com uma habilidade"<< std::endl;
 }
