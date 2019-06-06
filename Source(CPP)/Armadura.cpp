@@ -49,12 +49,6 @@ void Armadura::set_price(int _price){
 	this->price = _price;
 }
 
-
-std::string Armadura::adjust_square(std::string to_print, int num){
-	to_print.append((num - to_print.size()), ' ');
-	return to_print;
-}
-
 void Armadura::display_armor(){
 	std::string to_print1 = "Id: " + std::to_string(this->id);
 	std::string to_print2 = "Nome: " + this->name;
