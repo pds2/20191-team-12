@@ -1,6 +1,7 @@
 #include "Arma.h"
 #include <string>
 #include <iostream>
+#include "FuncoesGerais.h"
 
 Arma::Arma(){
 	this->id = 0;
@@ -46,12 +47,6 @@ int Arma::get_price(){
 
 void Arma::set_price(int _price){
 	this->price = _price;
-}
-
-
-std::string Arma::adjust_square(std::string to_print, int num){
-	to_print.append((num - to_print.size()), ' ');
-	return to_print;
 }
 
 void Arma::display_weapon(){
