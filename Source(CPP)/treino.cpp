@@ -47,5 +47,4 @@ void treinar(Personagem &heroi, Mob &npc, int t_num, int vgold_min, int vgold_ma
 			break;
 	
 	}while (t_num > 0) && (op == 1);
-	
 }
