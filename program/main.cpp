@@ -14,6 +14,7 @@
 #include "Personagem.h"
 #include "Pocao.h"
 
+#define CONTINUAR 1
 
 using namespace std;
 
@@ -29,8 +30,8 @@ cin >> name;
 Personagem(name); //construtor
 
 
-    while(vidas > 0 && c == 1){
-        if(get_stage_game(&i) == 0){
+    while(vidas > 0 && c == CONTINUAR){
+        if(get_stage_game(&i) == FALSE){
              vidas--;
         }
         exit(&c);
