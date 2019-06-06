@@ -17,17 +17,14 @@ int batalha(Personagem &heroi, Mob &npc){
 	std::cout << "Prepare-se para a batalha!\n";
 	std::cout << "Inimigo: " << npc.get_name() << "\nDano de ataque: " << npc.get_max_attack() << "\nDefesa: " << npc.get_defense() << "\n\n";
 	do{
-		do{
-			std::cout << "Vida: " << heroi.get_life() << "    Vida Inimigo: " << npc.get_life() << "\n";
-			std::cout << "Stamina: " << heroi.get_stamina() << "\n";
-			std::cout << "-------------------------------------------------\n";
-			std::cout << "| 1 - Atacar                      2 - Habildade |\n";
-			std::cout << "|                                               |\n";
-			std::cout << "| 3 - Inventario                  4 - Fugir     |\n";
-			std::cout << "-------------------------------------------------\n Sua escolha: ";
-			std::cin >> op;
-			if(op<1 || op>4) std::cout << "Opção inválida, escolha entre 1 e 4!\n";
-		}while(op<1 || op>4);
+		std::cout << "Vida: " << heroi.get_life() << "    Vida Inimigo: " << npc.get_life() << "\n";
+		std::cout << "Stamina: " << heroi.get_stamina() << "\n";
+		std::cout << "-------------------------------------------------\n";
+		std::cout << "| 1 - Atacar                      2 - Habildade |\n";
+		std::cout << "|                                               |\n";
+		std::cout << "| 3 - Inventario                  4 - Fugir     |\n";
+		std::cout << "-------------------------------------------------\n Sua escolha: ";
+		checker(&op, 1, 4);
 		switch(op){
 			case 1: atacar(heroi, npc);
 					atacar_mob(heroi, npc);
