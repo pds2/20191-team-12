@@ -9,8 +9,9 @@
 #include <iostream>
 #include <time.h>
 #include <stdlib.h>
+#include <math.h>
 
-void batalha(Personagem &heroi, Mob &npc){
+int batalha(Personagem &heroi, Mob &npc){
 	int op;
 
 	std::cout << "Prepare-se para a batalha!\n";
@@ -35,39 +36,40 @@ void batalha(Personagem &heroi, Mob &npc){
 					break;
 			case 3: menu3(heroi, npc);
 					break;
-			case 4: fugir(heroi);
-					break;
+			case 4: return 2; // Fugiu
 		}
-	}while(npc.get_life() > 0 && heroi.get_life() > 0 && op!=4);
-	if(npc.get_life()<0){
-		srand (time(NULL));
-		int moedas = rand() % 11 + 10;
-		std::cout << "Você o venceu!\n Você encontrou " << moedas << " moedas ao saquear o corpo";
-		heroi.set_gold(heroi.get_gold() + moedas);
+	}while(npc.get_life() > 0 && heroi.get_life() > 0);
+	if(heroi.get_life() < 0){ // Herói morreu
+		return 0;
+	}
+	if(npc.get_life() < 0){ // Inimigo morreu
+		return 1;
 	}
 }
 
-void atacar(Personagem& heroi, Mob& npc){
+int true_damage(int ataque, float defesa){ // Desconta a defesa do ataque e retorna o dano real (taxa de defesa da armadura = 4*sqrt(defesa))
+	defesa = 4*sqrt(defesa);
+	int true_damage = ataque*(1-(defesa/100.0));
+	return true_damage;
+}
+
+void atacar(Personagem& heroi, Mob& npc){ // Herói ataca o inimigo
 	srand (time(NULL));
 	int ataque = rand() % 11 + (heroi.get_attack()-5);
 	float defesa = rand() % 11 + (npc.get_defense() - 5);
-	defesa = (1-(defesa/100));
-	ataque = ataque*defesa;
-	npc.set_life(npc.get_life() - ataque);
+	npc.set_life(npc.get_life() - true_damage(ataque, defesa));
 	std::cout << "Seu ataque causou " << ataque << " de dano!\n\n";
 }
 
-void atacar_mob(Personagem &heroi, Mob &npc){
+void atacar_mob(Personagem &heroi, Mob &npc){ // Inimigo ataca o herói
 	srand (time(NULL));
 	int ataque = rand() % 11 + npc.get_min_attack();
 	float defesa = rand() % 11 + (heroi.get_defense() - 5);
-	defesa = (1-(defesa/100));
-	ataque = ataque*((-1)*defesa);
-	heroi.set_life(heroi.get_life() - ataque);
+	heroi.set_life(heroi.get_life() - true_damage(ataque, defesa));
 	std::cout << "Você recebeu " << ataque << " de dano do inimigo!\n";
 }
 
-void menu2(Personagem &heroi, Mob &npc){
+void menu2(Personagem &heroi, Mob &npc){ // Menu da opção 2
 	int op;
 	do{
 		heroi.display_skill();
@@ -94,7 +96,7 @@ void menu2(Personagem &heroi, Mob &npc){
 	return;
 }
 
-void menu3(Personagem &heroi, Mob &npc){
+void menu3(Personagem &heroi, Mob &npc){ // Display do inventário de poções
 	int op;
 	do{
 		std::cout << "-------------------------------------------------\n";
@@ -105,22 +107,15 @@ void menu3(Personagem &heroi, Mob &npc){
 	}
 	while(op!=1 && op!=2);
 	switch(op){
-		case 1: heroi.use_life_potion();
+		case 1: heroi.use_life_potion(); // Usa poção de vida
 				break;
-		case 2: heroi.use_stamina_potion();
+		case 2: heroi.use_stamina_potion(); // Usa poção de stamina
 				break;
 	}
 	atacar_mob(heroi,npc);
 }
 
-void fugir(Personagem& heroi){
-	srand (time(NULL));
-	int perda = rand() % 11 + 1;
-	heroi.set_gold(heroi.get_gold() - perda);
-	std::cout << "Você comprou sua misericórdia por " << perda << " moedas.\nEssa foi por pouco!\n";
-}
-
-void atacar_hab(Personagem &heroi, Mob &npc, Habilidade hab){
+void atacar_hab(Personagem &heroi, Mob &npc, Habilidade hab){ // Herói ataca habilidade no inimigo
 	srand(time(NULL));
 	int ataque = hab.get_damage();
 	float defesa = rand() % 11 + (npc.get_defense() - 5);
@@ -132,7 +127,7 @@ void atacar_hab(Personagem &heroi, Mob &npc, Habilidade hab){
 	std::cout<<hab.get_name()<<" deu dano de "<<ataque<< " no inimigo!"<<std::endl;
 }
 
-void atacar_hab_boss(Personagem& heroi, Boss& x){
+void atacar_hab_boss(Personagem& heroi, Boss& x){ // Boss ataca habilidade no herói
 	srand(time(NULL));
 	int ataque = x.get_hdamage();
 	float defesa = rand() % 11 + (heroi.get_defense() - 5);
