@@ -5,9 +5,10 @@
 #include "mob.h"
 #include "boss.h"
 
-void batalha(Personagem &heroi, Mob &npc);
+int batalha(Personagem &heroi, Mob &npc);
 void menu2(Personagem &heroi, Mob &npc);
 void menu3(Personagem &heroi, Mob &npc);
+int true_damage(int ataque, int defesa);
 void atacar(Personagem &heroi, Mob &npc);
 void atacar_mob(Personagem &heroi, Mob &npc);
 void atacar_hab(Personagem &heroi, Mob &npc, Habilidade hab);
