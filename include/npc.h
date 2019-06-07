@@ -15,6 +15,7 @@ class Npc : public Mob{
 	public:
 		Npc(std::string, float, float, float, float);
 		Npc(std::string);
+		Npc();
 		virtual float get_max_attack() override;
 		virtual float get_min_attack() override;
 		virtual float get_defense() override;
@@ -26,8 +27,10 @@ class Npc : public Mob{
 		virtual void set_min_attack(float) override;
 		virtual void set_defense(float) override;
 		virtual void set_life(float) override;
+		void set_name(std::string);
 		//virtual void set_armor(float ) override;
 		virtual int type() override;
+
 };
 
 #endif
