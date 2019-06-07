@@ -2,6 +2,13 @@
 #include <string>
 #include <iostream>
 
+Npc::Npc(){
+	this-> max_attack = 0;
+	this-> min_attack = 0;
+	this-> defense = 0;
+	this-> life = 0;
+}
+
 Npc::Npc(std::string n){
 	this->name = n;
 }
@@ -53,4 +60,6 @@ void Npc::set_defense(float def){
 	this-> defense = def;
 }
 
-
+void Npc::set_name(std::string n){
+	this-> name = n;
+}
