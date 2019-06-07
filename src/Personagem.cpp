@@ -132,6 +132,14 @@ bool Personagem::check_gold(int price){
 	}
 }
 
+std::vector<Armadura> Personagem::get_inventory_armor(){
+	return this->inventory.get_full_unused_armor();
+}
+
+std::vector<Arma> Personagem::get_inventory_weapon(){
+	return this->inventory.get_full_unused_weapon();
+}
+
 // ACESSO E MUDANÇA ARMAS E ARMADURAS
 
 std::string Personagem::get_armor_name(){
@@ -241,6 +249,14 @@ void Personagem::add_armor(Armadura A){
 
 void Personagem::add_weapon(Arma A){
 	this->inventory.add_weapon(A);
+}
+
+void Personagem::remove_armor(int id){
+	this->inventory.remove_armor(id);
+}
+
+void Personagem::remove_weapon(int id){
+	this->inventory.remove_weapon(id);
 }
 
 void Personagem::equip_armor(Armadura toequip){

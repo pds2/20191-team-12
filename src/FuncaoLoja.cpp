@@ -3,6 +3,7 @@
 #include <fstream>
 #include <iomanip>
 #include <sstream>
+#include <time.h>
 
 #include "Pocao.h"
 #include "Inventario.h"
@@ -23,9 +24,23 @@ void menu_store(){
 	std::cout << "Sua escolha: " << std::endl;
 }
 
+void seller_random_fail_speech(){
+	srand (time(NULL));
+	int fala = rand() % 3;
+		switch(fala){
+			case 0: std::cout << "-Vendedor: Nao tente me enganar jovem aventureiro, voce nao tem dinheiro para comprar algo tao bom. Vou te dar mais uma chance, escolha outro item: " << std::endl; break;
+			case 1: std::cout << "-Vendedor: Ora ora, parece que alguem esta tentando me enganar. Pare de brincadeiras e escolha algo a seu alcance: " << std::endl; break;
+			case 2: std::cout << "-Vendedor: Vai ter que se contentar com algo mais barato. Escolha novamente: " << std::endl; break;
+		}
+}
+
 void instruction_store(Personagem A){
-	std::cout << "Digite o ID do item para comprar ou 0 para voltar." <<"\n";
-	std::cout << "Voce tem " << std::to_string(A.get_gold()) << " moedas.\n";
+	std::cout << "Digite o ID do item para comprar ou 0 para voltar." << std::endl;
+	std::cout << "Voce tem " << std::to_string(A.get_gold()) << " moedas" << std::endl;
+}
+
+void instruction_store_sell(Personagem A){
+	std::cout << "Digite o ID do  item para comprar ou 0 para voltar." << std::endl;
 }
 
 void remaining_gold(Personagem A){
@@ -58,12 +73,7 @@ void buy_weapon(Personagem &A, std::vector<Arma> &weapons){
 		std::cout << "Seu novo ataque e: " << A.get_attack() << std::endl;
 
 	} else{
-		int fala = rand() % 3;
-		switch(fala){
-			case 0: std::cout << "-Vendedor: Nao tente me enganar jovem aventureiro, voce nao tem dinheiro para comprar algo tao bom. Vou te dar mais uma chance, escolha outro item: " << std::endl; break;
-			case 1: std::cout << "-Vendedor: Ora ora, parece que alguem esta tentando me enganar. Pare de brincadeiras e escolha algo a seu alcance: " << std::endl; break;
-			case 2: std::cout << "-Vendedor: Vai ter que se contentar com algo mais barato. Escolha novamente: " << std::endl; break;
-		}
+		seller_random_fail_speech();
 		buy_weapon(A, weapons);
 	}
 }
@@ -90,12 +100,7 @@ void buy_armor(Personagem &A, std::vector<Armadura> &armors){
 		std::cout << "Sua nova defesa e: " << A.get_defense() << std::endl;
 
 	} else{
-		int fala = rand() % 3;
-		switch(fala){
-			case 0: std::cout << "-Vendedor: Nao tente me enganar jovem aventureiro, voce nao tem dinheiro para comprar algo tao bom. Vou te dar mais uma chance, escolha outro item: " << std::endl; break;
-			case 1: std::cout << "-Vendedor: Ora ora, parece que alguem esta tentando me enganar. Pare de brincadeiras e escolha algo a seu alcance: " << std::endl; break;
-			case 2: std::cout << "-Vendedor: Vai ter que se contentar com algo mais barato. Escolha novamente: " << std::endl; break;
-		}
+		seller_random_fail_speech();
 		buy_armor(A, armors);
 	}
 }
@@ -205,12 +210,45 @@ void store_potions(Personagem &A){
 	
 }
 
-/*void inventory_store(Personagem &A){
-	A.display_inventory();
-	std::cout << "-Vendedor: Eu pago metade do valor do item. Pegar ou largar!"
-	instruction_store();
+void store_inventory(Personagem &A){
+	std::cout << "-Vendedor: Voce pode vender: \n0 - Sair\n1 - Armaduras\n2 - Armas\n" << std::endl;
+	std::cout << "Sua escolha: " << std::endl;
+
+	int i = 0, escolha;
+	checker(&escolha, 0, 2);
+
+	if(escolha == 0){
+		std::cout << "-Vendedor: Mas ja mudou de ideia? Esses jovens..." << std::endl;
+		return;
+
+	} else if(escolha == 1){
+		std::vector<Armadura> inventory_armor = A.get_inventory_armor();
+
+		if(inventory_armor.size() <= 0){
+			std::cout << "Voce nao tem armaduras para vender..." << std::endl;
+		} else{
+			for(i=0; i<inventory_armor.size(); i++){
+				inventory_armor[i].set_price(inventory_armor[i].get_price() * 0.50);
+				inventory_armor[i].display_armor();
+			}
+		}
+		//buy_armor();
+	} else if(escolha == 2){
+		std::vector<Arma> inventory_weapon = A.get_inventory_weapon();
+
+		if(inventory_weapon.size() <= 0){
+			std::cout << "Voce nao tem armaduras para vender..." << std::endl;
+		} else{
+			for(i=0; i<inventory_weapon.size(); i++){
+				inventory_weapon[i].set_price(inventory_weapon[i].get_price() * 0.50);
+				inventory_weapon[i].display_weapon();
+			}
+		}
+		//buy_weapon();
+	}
+
+	instruction_store(A);
 }
-*/
 
 void Funcao_Loja(Personagem &A){
 	int escolha = 0;
@@ -243,8 +281,14 @@ void Funcao_Loja(Personagem &A){
 				remaining_gold(A);
 				menu_store();
 				checker(&escolha, 1, 5);
+
 			} else if(escolha == 4){
-				//inventory_store();
+				std::cout << "-Vendedor: Eu estou sempre comprando itens de aventureiros como voce..." << std::endl;
+				store_inventory(A);
+
+				remaining_gold(A);
+				menu_store();
+				checker(&escolha, 1, 5);
 
 			} else if(escolha == 5){
 				std::cout << "-Vendedor: Esses jovens..." << std::endl;

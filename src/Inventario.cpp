@@ -7,8 +7,8 @@
 
 Inventario::Inventario(){ // Todos os números abaixo podem ser mudados para balancear o inicio de jogo*
 	this->gold = 50; 
-	this->stamina_pot = Pocao(50, 0, 1);
-	this->life_pot = Pocao(0, 50, 1);
+	this->stamina_pot = Pocao(50, 0, 2);
+	this->life_pot = Pocao(0, 50, 2);
 }
 
 int Inventario::get_life(){
@@ -53,11 +53,53 @@ void Inventario::add_weapon(Arma A){
 	this->unused_weapons.push_back(tobeadded);
 }
 
-Armadura Inventario::get_x_armor(int num){
-	//if(unused_armor.size() < num){
-	return this->unused_armor[num];
-	//}else{
-	//	std::cout << "Failed acessing " << num << "position on armor inventory" << std::endl;
+int Inventario::armor_inventory_position(int id){
+	int armor_position = -1, i;
+	auto it = this->unused_armor.begin();
+	for(it, i = 0; it != this->unused_armor.end(); ++it, ++i){
+		if(id = it->get_id()){
+			armor_position = i;
+		}
+	}
+	return armor_position;
+}
+
+int Inventario::weapon_inventory_position(int id){ // Se a posicao for igual a -1, a arma nao existe no inventario
+	int weapon_position = -1, i;
+	auto it = this->unused_weapons.begin();
+	for(it, i = 0; it != this->unused_weapons.end(); ++it, ++i){
+		if(id = it->get_id()){
+			weapon_position = i;
+		}
+	}
+	return weapon_position;
+}
+
+
+void Inventario::remove_armor(int id){
+	if(armor_inventory_position(id) >= 0){
+		this->unused_armor.erase(unused_armor.begin() + armor_inventory_position(id));
+	} else{
+		std::cout << "Remocao de armadura falhou" << std::endl;
+	}
+}
+
+void Inventario::remove_weapon(int id){
+	std::cout << "Teste" ;
+	if(weapon_inventory_position(id) >= 0){
+		this->unused_weapons.erase(unused_weapons.begin() + weapon_inventory_position(id));
+	} else{
+		std::cout << "Remocao de arma falhou" << std::endl;
+	}
+
+}
+
+std::vector<Armadura> Inventario::get_full_unused_armor(){
+	return this->unused_armor;
+}
+
+std::vector<Arma> Inventario::get_full_unused_weapon(){
+	return this->unused_weapons;
 }
 
 Arma Inventario::get_x_weapon(int num){
