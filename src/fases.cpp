@@ -145,7 +145,7 @@ void get_stage_game(int n){
         //chega no norte e ganha uma espada da pedra do dragao depois luta com o rei da noite
     }
     else if (n == 7){
-        //escolhe entre trair ou apoiar a dani
+        //escolher entre trair ou apoiar a dani
     }
     }
 }
