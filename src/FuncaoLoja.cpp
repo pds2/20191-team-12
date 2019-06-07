@@ -128,7 +128,7 @@ void buy_potion(Personagem &A, int price_on_potion){
 
 void store_weapon(Personagem &A){
 	std::ifstream file;
-	file.open("../TPTEST/weapons.txt"); // Fase de teste: especificar diretório do arquivo ao utilizar essa função
+	file.open("../Files/weapons.txt"); // Fase de teste: especificar diretório do arquivo ao utilizar essa função
 
 	std::vector<Arma> weapons;
 
@@ -162,7 +162,7 @@ void store_weapon(Personagem &A){
 
 void store_armor(Personagem &A){
 	std::ifstream file;
-	file.open("../TPTEST/armor.txt"); // Fase de teste: especificar diretório do arquivo ao utilizar essa função
+	file.open("../Files/armor.txt"); // Fase de teste: especificar diretório do arquivo ao utilizar essa função
 
 	std::vector<Armadura> armors; 
 	std::string line, field, ss, _name;
