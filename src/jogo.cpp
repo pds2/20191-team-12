@@ -1,6 +1,7 @@
 #include <iostream>
 #include <Personagem.h>
 #include <allegro.h>
+#include <menu.h>
 
 
 bool exit(&c){
@@ -12,6 +13,21 @@ bool exit(&c){
         return FALSE;
 }
 
+void quiz(&n){
+    if(n == 1){
+        std::cout << "\nQual o time de futebol que o Clegane menos gosta?\n"
+        std::cout << "-------------------------------------------------\n";
+		std::cout << "| 1 - Corintians                      2 - Botafogo  |\n";
+		std::cout << "|                                                   |\n";
+		std::cout << "| 3 - Flamengo                 	    4 - Atlético  |\n";
+		std::cout << "-------------------------------------------------\n Sua escolha: ";
+		checker(&op, 1, 4);
+    }
+    else if(n == 2){
+        
+    }
+}
+
 void get_stage_game(int n){
 
     if (n == 1){
@@ -21,16 +37,16 @@ void get_stage_game(int n){
         std::cout << "Voce: Err... " << std::endl;
         std::cout << "Maria: Segundo a profecia, voce tera que passar por 7 provacoes antes de ser livre para voltar ao seu mundo. Primeiro vamos para dorne para conseguir alguns equipamentos." << std::endl;
         std::cout << "Maria: Nao se esqueca: O inverno esta chegando e a C&A tem varias promocoes em casacos" << std::endl;
-        
-        //pressione alguma tecla para continuar
+        std::cout << "PRESSIONE QUALQUER TECLA PARA CONTINUAR"<< endl;
+        //system("cls"); || system ("clear");
+
         std::cout << std::endl << "~DORNE - LAR DA CASA MACHADO~" << std::endl;
-        
         std::cout << "Maria: Aqui nos resolvemos os nossos conflitos com batalhas. Ao longo do caminho voce tambem podera treinar para aperfeicoar suas habilidades ou ganhar dinheiro" << std::endl;
         std::cout << "Maria: Mercadores tambem estao sempre disponiveis, neles voce pode comprar novas armas, armaduras e pocoes. Tais servicos estaram disponiveis sempre que precisar! Vamos fazer um teste:" <<std::endl;
         show_menu();
         std::cout << "Maria: Agora que voce ja esta preparado, podemos seguir a nossa jornada"
+        //system("cls"); || system ("clear");
 
-        //pressione alguma tecla para continuar
         std::cout << "??? : *Grito*" << std::endl;
         std::cout << "Maria: Parece que alguem precisa de ajuda. Vamos ver o que esta acontecendo." << std::endl;
         std::cout << "Narrador: Varios homens emboscavam uma mulher enquanto ela lutava com um chicote"
@@ -38,16 +54,15 @@ void get_stage_game(int n){
         std::cout << "Narrador: Um dos homens covardemente joga areia nos seus olhos e outro a apunha-la pelas costas" <<std::endl;
         std::cout << "Maria: O que esta esperando? Voce deve ajuda-la!!" << std::endl;
         // funcao batalha 
+        //system("cls"); || system ("clear");
 
-        //pressione alguma tecla para continuar
         std::cout << "Eliana: Eu nao precisava da sua ajuda, posso me defender sozinha" << std::endl;
         std::cout << "Narrador:  Eliana vai embora e te deixa sozinho" << std::endl;
         std::cout << "Maria: Parabens! O que achou da sua primeira batalha? Nao importa. Vamos, pegue o dinheiro desses bandidos e vamos embora." << std::endl;
         std::cout << "Voce: Para onde vamos?" << std::endl;
         std::cout << "Maria:  Vamos para a Cidade Velha buscar mais informacoes" <<std::endl;
         std::cout << "Narrador: Assim, seguiram para Cidade Velha, para encontrar com os sabios de la" << std::endl;  
-
-        //limpar a tela
+        //system("cls"); || system ("clear");
     
     }
     else if(n == 2){

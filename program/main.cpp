@@ -16,17 +16,16 @@
 
 #define CONTINUAR 1
 
-using namespace std;
 
 int main(){
 int c, vidas = 3;
 
 std::string name;
 
-cout << "Bem Vindo ao universo de Game of Thrones! Este jogo é uma paródia criada pelos alunos de PDS II." << endl;
-cout << "Derrote os sete reinos e domine Westeros!" << endl;
-cout << "Escolha um nome para seu personagem:";
-cin >> name;
+std::cout << "Bem Vindo ao universo de Game of Thrones! Este jogo é uma paródia criada pelos alunos de PDS II." << endl;
+std::cout << "Derrote os sete reinos e domine Westeros!" << endl;
+std::cout << "Escolha um nome para seu personagem:";
+std::cin >> name;
 Personagem(name); //construtor
 
 
