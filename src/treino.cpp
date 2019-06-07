@@ -45,6 +45,7 @@ void treinar(Personagem &heroi, Mob &npc, int t_num, int vgold_min, int vgold_ma
 		if (op == 0){
 			std::cout << "Treino finalizado. Boa sorte na sua batalha, Guerreiro, voce vai precisar!" << std::endl;
 			break;
+		}
 	
-	}while (t_num > 0) && (op == 1);
+	}while ((t_num > 0) && (op == 1));
 }
