@@ -74,7 +74,7 @@ void menu2(Personagem &heroi, Mob &npc){ // Menu da opção 2
 	checker(&op,0, heroi.get_nskill());			 //Checha as entradas
 	atacar_hab(heroi, npc, heroi.get_skill(op));
 	
-	if(npc.get_life > 0){							//Testa se Mob ainda vive
+	if(npc.get_life() > 0){							//Testa se Mob ainda vive
 		if(npc.type() == 1){ 						//Testa o tipo da subclasse para diferenciar o ataque de resposta
 		Boss chief = dynamic_cast<Boss&>(npc); 
 		atacar_hab_boss(heroi, chief);
