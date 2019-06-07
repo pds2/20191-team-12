@@ -9,7 +9,7 @@ bool exit_game(int* c){
     std::cout << "Deseja continuar? (1 - SIM / 0 - NAO)" << std::endl;
     checker(c, 1, 0);
     if (*c == 1){
-        std::cout << "Game: Boa Escolha forasteiro!" << endl;
+        std::cout << "Game: Boa Escolha forasteiro!" << std::endl;
         return TRUE;
     }else{ 
         exit(0);
@@ -31,10 +31,10 @@ int result_battle(int n, int* fase, int* vidas, int* dinheiro){
     }
 }
 
-void quiz(*n){
+void quiz(int* n){
     int op;
-    if(n == 1){
-        std::cout << "\nQual o time de futebol que o Clegane menos gosta?\n"
+    if(*n == 1){
+        std::cout << "\nQual o time de futebol que o Clegane menos gosta?\n";
         std::cout << "-------------------------------------------------\n";
 		std::cout << "| 1 - Corintians                      2 - Botafogo  |\n";
 		std::cout << "|                                                   |\n";
@@ -42,14 +42,14 @@ void quiz(*n){
 		std::cout << "-------------------------------------------------\n Sua escolha: ";
 		checker(&op, 1, 4);
         if(op == 2){
-            std::cout << "Sabio: Vejo que tem um otimo senso de humor. Vou ajuda-lo" << endl;
+            std::cout << "Sabio: Vejo que tem um otimo senso de humor. Vou ajuda-lo" << std::endl;
         }
         else{
-            std::cout << "Sabio: Eh tao lerdo quanto parece..." << endl;
+            std::cout << "Sabio: Eh tao lerdo quanto parece..." << std::endl;
         }
     }
-    else if(n == 2){
-        std::cout << "\nO que nos dizemos ao Deus da Morte?" << endl;
+    else if(*n == 2){
+        std::cout << "\nO que nos dizemos ao Deus da Morte?" << std::endl;
         std::cout << "-------------------------------------------------------------\n";
 		std::cout << "| 1 - Nao assisto Death Note     2 - Sem tempo, irmao        |\n";
 		std::cout << "|                                                   	   |\n";
@@ -58,14 +58,14 @@ void quiz(*n){
 		checker(&op, 1, 4);
 
         if(op == 3){
-            std::cout << "Melissa: Vejo que de fato conhece os principios do nosso senhor" << endl;
+            std::cout << "Melissa: Vejo que de fato conhece os principios do nosso senhor" << std::endl;
         }
         else{
-            std::cout << "Melissa: ..." << endl;
+            std::cout << "Melissa: ..." << std::endl;
         }
     }
-    else if(n == 3){
-        std::cout << "??? : Vallar Morghulis"
+    else if(*n == 3){
+        std::cout << "??? : Vallar Morghulis\n";
         std::cout << "-----------------------------------------------------\n";
 		std::cout << "| 1- Nao sei falar russo		3- Valar Dothraki	   |\n";
 		std::cout << "|								                       |\n";
@@ -74,15 +74,15 @@ void quiz(*n){
 		checker(&op, 1, 4);
 
         if(op == 2){
-            std::cout << "???: Eh bom encontrar companheiros de causa" << endl;
+            std::cout << "???: Eh bom encontrar companheiros de causa" << std::endl;
         }
         else{
-            std::cout << "???: Eu devo ter te confundido" << endl;
+            std::cout << "???: Eu devo ter te confundido" << std::endl;
         }
 
     }
-    else if(n == 4){
-        std::cout << "Qual o nome de um dos dragoes da Daniela?" << endl;
+    else if(*n == 4){
+        std::cout << "Qual o nome de um dos dragoes da Daniela?" << std::endl;
         std::cout << "-----------------------------------------\n";
 		std::cout << "| 1- Dracarys			3- Drohgo		   |\n";
 		std::cout << "|						        		   |\n";
@@ -91,14 +91,14 @@ void quiz(*n){
 		checker(&op, 1, 4);
 
         if(op == 2){
-            std::cout << "" << endl;
+            std::cout << "" << std::endl;
         }
         else{
-            std::cout << "" << endl;
+            std::cout << "" << std::endl;
         }        
     }
-    else if(n == 5){
-        std::cout << "Quem eh a mulher vermelha?" << endl;
+    else if(*n == 5){
+        std::cout << "Quem eh a mulher vermelha?" << std::endl;
         std::cout << "-----------------------------------------------------\n";
 		std::cout << "| 1- Feiticeira Escarlate		3- Melisandre		   |\n";
 		std::cout << "|								                       |\n";
@@ -107,14 +107,14 @@ void quiz(*n){
 		checker(&op, 1, 4);
 
          if(op == 3){
-            std::cout << "" << endl;
+            std::cout << "" << std::endl;
         }
         else{
-            std::cout << "" << endl;
+            std::cout << "" << std::endl;
         } 
     }
     else {
-        std::cout << "Erro na definicao do quiz. Cheque seus parametros. Erro na posicao: " << op << endl;
+        std::cout << "Erro na definicao do quiz. Cheque seus parametros. Erro na posicao: " << op << std::endl;
     }
     *n = *n + 1;
 }
@@ -128,7 +128,7 @@ void get_stage_game(int n){
         std::cout << "Voce: Err... " << std::endl;
         std::cout << "Maria: Segundo a profecia, voce tera que passar por 7 provacoes antes de ser livre para voltar ao seu mundo. Primeiro vamos para dorne para conseguir alguns equipamentos." << std::endl;
         std::cout << "Maria: Nao se esqueca: O inverno esta chegando e a C&A tem varias promocoes em casacos" << std::endl;
-        std::cout << "PRESSIONE QUALQUER TECLA PARA CONTINUAR"<< endl;
+        std::cout << "PRESSIONE QUALQUER TECLA PARA CONTINUAR"<< std::endl;
         //system("cls"); || system ("clear");
 
         std::cout << std::endl << "~DORNE - LAR DA CASA MACHADO~" << std::endl;
