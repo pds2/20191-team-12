@@ -57,14 +57,9 @@ void get_stage_game(int n){
         cout << "\n ~CIDADE VELHA~" << endl;
         cout << "Maria: Chegamos a cidade velha, vamos procurar alguem para nos ajudar" << endl;
         cout << "Sabio: Sejam bem vindos. Do que precisam? Tenho que voltar a fazer nada urgentemente" << endl;
-        cout << "Maria: Queremos saber mais sobre o motivo do " << player.name << ser invocado aqui" << endl;
+        cout << "Maria: Queremos saber mais sobre o motivo do " << player.name << "ser invocado aqui" << endl;
         cout << " Sabio: Pois bem. Voce foi invocado para este mundo para derrotar o rei da night e impedir que o nosso reino se torne uma eterna balada sertaneja" << endl;
-        cout << "Voce: "humm..." << endl;
-        cout << "Maria: Deseja ajudar a nossa causa?" << endl;
-        cin >> op;
-
-        //exibir menu de escolha (0/1) sair/continuar
-
+        cout << "Voce: humm..." << endl;
         cout << "Sabio: Antes de tudo quero saber se es digno" << endl;
 
         //chama quiz 1
@@ -72,7 +67,7 @@ void get_stage_game(int n){
 
         cout << "A ameaca que procuram esta no norte. Voces devem seguir pelo nosso reino em busca de apoio." << endl;
         cout << "Sabio: Voces devem primeiro seguir para os Jardins Altos. Ele eh chamado assim porque foi la que Michael Jordan nasceu. Ele eh muito alto." << endl;
-        cout << "Voce: Err... arigato eu acho" << endl;
+        cout << "Voce: Err... obrigado... eu acho" << endl;
         cout << "Sabio: Nao acredito que ajudei um otaco. Vao embora daqui, tenho varios nada pra fazer. Adeus" << endl;
 
         cout << "\n ~JARDINS ALTOS - LAR DA FAMILIA Tyrell ~ " << endl; 
@@ -90,14 +85,33 @@ void get_stage_game(int n){
     }
     else if(n == 3){
         
-        cout << "\n ~ARREDORES DA CIDADE DOS REIS~" << endl;
+        cout << "\n ~ARREDORES DA CIDADE DOS REIS - CAPITAL DO REINO~" << endl;
         cout << "Maria: Acho que estamos perto da capital. Podemos passar por la para procurar apoio" << endl;
-        cout << "Guarda: Forasteiros sao proibidos" << endl;
-        cout << "Voce: Como assim? Precisamos ver o rei!!" << endl;
-        cout << "Guarda: Sofremos um ataque recentemente. Ninguem entra ate segundas ordens." << endl;
-              
+        cout << "\n ~ NA CAPITAL ~ " << endl;
+        cout << "Voce: O que eh todo esse alvoroco?!!" << endl;
+        cout << "Pessoa aleatoria: A mao do rei foi acusada de traicao e vai ser executado" << endl;
+        cout << "Narrador: Neste momento a mao do rei eh decaptado" << endl;
+        cout << "Voce: Ultimamente nao da pra confiar nem na sombra quem dira na mao haha" << endl;
+        cout << "Maria: Cuidado com as suas piadas sem graca, alguem pode perder a cabeca" << endl;
+        cout << "Pessoa aleatoria: Vou sair de perto de voces" << endl;
+
+        cout << "\n Narrador: Eles decidem que a cidade nao eh muito acolhedora e decidem continuar a sua jornada" << endl;
+        cout << "\n Narrador: No caminho eles encontram com uma mulher vestida de vermelho e ela os aborda" << endl;
+        cout << "???: Meu nome eh Melissa. Meu lorde disse que por aqui encontraria alguem capaz de nos salvar. Mas antes devo ter certeza de que sao voces" <<endl;
+        //quiz 2
+        cout << "Narrador: Eles acompanham Melissa ate Pedra de Dinossauro onde esta Saulo Barao" <<endl;
+        cout << "Saulo: Melissa, sao esses??" <<endl;
+        cout << "Melissa: Sim, meu senhor" << endl;
+        cout << "Saulo: Esse dai me parece muito franzino, nao vai aguentar nem um golpe de espada" << endl;
+        cout << "Voce: Vem Tranquilo" << endl;
+        //funcao batalha
         
+        cout << "Saulo: Parece que era digno, afinal. Siga para Castelo de Rocha, tenho uma missao para voce: matar Tiao Lago" << endl;
+
+    else if (n == 4){
+                
         cout << "\n~CASTELO DE ROCHA - LAR DA FAMILIA LAGO~" << endl;
-        cout <<
+    
+    }
     }
 }
