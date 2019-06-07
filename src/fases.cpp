@@ -107,11 +107,45 @@ void get_stage_game(int n){
         //funcao batalha
         
         cout << "Saulo: Parece que era digno, afinal. Siga para Castelo de Rocha, tenho uma missao para voce: matar Tiao Lago" << endl;
-
+        cout << "Voce: Porque eu faria isso?" << endl;
+        cout << "Saulo: Porque se me ajudar eu apoiarei a sua causa" << endl;
     else if (n == 4){
                 
         cout << "\n~CASTELO DE ROCHA - LAR DA FAMILIA LAGO~" << endl;
-    
+        cout << "Guarda: Forasteiro, identifique-se" << endl;
+        cout << "Voce: Sou o " << player.name << "venho tratar de negocios com o Lorde Tiao" << endl;
+        cout << "Narrador: Voce tenta convencer o guarda a entrar, mas ele nao deixa. Entao voce se infiltra pelo calabouco e encontra "
+        cout << "Voce: Tiao, venho em nome de Saulo Barao, voce encontrara o seu fim hoje" << endl;    
+        cout << "Tiao: Quem eh voce?" << endl;
+        //funcao batalha
+
+        cout << "Narrador: Apos derrotar Tiao os guardas vem atras de voce. Voces dois fogem pelo mar e chegam as ilhas de ferro" << endl;
+        cout << "\n ~NO PORTO~" << endl;
+        cout << "Pessoa aleatoria 1 : Saulo cometeu o erro de atacar a cidades dos reis e foi derrotado" << endl;
+        cout << "Pessoa aleatoria 2: Quem eh Saulo?" << endl;
+        cout << "Pessoa aleatoria 1:  Me impressiona sua falta de cultura" << endl;
+        cout << "Pessoa aleatoria 2: Mentira. Eu sei que a mulher dos dragoes vai derrotar todo mundo" << endl;
+        cout << "Pessoa aleatoria 1: Unico dragao que conheco eh a minha esposa com raiva" << endl;
+        cout << "Maria: Saulo foi derrotado, o que faremos agora?" << endl;
+
+    }
+    else if(n == 5){
+        //derrotar a galera das ilhas de ferro
+        cout << "\n ILHAS DE FERRO - LAR DA FAMILIA GREIJOY" << endl;
+        cout << " Maria: Devemos encontrar o chefe da ilha em busca de apoio." << endl;
+        cout << "Narrador: Voces encontram com o chefe e pedem ajudar, mas ele se recusa." << endl;
+        cout << "**: Voce disse que veio de onde mesmo? Voce parece muito com a descricao do assassino de Tiao Lago." <<endl;
+        cout << "Voce: Eu nao sei do que esta falando" << endl;
+        cout << "**: Voce nao faz ideia da recompensa pela sua cabeca, se eu levar a sua cabeca para a Celia ela com certeza se casara comigo e me tornarei rei" <<endl;
+        //funcao batalha
+        cout << "";
+
+    }
+    else if (n == 6){
+        //chega no norte e ganha uma espada da pedra do dragao depois luta com o rei da noite
+    }
+    else if (n == 7){
+        //escolhe entre trair ou apoiar a dani
     }
     }
 }
