@@ -4,6 +4,7 @@
 #include "boss.h"
 #include "Personagem.h"
 #include "Habilidade.h"
+#include "FuncoesGerais.h"
 
 #include <string>
 #include <iostream>
