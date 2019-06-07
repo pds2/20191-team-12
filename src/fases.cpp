@@ -138,14 +138,28 @@ void get_stage_game(int n){
         cout << "Voce: Eu nao sei do que esta falando" << endl;
         cout << "**: Voce nao faz ideia da recompensa pela sua cabeca, se eu levar a sua cabeca para a Celia ela com certeza se casara comigo e me tornarei rei" <<endl;
         //funcao batalha
-        cout << "";
+        cout << "Narrador: Ganha dele e vira amigo do theon q vai levar ele pro norte" << endl;
 
     }
     else if (n == 6){
         //chega no norte e ganha uma espada da pedra do dragao depois luta com o rei da noite
+        cout << "Narrador: chega no norte conhece a dany, recebe a espada com vidro de dragao e luta contra o rei da noite" <<endl;
+        //funcao batalha
     }
     else if (n == 7){
+        int escolha;
         //escolher entre trair ou apoiar a dani
+        cout << "Narrador: dany taca fogo em porto real e vc deve escolher entre apoia-la ou trai-la" << endl;
+        //menu de selecao
+        if(escolha == 1){
+            //apoia a dany e luta com o jon
+        } 
+        else if (escolha == 2){
+            //trai a dany e luta com ela
+        }
+        else{
+            cout <<"Narrador: Acho que voce nao entendeu... vou repetir pra ver se voce eh burro ou sonso" << endl;
+        }
     }
     }
 }
