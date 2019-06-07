@@ -87,14 +87,10 @@ void menu2(Personagem &heroi, Mob &npc){ // Menu da opção 2
 
 void menu3(Personagem &heroi, Mob &npc){ // Display do inventário de poções
 	int op;
-	do{
 		std::cout << "-------------------------------------------------\n";
 		std::cout << "| 1 - Poção de vida: " << heroi.get_life_pot_quantity() << "x                        |\n" << " 2 - Poção de stamina : " << heroi.get_stamina_pot_quantity() << "x                     |\n";
 		std::cout << "-------------------------------------------------\n";
-		std::cin >> op;
-		if(op!=1 || op!=2) std::cout << "Opção inválida, escolha entre 1 e 2!\n";
-	}
-	while(op!=1 && op!=2);
+		checker(&op, 1, 2);
 	switch(op){
 		case 1: heroi.use_life_potion(); // Usa poção de vida
 				break;
