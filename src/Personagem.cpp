@@ -4,6 +4,7 @@
 #include "Arma.h"
 #include "Armadura.h"
 #include "Habilidade.h"
+#include "FuncoesGerais.h"
 
 #include <iostream>
 #include <string>
@@ -20,15 +21,12 @@ Personagem::Personagem(std::string _name){
 	this->stamina = 100;
 }
 
-Personagem::Personagem(std::string _name, int _life, int _defense, int _attack, int _stamina, Inventario _inventory, Armadura _armor, Arma _weapon){
+Personagem::Personagem(std::string _name, int _life, int _defense, int _attack, int _stamina){
 	this->name = _name;
 	this->life = _life;
 	this->defense = _defense;
 	this->attack = _attack;
 	this->stamina = _stamina;
-	this->inventory = _inventory;
-	equip_armor(_armor);
-	equip_weapon(_weapon);
 }
 
 // ACESSO E MUDANÇA DE ATRIBUTOS GERAIS
@@ -276,7 +274,12 @@ void Personagem::unequip_weapon(){
 //void Personagem::equip_inventory_armor(int num){
 
 void Personagem::display_stats(){
-	std::cout << "\nGuerreiro " << get_name() << "\nVida: " << get_life() << "\t Stamina: " << get_stamina() << "\nAtaque: " << get_attack() <<
-	"\tDefesa: " << get_defense() << "\n\n";
+	std::string string1 = "     Guerreiro " + this->name;
+	std::string string2 = "     Vida: " + std::to_string(this->life) + " | Stamina: " + std::to_string(this->stamina);
+	std::string string3 = "     Ataque: " + std::to_string(this->attack) + " | Defesa: " + std::to_string(this->defense);
+	std::string string4 = "     Moedas de ouro: " + std::to_string(this->get_gold());
+
+	print_square(string1, string2, string3, string4);
 }
+
 

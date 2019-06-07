@@ -77,5 +77,5 @@ void Inventario::display_inventory(){
 	}
 
 	std::cout << "Pocoes de vida - Tamanho: " << this->life_pot.get_life() << " - Quantidade: " << this->get_life_quantity() << std::endl;
-	std::cout << "Pocoes de stamina - Tamanho: " << this->stamina_pot.get_stamina() << " - Quantidade: " << this->get_stamina_quantity() << std::endl;
+	std::cout << "Pocoes de stamina - Tamanho: " << this->stamina_pot.get_stamina() << " - Quantidade: " << this->get_stamina_quantity() << "\n" << std::endl;
 }

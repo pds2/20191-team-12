@@ -5,7 +5,7 @@
 
 Armadura::Armadura(){
 	this->id = 0;
-	this->name = "No name";
+	this->name = "Sem armadura";
 	this->b_defense = 0;
 	this->price = 0;
 }
@@ -56,6 +56,7 @@ void Armadura::display_armor(){
 	std::string to_print4 = "Price: " + std::to_string(this->price);
 
 	print_square(to_print1, to_print2, to_print3, to_print4);
+}
 
 void Armadura::equip(Armadura toequip){
 	set_id(toequip.get_id());
@@ -66,7 +67,7 @@ void Armadura::equip(Armadura toequip){
 
 void Armadura::unequip(){
 	set_id(0);
-	set_name("No armor is being used");
+	set_name("Sem armadura");
 	set_defense(0);
 	set_price(0);
 }

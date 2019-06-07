@@ -27,10 +27,11 @@ std::string adjust_square(std::string to_print, int num){
 }
 
 void print_square(std::string to_print1, std::string to_print2, std::string to_print3, std::string to_print4){
-	to_print1 = adjust_square(to_print1, 35);
-	to_print2 = adjust_square(to_print2, 35);
-	to_print3 = adjust_square(to_print3, 35);
-	to_print4 = adjust_square(to_print4, 35);
+	const int square_size = 35;
+	to_print1 = adjust_square(to_print1, square_size);
+	to_print2 = adjust_square(to_print2, square_size);
+	to_print3 = adjust_square(to_print3, square_size);
+	to_print4 = adjust_square(to_print4, square_size);
 
 
 	std::cout << R"(+-----------------------------------+

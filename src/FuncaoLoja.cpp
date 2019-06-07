@@ -19,20 +19,20 @@ void present_store(){
 }
 
 void menu_store(){
-	std::cout << "1 - Armas\n" << "2 - Armaduras\n" << "3 - Utilidades\n" << "4 - Sair\n";
+	std::cout << "1 - Armas\n" << "2 - Armaduras\n" << "3 - Utilidades\n" << "4- Vender seus itens\n" << "5 - Sair\n";
 	std::cout << "Sua escolha: " << std::endl;
 }
 
 void instruction_store(Personagem A){
 	std::cout << "Digite o ID do item para comprar ou 0 para voltar." <<"\n";
-	std::cout << "Voce tem " << std::to_string(A.get_gold()) << " de gold.\n";
+	std::cout << "Voce tem " << std::to_string(A.get_gold()) << " moedas.\n";
 }
 
 void remaining_gold(Personagem A){
 	if(A.get_gold() > 0){
-		std::cout << "\n-Vendedor: Me disseram que voce ainda tem "<< A.get_gold() << " de gold. Deseja comprar mais alguma coisa?" << std::endl;
+		std::cout << "\n-Vendedor: Me disseram que voce ainda tem "<< A.get_gold() << " moedas. Deseja comprar mais alguma coisa?" << std::endl;
 	} else {
-		std::cout << "-Vendedor: Me parece que voce esta sem dinheiro, mas eu posso lhe deixar ver a loja novamente..." << std::endl;
+		std::cout << "-Vendedor: Me parece que voce esta sem moedas, mas eu posso lhe deixar ver a loja novamente..." << std::endl;
 	}
 }
 
@@ -108,26 +108,27 @@ void buy_potion(Personagem &A, int price_on_potion){
 		return;
 
 	} else if(item == 1){
-		if(A.check_gold() < price_on_potion){
-			std::cout << "Pocoes sao realmente baratas, mas nao saem de graca. Volte quando juntar um pouco mais de gold.";
+		if(A.check_gold(price_on_potion)){
+			A.set_gold(A.get_gold() - price_on_potion);
+			A.set_life_pot_quantity(A.get_life_pot_quantity() + 1);
 		} else{
-			A.set_gold(A.get_gold - price_on_potion);
-			A.set_life_pot_quantity(get_life_pot_quantity() + 1);
+			std::cout << "Pocoes sao realmente baratas, mas nao saem de graca. Volte quando juntar mais moedas." << std::endl;
+			
 		}
 
 	} else if(item == 2){
-		if(A.check_gold() < price_on_potion){
-			std::cout << "Pocoes sao realmente baratas, mas nao saem de graca. Volte quando juntar um pouco mais de gold.";
+		if(A.check_gold(price_on_potion)){
+			A.set_gold(A.get_gold() - price_on_potion);
+			A.set_stamina_pot_quantity(A.get_stamina_pot_quantity() + 1);
 		} else{
-			A.set_gold(A.get_gold - price_on_potion);
-			A.set_stamina_pot_quantity(geT_stamina_pot_quantity() + 1);
+			std::cout << "Pocoes sao realmente baratas, mas nao saem de graca. Volte quando juntar mais moedas." << std::endl;
 		}
 	}
 }
 
 void store_weapon(Personagem &A){
 	std::ifstream file;
-	file.open("../TESTES_TP5.5/weapons.txt"); // Fase de teste: especificar diretório do arquivo ao utilizar essa função
+	file.open("../TPTEST/weapons.txt"); // Fase de teste: especificar diretório do arquivo ao utilizar essa função
 
 	std::vector<Arma> weapons;
 
@@ -161,7 +162,7 @@ void store_weapon(Personagem &A){
 
 void store_armor(Personagem &A){
 	std::ifstream file;
-	file.open("../TESTES_TP5.5/armor.txt"); // Fase de teste: especificar diretório do arquivo ao utilizar essa função
+	file.open("../TPTEST/armor.txt"); // Fase de teste: especificar diretório do arquivo ao utilizar essa função
 
 	std::vector<Armadura> armors; 
 	std::string line, field, ss, _name;
@@ -194,9 +195,9 @@ void store_potions(Personagem &A){
 	const int life_potion_effectivity = A.get_life_on_pot();
 	const int stamina_potion_effectivity = A.get_stamina_on_pot();
 	std::string string1 = "Id: 1 - Pocao de vida (" + std::to_string(life_potion_effectivity) + ")";
-	std::string string2 = "Preco: " + std::to_string(price_on_potion());
+	std::string string2 = "Preco: " + std::to_string(price_on_potion);
 	std::string string3 = "Id: 2 - Pocao de stamina(" + std::to_string(stamina_potion_effectivity) + ")";
-	std::string string4 = "Preco: " + std::to_string(price_on_potion());
+	std::string string4 = "Preco: " + std::to_string(price_on_potion);
 	print_square(string1, string2, string3, string4);
 
 	instruction_store(A);
@@ -204,13 +205,20 @@ void store_potions(Personagem &A){
 	
 }
 
+/*void inventory_store(Personagem &A){
+	A.display_inventory();
+	std::cout << "-Vendedor: Eu pago metade do valor do item. Pegar ou largar!"
+	instruction_store();
+}
+*/
+
 void Funcao_Loja(Personagem &A){
 	int escolha = 0;
 	present_store();
 	menu_store();
-	checker(&escolha, 1, 4);
+	checker(&escolha, 1, 5);
 		
-		while(escolha >= 1 && escolha <= 4){
+		while(escolha >= 1 && escolha <= 5){
 
 			if(escolha == 1){
 				std::cout << "\n-Vendedor:Escolha sabiamente sua arma:" << std::endl;
@@ -218,7 +226,7 @@ void Funcao_Loja(Personagem &A){
 				
 				remaining_gold(A);
 				menu_store();
-				checker(&escolha, 1, 4);
+				checker(&escolha, 1, 5);
 
 			} else if(escolha == 2){
 				std::cout << "\n-Vendedor:Escolha sabiamente sua armadura:" << std::endl;
@@ -226,7 +234,7 @@ void Funcao_Loja(Personagem &A){
 
 				remaining_gold(A);
 				menu_store();
-				checker(&escolha, 1, 4);
+				checker(&escolha, 1, 5);
 
 			} else if(escolha == 3){
 				std::cout << "\n-Vendedor: Pocoes sao otimas para recuperar sua vida e stamina, mas te deixam meio bebado, use com moderacao: " << std::endl;
@@ -234,9 +242,11 @@ void Funcao_Loja(Personagem &A){
 
 				remaining_gold(A);
 				menu_store();
-				checker(&escolha, 1, 4);
-
+				checker(&escolha, 1, 5);
 			} else if(escolha == 4){
+				//inventory_store();
+
+			} else if(escolha == 5){
 				std::cout << "-Vendedor: Esses jovens..." << std::endl;
 				return;
 			}

@@ -5,7 +5,7 @@
 
 Arma::Arma(){
 	this->id = 0;
-	this->name = "No name";
+	this->name = "Sem arma";
 	this->b_attack = 0;
 	this->price = 0;
 }
@@ -58,7 +58,6 @@ void Arma::display_weapon(){
 	print_square(to_print1, to_print2, to_print3, to_print4);
 }
 
-
 void Arma::equip(Arma toequip){
 	set_id(toequip.get_id());
 	set_name(toequip.get_name());
@@ -68,7 +67,7 @@ void Arma::equip(Arma toequip){
 
 void Arma::unequip(){
 	set_id(0);
-	set_name("No weapon is being used.");
+	set_name("Sem arma");
 	set_attack(0);
 	set_price(0);
 }

@@ -24,7 +24,7 @@ class Personagem{
   public:
   	//Construtor
     Personagem(std::string _name);
-    Personagem(std::string _name, int _life, int _defense, int _attack, int _stamina, Inventario _inventory, Armadura _armor, Arma _weapon);
+    Personagem(std::string _name, int _life, int _defense, int _attack, int _stamina);
    	//Acesso Personagem
  	std::string get_name();
   	int get_life();
