@@ -69,21 +69,19 @@ void atacar_mob(Personagem &heroi, Mob &npc){ // Inimigo ataca o herói
 
 void menu2(Personagem &heroi, Mob &npc){ // Menu da opção 2
 	int op;
-	do{
-		heroi.display_skill();
-		std::cin >> op;
-		if( (op < 0) ||(op > heroi.get_nskill() ) ){
-			std::cout<<"Habilidade nao existente"<<std::endl;
+
+	heroi.display_skill();
+	checker(&op,0, heroi.get_nskill());			 //Checha as entradas
+	atacar_hab(heroi, npc, heroi.get_skill(op));
+	
+	if(npc.get_life > 0){							//Testa se Mob ainda vive
+		if(npc.type() == 1){ 						//Testa o tipo da subclasse para diferenciar o ataque de resposta
+		Boss chief = dynamic_cast<Boss&>(npc); 
+		atacar_hab_boss(heroi, chief);
 		}else{
-			atacar_hab(heroi, npc, heroi.get_skill(op));
-			if(npc.type() == 1){ //Testa o tipo da subclasse
-				Boss chief = dynamic_cast<Boss&>(npc); //Converte a interface em endereço de Boss para a função
-				atacar_hab_boss(heroi, chief);
-			}else{
-				atacar_mob(heroi, npc);
-			}
-		}
-	}while( (op < 0) || (op > heroi.get_nskill()) );
+			atacar_mob(heroi, npc);
+		}		
+	}
 
 }
 
@@ -94,7 +92,7 @@ void menu3(Personagem &heroi, Mob &npc){ // Display do inventário de poções
 		std::cout << "| 1 - Poção de vida: " << heroi.get_life_pot_quantity() << "x                        |\n" << " 2 - Poção de stamina : " << heroi.get_stamina_pot_quantity() << "x                     |\n";
 		std::cout << "-------------------------------------------------\n";
 		std::cin >> op;
-		if(op!=1 || op!=2) std::cout << "Opção inválida, escolha entre 1 e 4!\n";
+		if(op!=1 || op!=2) std::cout << "Opção inválida, escolha entre 1 e 2!\n";
 	}
 	while(op!=1 && op!=2);
 	switch(op){
