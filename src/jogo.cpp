@@ -1,6 +1,6 @@
 #include <iostream>
 #include <Personagem.h>
-#include <Allegro.h>
+#include <allegro.h>
 
 
 bool exit(&c){

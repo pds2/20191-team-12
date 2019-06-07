@@ -1,4 +1,4 @@
 #include <iostream>
-#include <windows.h>
+#include <allegro.h>
 
 void get_stage_game(int n);
