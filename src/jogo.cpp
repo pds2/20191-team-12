@@ -2,18 +2,36 @@
 #include <Personagem.h>
 #include <allegro.h>
 #include <menu.h>
+#include <stdio.h>
 
 
-bool exit(&c){
+bool exit_game(int* c){
     std::cout << "Deseja continuar? (1 - SIM / 0 - NAO)" << std::endl;
-    checker(&c, 1, 0);
-    if (c)
+    checker(c, 1, 0);
+    if (*c == 1){
+        std::cout << "Game: Boa Escolha forasteiro!" << endl;
         return TRUE;
-    else 
+    }else{ 
+        exit(0);
         return FALSE;
+    }
+}
+int result_battle(int n, int* fase, int* vidas, int* dinheiro){
+    //caso perca a batalha
+    if (n == 0){
+        *vidas = *vidas - 1;
+    }
+    //caso ganhe a batalha
+    else if(n == 1){
+        *fase = *fase + 1;
+    }
+    //caso fuja da batalha
+    else if(n == 3){
+        *dinheiro = *dinheiro - 100;
+    }
 }
 
-void quiz(&n){
+void quiz(*n){
     int op;
     if(n == 1){
         std::cout << "\nQual o time de futebol que o Clegane menos gosta?\n"
@@ -98,6 +116,7 @@ void quiz(&n){
     else {
         std::cout << "Erro na definicao do quiz. Cheque seus parametros. Erro na posicao: " << op << endl;
     }
+    *n = *n + 1;
 }
 
 void get_stage_game(int n){
