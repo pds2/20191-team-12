@@ -7,9 +7,9 @@
 #include "Batalha.h"
 #include "FuncoesGerais.h"
 #include "Personagem.h"
-#include "mob.h"
+#include "npc.h"
 
 
-void treinar(Personagem &heroi, Mob &npc, int t_num, int vgold_min, int vgold_max);
+void treinar(Personagem &heroi, Npc &npc, int t_num, int vgold_min, int vgold_max);
 
 #endif 
