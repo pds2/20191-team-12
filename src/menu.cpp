@@ -7,16 +7,16 @@ void show_init(){
     //codigo (pagina inicial do jogo)
 }
 
-void show_menu(Personagem &heroi, Npc &npc){ //Menu que aparecerá antes da batalha contra o boss
+void show_menu(Personagem &heroi, Npc &npc, int t_num){ //Menu que aparecerá antes da batalha contra o boss
     
 	int numero;
 
-	std::cout << "-----------------------------------------------------\n";
-	std::cout << "| 0 - Seguir jornada       |       1 - Treino       |\n";
-	std::cout << "| 2 - Loja  				 |       3 - Mapa		  |\n";
-	std::cout << "| 											      |\n";
-	std::cout << "| 				4 - Sair do jogo			      |\n";
-	std::cout << "-----------------------------------------------------\n";
+	std::cout << "-------------------------------------\n";
+	std::cout << "| 0 - Seguir jornada |  1 - Treino  |\n";
+	std::cout << "| 2 - Loja  		   |  3 - Mapa	  |\n";
+	std::cout << "| 							      |\n";
+	std::cout << "|		    4 - Sair do jogo		  |\n";
+	std::cout << "-------------------------------------\n";
 
 	checker(&numero, 0, 4);
 
@@ -24,13 +24,15 @@ void show_menu(Personagem &heroi, Npc &npc){ //Menu que aparecerá antes da bata
 		return;
 	} else if (numero == 1){
 		treinar(heroi, npc, t_num, vgold_min, vgold_max);
+		return;
 	} else if (numero == 2){
 		Funcao_Loja(heroi);
+		return;
 	} else if (numero == 3){
 		//funcaoMapa;
 		return;
 	} else if (numero == 4){
-		exit_game(&numero);
+		exit_game();
 	}
 }
 
