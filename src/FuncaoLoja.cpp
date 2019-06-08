@@ -182,7 +182,7 @@ void sell_weapon(Personagem &A, std::vector<Arma> inventory_weapon){
 			inventory_weapon[A.weapon_inventory_position(item)].display_weapon();
 			A.set_gold(A.get_gold() + inventory_weapon[A.weapon_inventory_position(item)].get_price());
 			A.remove_weapon(item);
-			A.std::cout << "-Vendedor: Aqui estao suas " << inventory_weapon[A.weapon_inventory_position(item)].get_price() << " moedas";
+			std::cout << "-Vendedor: Aqui estao suas " << inventory_weapon[A.weapon_inventory_position(item)].get_price() << " moedas";
 		} else{
 			std::cout << "-Vendedor: Eu sou uma piada pra voce?" << std::endl;
 		}

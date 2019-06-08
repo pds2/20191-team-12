@@ -37,10 +37,10 @@ int Boss::type(){
 }
 
 int Boss::get_hdamage(){
-	this-> skill.get_damage();
+	return this-> skill.get_damage();
 }
 int Boss::get_hspend(){
-	this-> skill.get_spend();
+	return this-> skill.get_spend();
 }
 
 void Boss::set_skill(Habilidade k){
