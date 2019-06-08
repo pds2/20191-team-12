@@ -32,12 +32,12 @@ void checker(int *variavel, int p1, int p2){
 
 // Impressão
 
-/*std::string adjust_square(std::string to_print, int num){
+std::string adjust_square(std::string to_print, int num){
 	to_print.append((num - to_print.size()), ' ');
 	return to_print;
-}*/
+}
 
-/*void print_square(std::string to_print1, std::string to_print2, std::string to_print3, std::string to_print4){
+void print_square(std::string to_print1, std::string to_print2, std::string to_print3, std::string to_print4){
 	to_print1 = adjust_square(to_print1, 35);
 	to_print2 = adjust_square(to_print2, 35);
 	to_print3 = adjust_square(to_print3, 35);
@@ -50,7 +50,7 @@ void checker(int *variavel, int p1, int p2){
 |)" << to_print3 << R"(|
 |)" << to_print4 << R"(|
 +-----------------------------------+)" << std::endl;
-}*/
+}
 
 //Continuar ou Abandonar
 
