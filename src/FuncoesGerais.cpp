@@ -3,6 +3,7 @@
 //#include <system>
 #include "FuncoesGerais.h"
 #include <math.h>
+#include "jogo.h"
 
 // Validação
 
