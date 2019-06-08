@@ -20,7 +20,7 @@ void present_store(){
 }
 
 void menu_store(){
-	std::cout << "1 - Armas\n" << "2 - Armaduras\n" << "3 - Utilidades\n" << "4- Vender seus itens\n" << "5 - Sair" << std::endl;
+	std::cout << "1 - Armas\n" << "2 - Armaduras\n" << "3 - Pocoes\n" << "4- Vender seus itens\n" << "5 - Sair" << std::endl;
 	std::cout << "Sua escolha: " << std::endl;
 }
 
@@ -42,7 +42,7 @@ void confirmation_checkout(){
 
 void instruction_store(Personagem A){
 	std::cout << "Digite o ID do item para comprar ou 0 para voltar." << std::endl;
-	std::cout << "Voce tem " << std::to_string(A.get_gold()) << " moedas" << std::endl;
+	std::cout << "Voce tem " << std::to_string(A.get_gold()) << " moedas." << std::endl;
 }
 
 void instruction_store_sell(){
