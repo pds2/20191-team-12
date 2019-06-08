@@ -32,7 +32,6 @@ void show_menu(Personagem &heroi, Npc &npc){ //Menu que aparecerá antes da bata
 	} else if (numero == 4){
 		exit_game(&numero);
 	}
-	//codigo (loja x treinar x mapa x seguir jornada x sair do jogo)
 }
 
 void show_menu_h(){ // Menu entre a historia/dialogos
