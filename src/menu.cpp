@@ -7,7 +7,7 @@ void show_init(){
     //codigo (pagina inicial do jogo)
 }
 
-void show_menu(Personagem &heroi, Npc &npc){
+void show_menu(Personagem &heroi, Npc &npc){ //Menu que aparecerá antes da batalha contra o boss
     
 	int numero;
 
