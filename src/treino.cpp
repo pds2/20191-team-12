@@ -8,7 +8,7 @@
 
 
 void treinar(Personagem &heroi, Npc &npc, int t_num, int vgold_min, int vgold_max){ //t_num = quantidade de numero de treino
-										//v_gold = variação da quantidade de gold
+																					//v_gold = variação da quantidade de gold
 	 Npc enemies[t_num];
 	 for(int i = 0;i < t_num; i++){
 	 	enemies[i].set_life(npc.get_life());
@@ -28,7 +28,7 @@ void treinar(Personagem &heroi, Npc &npc, int t_num, int vgold_min, int vgold_ma
 
 	do{ 
 		int gold = (rand() % vgold_max) + vgold_min; //gold varia entre a quantia máxima e minima passada
-							//vgold_max e vgold_min aumentam de acordo com o passar das fases
+													//vgold_max e vgold_min aumentam de acordo com o passar das fases
 		
 		if(batalha(heroi, enemies[t_num - 1]) == 0){
 			if(heroi.get_life() > 0){

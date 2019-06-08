@@ -8,7 +8,7 @@
 
 bool exit_game(int* c){
     std::cout << "Deseja continuar? (1 - SIM / 0 - NAO)" << std::endl;
-    checker(c, 1, 0);
+    checker(c, 0, 1);
     if (*c == 1){
         std::cout << "Game: Boa Escolha forasteiro!" << std::endl;
         return true;
