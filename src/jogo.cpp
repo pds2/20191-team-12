@@ -1,8 +1,8 @@
 #include <iostream>
 #include <Personagem.h>
-#include <allegro.h>
 #include <menu.h>
 #include <stdio.h>
+#include <FuncoesGerais.h>
 
 
 bool exit_game(int* c){
@@ -10,13 +10,13 @@ bool exit_game(int* c){
     checker(c, 1, 0);
     if (*c == 1){
         std::cout << "Game: Boa Escolha forasteiro!" << std::endl;
-        return TRUE;
+        return true;
     }else{ 
         exit(0);
-        return FALSE;
+        return false;
     }
 }
-int result_battle(int n, int* fase, int* vidas, int* dinheiro){
+void result_battle(int n, int* fase, int* vidas, int* dinheiro){
     //caso perca a batalha
     if (n == 0){
         *vidas = *vidas - 1;
@@ -119,11 +119,11 @@ void quiz(int* n){
     *n = *n + 1;
 }
 
-void get_stage_game(int n){
+void get_stage_game(int n, Personagem &player){
 
     if (n == 1){
         std::cout << "~ALGUM LUGAR NO MAR DE DORNE~" <<std::endl;
-        std::cout << "Maria: Bem Vindo a sua jornada," << player.name << ". Voce foi invocado para este mundo para combater o mal eminente que assola nossos reinos" << std::endl;
+        std::cout << "Maria: Bem Vindo a sua jornada," << player.get_name() << ". Voce foi invocado para este mundo para combater o mal eminente que assola nossos reinos" << std::endl;
         std::cout << "Maria: Eu sou a sarcedotisa Maria e vou lhe auxiliar na sua jornada. Na sua vida anterior voce era um otaku fracassado, mas de alguma forma lhe acharam digno de nos salvar" <<std::endl;
         std::cout << "Voce: Err... " << std::endl;
         std::cout << "Maria: Segundo a profecia, voce tera que passar por 7 provacoes antes de ser livre para voltar ao seu mundo. Primeiro vamos para dorne para conseguir alguns equipamentos." << std::endl;
@@ -134,14 +134,14 @@ void get_stage_game(int n){
         std::cout << std::endl << "~DORNE - LAR DA CASA MACHADO~" << std::endl;
         std::cout << "Maria: Aqui nos resolvemos os nossos conflitos com batalhas. Ao longo do caminho voce tambem podera treinar para aperfeicoar suas habilidades ou ganhar dinheiro" << std::endl;
         std::cout << "Maria: Mercadores tambem estao sempre disponiveis, neles voce pode comprar novas armas, armaduras e pocoes. Tais servicos estaram disponiveis sempre que precisar! Vamos fazer um teste:" <<std::endl;
-        show_menu();
-        std::cout << "Maria: Agora que voce ja esta preparado, podemos seguir a nossa jornada"
+        //show_menu();
+        std::cout << "Maria: Agora que voce ja esta preparado, podemos seguir a nossa jornada";
         //system("cls"); || system ("clear");
 
         std::cout << "??? : *Grito*" << std::endl;
         std::cout << "Maria: Parece que alguem precisa de ajuda. Vamos ver o que esta acontecendo." << std::endl;
-        std::cout << "Narrador: Varios homens emboscavam uma mulher enquanto ela lutava com um chicote"
-        std::cout << "Eliana: Podem vir! Como se simples homens conseguissem me derrotar!" < std::endl;
+        std::cout << "Narrador: Varios homens emboscavam uma mulher enquanto ela lutava com um chicote" << std::endl;
+        std::cout << "Eliana: Podem vir! Como se simples homens conseguissem me derrotar!" << std::endl;
         std::cout << "Narrador: Um dos homens covardemente joga areia nos seus olhos e outro a apunha-la pelas costas" <<std::endl;
         std::cout << "Maria: O que esta esperando? Voce deve ajuda-la!!" << std::endl;
         // funcao batalha 
@@ -157,12 +157,11 @@ void get_stage_game(int n){
     
     }
     else if(n == 2){
-        Fase 2
 
         std::cout << "\n ~CIDADE VELHA~" << std::endl;
         std::cout << "Maria: Chegamos a cidade velha, vamos procurar alguem para nos ajudar" << std::endl;
         std::cout << "Sabio: Sejam bem vindos. Do que precisam? Tenho que voltar a fazer nada urgentemente" << std::endl;
-        std::cout << "Maria: Queremos saber mais sobre o motivo do " << player.name << "ser invocado aqui" << std::endl;
+        std::cout << "Maria: Queremos saber mais sobre o motivo do " << player.get_name() << "ser invocado aqui" << std::endl;
         std::cout << " Sabio: Pois bem. Voce foi invocado para este mundo para derrotar o rei da night e impedir que o nosso reino se torne uma eterna balada sertaneja" << std::endl;
         std::cout << "Voce: humm..." << std::endl;
         std::cout << "Sabio: Antes de tudo quero saber se es digno" << std::endl;
@@ -214,12 +213,13 @@ void get_stage_game(int n){
         std::cout << "Saulo: Parece que era digno, afinal. Siga para Castelo de Rocha, tenho uma missao para voce: matar Tiao Lago" << std::endl;
         std::cout << "Voce: Porque eu faria isso?" << std::endl;
         std::cout << "Saulo: Porque se me ajudar eu apoiarei a sua causa" << std::endl;
+    }
     else if (n == 4){
                 
         std::cout << "\n~CASTELO DE ROCHA - LAR DA FAMILIA LAGO~" << std::endl;
         std::cout << "Guarda: Forasteiro, identifique-se" << std::endl;
-        std::cout << "Voce: Sou o " << player.name << "venho tratar de negocios com o Lorde Tiao" << std::endl;
-        std::cout << "Narrador: Voce tenta convencer o guarda a entrar, mas ele nao deixa. Entao voce se infiltra pelo calabouco e encontra "
+        std::cout << "Voce: Sou o " << player.get_name() << "venho tratar de negocios com o Lorde Tiao" << std::endl;
+        std::cout << "Narrador: Voce tenta convencer o guarda a entrar, mas ele nao deixa. Entao voce se infiltra pelo calabouco e encontra " << std::endl;
         std::cout << "Voce: Tiao, venho em nome de Saulo Barao, voce encontrara o seu fim hoje" << std::endl;    
         std::cout << "Tiao: Quem eh voce?" << std::endl;
         //funcao batalha
@@ -266,5 +266,5 @@ void get_stage_game(int n){
             std::cout <<"Narrador: Acho que voce nao entendeu... vou repetir pra ver se voce eh burro ou sonso" << std::endl;
         }
     }
-    }
+    
 }
