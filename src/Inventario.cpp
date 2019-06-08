@@ -57,7 +57,7 @@ int Inventario::armor_inventory_position(int id){
 	int armor_position = -1, i;
 	auto it = this->unused_armor.begin();
 	for(it, i = 0; it != this->unused_armor.end(); ++it, ++i){
-		if(id = it->get_id()){
+		if(id == it->get_id()){
 			armor_position = i;
 		}
 	}
@@ -68,7 +68,7 @@ int Inventario::weapon_inventory_position(int id){ // Se a posicao for igual a -
 	int weapon_position = -1, i;
 	auto it = this->unused_weapons.begin();
 	for(it, i = 0; it != this->unused_weapons.end(); ++it, ++i){
-		if(id = it->get_id()){
+		if(id == it->get_id()){
 			weapon_position = i;
 		}
 	}

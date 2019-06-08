@@ -142,6 +142,14 @@ std::vector<Arma> Personagem::get_inventory_weapon(){
 	return this->inventory.get_full_unused_weapon();
 }
 
+int Personagem::armor_inventory_position(int id){
+	return this->inventory.armor_inventory_position(id);
+}
+
+int Personagem::weapon_inventory_position(int id){
+	return this->inventory.weapon_inventory_position(id);
+}
+
 // ACESSO E MUDANÇA ARMAS E ARMADURAS
 
 std::string Personagem::get_armor_name(){
