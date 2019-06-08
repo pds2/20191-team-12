@@ -124,7 +124,6 @@ void buy_potion(Personagem &A, int price_on_potion){
 			A.set_life_pot_quantity(A.get_life_pot_quantity() + 1);
 		} else{
 			std::cout << "-Vendedor: Pocoes sao realmente baratas, mas nao saem de graca. Volte quando juntar mais moedas." << std::endl;
-			
 		}
 
 	} else if(item == 2){
@@ -261,7 +260,7 @@ void store_potions(Personagem &A){
 	const int price_on_potion = 10;
 	const int life_potion_effectivity = A.get_life_on_pot();
 	const int stamina_potion_effectivity = A.get_stamina_on_pot();
-	std::string string1 = "Id: 1 - Pocao de vida (" + std::to_string(life_potion_effectivity) + ")";
+	std::string string1 = "Id: 1 - Pocao de vida(" + std::to_string(life_potion_effectivity) + ")";
 	std::string string2 = "Preco: " + std::to_string(price_on_potion);
 	std::string string3 = "Id: 2 - Pocao de stamina(" + std::to_string(stamina_potion_effectivity) + ")";
 	std::string string4 = "Preco: " + std::to_string(price_on_potion);
@@ -325,7 +324,6 @@ void Funcao_Loja(Personagem &A){
 			if(escolha == 1){
 				std::cout << "\n-Vendedor:Escolha sabiamente sua arma:" << std::endl;
 				store_weapon(A);
-				
 				remaining_gold(A);
 				menu_store();
 				checker(&escolha, 1, 5);

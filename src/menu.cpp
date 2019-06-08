@@ -1,13 +1,14 @@
 #include <iostream>
 #include "FuncoesGerais.h"
-#include "FuncoesLoja.h"
+#include "FuncaoLoja.h"
 #include "Personagem.h"
+#include "jogo.h" //para utilizar a função exit_game();
 
 void show_init(){
     //codigo (pagina inicial do jogo)
 }
 
-void show_menu(Personagem &heroi, Npc &npc, int t_num){ //Menu que aparecerá antes da batalha contra o boss
+void show_menu(Personagem &heroi, Npc &npc, int t_num, int fase_num){ //Menu que aparecerá antes da batalha contra o boss
     
 	int numero;
 
@@ -23,7 +24,7 @@ void show_menu(Personagem &heroi, Npc &npc, int t_num){ //Menu que aparecerá an
 	if(numero == 0){
 		return;
 	} else if (numero == 1){
-		treinar(heroi, npc, t_num, vgold_min, vgold_max);
+		treinar(heroi, npc, t_num, fase_num);
 		return;
 	} else if (numero == 2){
 		Funcao_Loja(heroi);
@@ -49,6 +50,6 @@ void show_menu_h(){ // Menu entre a historia/dialogos
 	if(numero == 0){
 		return;
 	} else {
-		exit();
+		exit_game();
 	}
 }

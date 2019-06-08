@@ -2,6 +2,7 @@
 #include <string>
 //#include <system>
 #include "FuncoesGerais.h"
+#include <math.h>
 
 // Validação
 
@@ -71,3 +72,15 @@ void exit(){
   		//system("CLS"); EM WINDOWS
 	}
 }
+
+int reward(int fase_num){ //função de recompensa de ouro
+	
+    const float multiplicador = 1.3;
+	const int goldinicial = 20;
+	float resultado;
+	
+	resultado = pow(multiplicador,(fase_num - 1)) * goldinicial;
+
+    return (int)resultado;
+}
+

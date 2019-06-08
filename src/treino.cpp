@@ -1,5 +1,6 @@
 #include <iostream>
 #include <time.h>
+#include <math.h>
 #include "treino.h"
 #include "Batalha.h"
 #include "FuncoesGerais.h"
@@ -7,8 +8,8 @@
 #include "npc.h"
 
 
-void treinar(Personagem &heroi, Npc &npc, int t_num, int vgold_min, int vgold_max){ //t_num = quantidade de numero de treino
-																					//v_gold = variação da quantidade de gold
+void treinar(Personagem &heroi, Npc &npc, int t_num, int fase_num){ //t_num = quantidade de numero de treino
+
 	 Npc enemies[t_num];
 	 for(int i = 0;i < t_num; i++){
 	 	enemies[i].set_life(npc.get_life());
@@ -27,9 +28,8 @@ void treinar(Personagem &heroi, Npc &npc, int t_num, int vgold_min, int vgold_ma
 	srand (time(NULL));
 
 	do{ 
-		int gold = (rand() % vgold_max) + vgold_min; //gold varia entre a quantia máxima e minima passada
-													//vgold_max e vgold_min aumentam de acordo com o passar das fases
-		
+		int gold = reward(fase_num); //variação de gold em relação à fase
+													
 		if(batalha(heroi, enemies[t_num - 1]) == 0){
 			if(heroi.get_life() > 0){
 				heroi.set_gold(heroi.get_gold() - gold);
