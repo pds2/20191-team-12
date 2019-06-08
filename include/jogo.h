@@ -1,4 +1,12 @@
 #include <iostream>
-#include <allegro.h>
+#include <Personagem.h>
+#include <menu.h>
+#include <stdio.h>
+#include <FuncoesGerais.h>
 
+
+bool exit_game(int* c);
 void get_stage_game(int n);
+void quiz(int* n);
+void result_battle(int n, int* fase, int* vidas, int* dinheiro);
+

@@ -3,6 +3,7 @@
 #include <menu.h>
 #include <stdio.h>
 #include <FuncoesGerais.h>
+#include <jogo.h>
 
 
 bool exit_game(int* c){
@@ -119,7 +120,7 @@ void quiz(int* n){
     *n = *n + 1;
 }
 
-void get_stage_game(int n, Personagem &player){
+ void get_stage_game(int* n, Personagem &player){
 
     if (n == 1){
         std::cout << "~ALGUM LUGAR NO MAR DE DORNE~" <<std::endl;

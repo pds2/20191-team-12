@@ -1,40 +1,24 @@
 #include <iostream>
-#include "Arma.h"
-#include "Armadura.h"
-#include "Batalha.h"
-#include "boss.h"
-#include "fases.h"
-#include "FuncaoLoja.h"
-#include "FuncoesGerais.h"
-#include "mob.h"
-#include "npc.h"
-#include "Habilidade.h"
-#include "Inventario.h"
-#include "treino.h"
-#include "Personagem.h"
-#include "Pocao.h"
+#include <jogo.h>
+#include <Personagem.h>
 
 #define CONTINUAR 1
 
 
 int main(){
-int c, vidas = 3;
-
+int c;
 std::string name;
 
-std::cout << "Bem Vindo ao universo de Game of Thrones! Este jogo é uma paródia criada pelos alunos de PDS II." << endl;
-std::cout << "Derrote os sete reinos e domine Westeros!" << endl;
+std::cout << "Bem Vindo ao universo de Game of Thrones! Este jogo eh uma parodia criada pelos alunos de PDS II." << endl;
+std::cout << "Derrote os sete reinos e domine Westeros! O nosso jogo eh bem realista. Aqui voce soh tem uma chance" << endl;
 std::cout << "Escolha um nome para seu personagem:";
 std::cin >> name;
+
 Personagem(name); //construtor
+int n = 1;
 
-
-    while(vidas > 0 && c == CONTINUAR){
-        if(get_stage_game(&i) == FALSE){
-             vidas--;
-        }
-        exit(&c);
+    while(c == CONTINUAR){
+        get_stage_game(&n, player);
     }
-    
     return 0;
 }
