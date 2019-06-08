@@ -41,7 +41,6 @@ int Personagem::get_life(){
 
 void Personagem::set_life(int life_change){
 	if(life_change <= 0){
-		std::cout << "Your character died." << std::endl;
 		this->life = 0;
 		// call fim de jogo...
 	} else{
@@ -70,7 +69,10 @@ int Personagem::get_stamina(){
 }
 
 void Personagem::set_stamina(int stamina_change){
-	this->stamina = stamina_change;
+
+	if(stamina_change > 0){ 
+		this->stamina = stamina_change;
+	}
 }
 
 // ACESSO E MUDANÇA DE POCOES

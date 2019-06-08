@@ -36,8 +36,6 @@ class Inventario{
 		std::vector<Arma> get_full_unused_weapon();
 			
 		void display_inventory();
-		Armadura get_x_armor(int num);
-		Arma get_x_weapon(int num);
 };
 
 #endif // INVENTARIO_H

@@ -20,7 +20,7 @@ void present_store(){
 }
 
 void menu_store(){
-	std::cout << "1 - Armas\n" << "2 - Armaduras\n" << "3 - Utilidades\n" << "4- Vender seus itens\n" << "5 - Sair\n";
+	std::cout << "1 - Armas\n" << "2 - Armaduras\n" << "3 - Utilidades\n" << "4- Vender seus itens\n" << "5 - Sair" << std::endl;
 	std::cout << "Sua escolha: " << std::endl;
 }
 
@@ -34,12 +34,18 @@ void seller_random_fail_speech(){
 		}
 }
 
+void confirmation_checkout(){
+	std::cout << "Voce tem certeza que quer vender esse item?" << std::endl;
+	std::cout << "1 - Sim\n2- Nao" << std::endl;
+	std::cout << "Sua escolha: " << std::endl;
+}
+
 void instruction_store(Personagem A){
 	std::cout << "Digite o ID do item para comprar ou 0 para voltar." << std::endl;
 	std::cout << "Voce tem " << std::to_string(A.get_gold()) << " moedas" << std::endl;
 }
 
-void instruction_store_sell(Personagem A){
+void instruction_store_sell(){
 	std::cout << "Digite o ID do  item para comprar ou 0 para voltar." << std::endl;
 }
 
@@ -117,7 +123,7 @@ void buy_potion(Personagem &A, int price_on_potion){
 			A.set_gold(A.get_gold() - price_on_potion);
 			A.set_life_pot_quantity(A.get_life_pot_quantity() + 1);
 		} else{
-			std::cout << "Pocoes sao realmente baratas, mas nao saem de graca. Volte quando juntar mais moedas." << std::endl;
+			std::cout << "-Vendedor: Pocoes sao realmente baratas, mas nao saem de graca. Volte quando juntar mais moedas." << std::endl;
 			
 		}
 
@@ -126,14 +132,58 @@ void buy_potion(Personagem &A, int price_on_potion){
 			A.set_gold(A.get_gold() - price_on_potion);
 			A.set_stamina_pot_quantity(A.get_stamina_pot_quantity() + 1);
 		} else{
-			std::cout << "Pocoes sao realmente baratas, mas nao saem de graca. Volte quando juntar mais moedas." << std::endl;
+			std::cout << "-Vendedor: Pocoes sao realmente baratas, mas nao saem de graca. Volte quando juntar mais moedas." << std::endl;
 		}
+	}
+}
+
+void sell_armor(Personagem &A, std::vector<Armadura> inventory_armor){
+	int item;
+	int confirmation;
+	const int expected_maximum_id = 1000;
+	checker(&item, 1, expected_maximum_id);
+
+	if(A.armor_inventory_position(item) != -1){
+		confirmation_checkout();
+		checker(&confirmation, 0, 1);
+		if(checker == 0){
+			A.set_gold(A.get_gold() + inventory_armor[A.weapon_inventory_position(item)].get_price());
+			A.remove_armor(item);
+		} else{
+			std::cout << "-Vendedor: Eu sou uma piada pra voce?" << std::endl;
+		}
+	} else{
+		std::cout << "Voce nao tem este item no inventario. Tente novamente!" << std::endl;
+		instruction_store_sell();
+		sell_armor(A, inventory_armor);
+	}
+}
+
+void sell_weapon(Personagem &A, std::vector<Arma> inventory_weapon){
+	int item;
+	int confirmation;
+	const int expected_maximum_id = 1000;
+	checker(&item, 1, expected_maximum_id);
+
+	if(A.armor_inventory_position(item) != -1){
+		confirmation_checkout();
+		checker(&confirmation, 0, 1);
+		if(checker == 0){
+			A.set_gold(A.get_gold() + inventory_weapon[A.weapon_inventory_position(item)].get_price());
+			A.remove_weapon(item);
+		} else{
+			std::cout << "-Vendedor: Eu sou uma piada pra voce?" << std::endl;
+		}
+	} else{
+		std::cout << "Voce nao tem este item no inventario. Tente novamente!" << std::endl;
+		instruction_store_sell();
+		sell_weapon(A, inventory_weapon);
 	}
 }
 
 void store_weapon(Personagem &A){
 	std::ifstream file;
-	file.open("../Files/weapons.txt"); // Fase de teste: especificar diretório do arquivo ao utilizar essa função
+	file.open("../src/weapons.txt"); // Fase de teste: especificar diretório do arquivo ao utilizar essa função
 
 	std::vector<Arma> weapons;
 
@@ -167,7 +217,7 @@ void store_weapon(Personagem &A){
 
 void store_armor(Personagem &A){
 	std::ifstream file;
-	file.open("../Files/armor.txt"); // Fase de teste: especificar diretório do arquivo ao utilizar essa função
+	file.open("../src/armor.txt"); // Fase de teste: especificar diretório do arquivo ao utilizar essa função
 
 	std::vector<Armadura> armors; 
 	std::string line, field, ss, _name;
@@ -232,7 +282,8 @@ void store_inventory(Personagem &A){
 				inventory_armor[i].display_armor();
 			}
 		}
-		//buy_armor();
+		instruction_store_sell();
+		sell_armor(A, inventory_armor);
 	} else if(escolha == 2){
 		std::vector<Arma> inventory_weapon = A.get_inventory_weapon();
 
@@ -244,10 +295,11 @@ void store_inventory(Personagem &A){
 				inventory_weapon[i].display_weapon();
 			}
 		}
-		//buy_weapon();
+		instruction_store_sell();
+		sell_weapon(A, inventory_weapon);
 	}
 
-	instruction_store(A);
+	instruction_store_sell();
 }
 
 void Funcao_Loja(Personagem &A){

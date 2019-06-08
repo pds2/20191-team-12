@@ -51,6 +51,8 @@ class Personagem{
     bool check_gold(int price);
     std::vector<Armadura> get_inventory_armor();
     std::vector<Arma> get_inventory_weapon();
+    int armor_inventory_position(int id);
+    int weapon_inventory_position(int id);
 
     // Acesso Armadura e Arma
     std::string get_armor_name();
@@ -78,7 +80,7 @@ class Personagem{
     void add_weapon(Arma toequip);
     void remove_armor(int id);
     void remove_weapon(int id);
-	void equip_armor(Armadura toequip);
+    void equip_armor(Armadura toequip);
     void unequip_armor();
     void equip_weapon(Arma toequip);
     void unequip_weapon();

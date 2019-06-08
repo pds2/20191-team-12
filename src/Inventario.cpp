@@ -91,7 +91,6 @@ void Inventario::remove_weapon(int id){
 	} else{
 		std::cout << "Remocao de arma falhou" << std::endl;
 	}
-
 }
 
 std::vector<Armadura> Inventario::get_full_unused_armor(){
@@ -100,10 +99,6 @@ std::vector<Armadura> Inventario::get_full_unused_armor(){
 
 std::vector<Arma> Inventario::get_full_unused_weapon(){
 	return this->unused_weapons;
-}
-
-Arma Inventario::get_x_weapon(int num){
-	return this->unused_weapons[num];
 }
 
 void Inventario::display_inventory(){
