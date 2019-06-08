@@ -74,12 +74,12 @@ void exit(){
 	}
 }
 
-int reward(int fase_num){ //função de recompensa de ouro
+int reward(int fase_num, int multiplicador){ //função de recompensa de ouro
 	
-    const float multiplicador = 1.3;
-	const int goldinicial = 20;
+	srand (time(NULL));
+	const int goldinicial = (rand()% 10 + 10); // varia entre 10 e 20
 	float resultado;
-	
+
 	resultado = pow(multiplicador,(fase_num - 1)) * goldinicial;
 
     return (int)resultado;
