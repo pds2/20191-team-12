@@ -68,18 +68,20 @@ void atacar_mob(Personagem &heroi, Mob &npc){ // Inimigo ataca o herói
 }
 
 void menu2(Personagem &heroi, Mob &npc){ // Menu da opção 2
-	int op;
-	std::cout<<"Escolha uma habilidade valida ou digite "<<heroi.get_nskill()+1<<" para voltar!"<<std::endl;
+	int op, erro;
 	do{	
+		std::cout<<"Escolha uma habilidade valida ou digite "<<heroi.get_nskill()<<" para voltar!"<<std::endl;
 		heroi.display_skill();
-		checker(&op,0, heroi.get_nskill()+1);			 //Checha as entradas
+		checker(&op,0, heroi.get_nskill());			 //Checha as entradas
 		
-		if(op == heroi.get_nskill()+1){
+		if(op == heroi.get_nskill()){
 		return;	
-		}	
-		int erro = atacar_hab(heroi, npc, heroi.get_skill(op));
+		}
+
+		erro = atacar_hab(heroi, npc, heroi.get_skill(op));
 		
-		if((npc.get_life() > 0)&&(erro==0)){							//Testa se Mob ainda vive
+		
+		if((npc.get_life() > 0)&&(erro == 0)){							//Testa se Mob ainda vive
 			if(npc.type() == 1){ 						//Testa o tipo da subclasse para diferenciar o ataque de resposta
 			Boss chief = dynamic_cast<Boss&>(npc); 
 			atacar_hab_boss(heroi, chief);
@@ -87,7 +89,7 @@ void menu2(Personagem &heroi, Mob &npc){ // Menu da opção 2
 				atacar_mob(heroi, npc);
 			}		
 		}
-	}while(erro == 1)
+	}while(erro == 1);
 
 }
 
@@ -107,7 +109,7 @@ void menu3(Personagem &heroi, Mob &npc){ // Display do inventário de poções
 }
 
 int atacar_hab(Personagem &heroi, Mob &npc, Habilidade hab){ // Herói ataca habilidade no inimigo
-	if(heroi.get_stamina() > hab.get_spend()){	
+	if(heroi.get_stamina() >= hab.get_spend()){	
 		srand(time(NULL));
 		int ataque = hab.get_damage();
 		float defesa = rand() % 11 + (npc.get_defense() - 5);
@@ -117,7 +119,7 @@ int atacar_hab(Personagem &heroi, Mob &npc, Habilidade hab){ // Herói ataca hab
 		std::cout<<hab.get_name()<<" deu dano de "<< true_damage(ataque,defesa) << " no inimigo!"<<std::endl;
 		return 0;
 	}else{
-		std:cout<<"Voce nao tem stamina para isso, campeão!"<<std::endl;
+		std::cout<<"Voce nao tem stamina para isso, campeao! Escolha outra"<<std::endl;
 		return 1;	
 	}
 }
