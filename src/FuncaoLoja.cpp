@@ -4,8 +4,8 @@
 #include <iomanip>
 #include <sstream>
 #include <time.h>
+#include <math.h>
 
-#include "Pocao.h"
 #include "Inventario.h"
 #include "Personagem.h"
 #include "Arma.h"
@@ -112,26 +112,57 @@ void buy_armor(Personagem &A, std::vector<Armadura> &armors){
 }
 
 void buy_potion(Personagem &A, int price_on_potion){
+	int base_size = 50;
 	int item = -1;
-	checker(&item,0,2);     
+	checker(&item,0,4);   
 
 	if(item == 0){
 		return;
+	}
 
-	} else if(item == 1){
-		if(A.check_gold(price_on_potion)){
-			A.set_gold(A.get_gold() - price_on_potion);
-			A.set_life_pot_quantity(A.get_life_pot_quantity() + 1);
+	if(item == 1){
+		int potion_size = 50;
+		int real_price = price_on_potion * (potion_size/base_size);
+
+		if(A.check_gold(real_price)){
+			A.set_gold(A.get_gold() - real_price);
+			A.set_life(A.get_life() + potion_size);
+			std::cout << "Sua nova vida eh " << A.get_life() << std::endl;
 		} else{
 			std::cout << "-Vendedor: Pocoes sao realmente baratas, mas nao saem de graca. Volte quando juntar mais moedas." << std::endl;
 		}
 
 	} else if(item == 2){
-		if(A.check_gold(price_on_potion)){
-			A.set_gold(A.get_gold() - price_on_potion);
-			A.set_stamina_pot_quantity(A.get_stamina_pot_quantity() + 1);
+		int potion_size = 50;
+		int real_price = price_on_potion * (potion_size/base_size);
+		if(A.check_gold(real_price)){
+			A.set_gold(A.get_gold() - real_price);
+			A.set_stamina(A.get_stamina() + potion_size);
+			std::cout << "Sua nova stamina eh " << A.get_stamina() << std::endl;
 		} else{
 			std::cout << "-Vendedor: Pocoes sao realmente baratas, mas nao saem de graca. Volte quando juntar mais moedas." << std::endl;
+		}
+
+	} else if(item == 3){
+		int potion_size = 200;
+		int real_price = price_on_potion * (potion_size/base_size);
+		if(A.check_gold(real_price)){
+			A.set_gold(A.get_gold() - real_price);
+			A.set_life(A.get_life() + potion_size);
+			std::cout << "Sua nova vida eh " << A.get_life() << std::endl;
+		} else{
+			std::cout << "-Vendedor: Tente comprar uma pocao menor ou va juntar mais moedas." << std::endl;
+		}
+
+	} else if(item == 4){
+		int potion_size = 200;
+		int real_price = price_on_potion * (potion_size/base_size);
+		if(A.check_gold(real_price)){
+			A.set_gold(A.get_gold() - real_price);
+			A.set_stamina(A.get_stamina() + potion_size);
+			std::cout << "Sua nova stamina eh " << A.get_stamina() << std::endl;
+		} else{
+			std::cout << "-Vendedor: Tente comprar uma pocao menor ou va juntar mais moedas." << std::endl;
 		}
 	}
 }
@@ -152,8 +183,8 @@ void sell_armor(Personagem &A, std::vector<Armadura> inventory_armor){
 		checker(&confirmation, 1, 2);
 		if(confirmation == 1){
 			A.set_gold(A.get_gold() + inventory_armor[A.armor_inventory_position(item)].get_price());
-			A.remove_armor(item);
 			std::cout << "-Vendedor: Aqui estao suas " << inventory_armor[A.armor_inventory_position(item)].get_price() << " moedas.";
+			A.remove_armor(item);
 		} else{
 			std::cout << "-Vendedor: Eu sou uma piada pra voce?" << std::endl;
 		}
@@ -180,8 +211,8 @@ void sell_weapon(Personagem &A, std::vector<Arma> inventory_weapon){
 		if(confirmation == 1){
 			inventory_weapon[A.weapon_inventory_position(item)].display_weapon();
 			A.set_gold(A.get_gold() + inventory_weapon[A.weapon_inventory_position(item)].get_price());
-			A.remove_weapon(item);
 			std::cout << "-Vendedor: Aqui estao suas " << inventory_weapon[A.weapon_inventory_position(item)].get_price() << " moedas";
+			A.remove_weapon(item);
 		} else{
 			std::cout << "-Vendedor: Eu sou uma piada pra voce?" << std::endl;
 		}
@@ -257,18 +288,23 @@ void store_armor(Personagem &A){
 }
 
 void store_potions(Personagem &A){
-	const int price_on_potion = 10;
-	const int life_potion_effectivity = A.get_life_on_pot();
-	const int stamina_potion_effectivity = A.get_stamina_on_pot();
-	std::string string1 = "Id: 1 - Pocao de vida(" + std::to_string(life_potion_effectivity) + ")";
+	int price_on_potion = 15;
+	int x_times_bigger_size = 4;
+
+	std::string string1 = "Id: 1 - Pocao de vida (50)";
 	std::string string2 = "Preco: " + std::to_string(price_on_potion);
-	std::string string3 = "Id: 2 - Pocao de stamina(" + std::to_string(stamina_potion_effectivity) + ")";
+	std::string string3 = "Id: 2 - Pocao de stamina(50)";
 	std::string string4 = "Preco: " + std::to_string(price_on_potion);
 	print_square(string1, string2, string3, string4);
 
+	std::string string5 = "Id: 3 - Pocao de vida(200)";
+	std::string string6 = "Preco: " + std::to_string(price_on_potion * x_times_bigger_size);
+	std::string string7 = "Id: 4 - Pocao de stamina(200)";
+	std::string string8 = "Preco: " + std::to_string(price_on_potion * x_times_bigger_size);
+	print_square(string5, string6, string7, string8);
+
 	instruction_store(A);
 	buy_potion(A, price_on_potion);
-	
 }
 
 void store_inventory(Personagem &A){
@@ -324,6 +360,7 @@ void Funcao_Loja(Personagem &A){
 			if(escolha == 1){
 				std::cout << "\n-Vendedor:Escolha sabiamente sua arma:" << std::endl;
 				store_weapon(A);
+				
 				remaining_gold(A);
 				menu_store();
 				checker(&escolha, 1, 5);
@@ -345,7 +382,7 @@ void Funcao_Loja(Personagem &A){
 				checker(&escolha, 1, 5);
 
 			} else if(escolha == 4){
-				std::cout << "-Vendedor: Eu estou sempre comprando itens de aventureiros como voce..." << std::endl;
+				std::cout << "\n-Vendedor: Eu estou sempre comprando itens de aventureiros como voce..." << std::endl;
 				store_inventory(A);
 
 				remaining_gold(A);
@@ -353,7 +390,7 @@ void Funcao_Loja(Personagem &A){
 				checker(&escolha, 1, 5);
 
 			} else if(escolha == 5){
-				std::cout << "-Vendedor: Esses jovens..." << std::endl;
+				std::cout << "\n-Vendedor: Esses jovens...\n" << std::endl;
 				return;
 			}
 		}
