@@ -1,39 +1,13 @@
 #include <iostream>
 #include "Arma.h"
 #include "Armadura.h"
-#include "Pocao.h"
 #include "Inventario.h"
 #include <vector>
 
 Inventario::Inventario(){ // Todos os números abaixo podem ser mudados para balancear o inicio de jogo*
 	this->gold = 50; 
-	this->stamina_pot = Pocao(50, 0, 2);
-	this->life_pot = Pocao(0, 50, 2);
 }
 
-int Inventario::get_life(){
-	return this->life_pot.get_life();
-}
-
-int Inventario::get_stamina(){
-	return this->stamina_pot.get_stamina();
-}
-
-int Inventario::get_life_quantity(){
-	return this->life_pot.get_quantity();
-}
-
-int Inventario::get_stamina_quantity(){
-	return this->stamina_pot.get_quantity();
-}
-
-void Inventario::set_life_quantity(int num){
-	this->life_pot.set_quantity(num);
-}
-
-void Inventario::set_stamina_quantity(int num){
-	this->stamina_pot.set_quantity(num);
-}
 
 int Inventario::get_gold(){
 	return this->gold;
@@ -85,7 +59,6 @@ void Inventario::remove_armor(int id){
 }
 
 void Inventario::remove_weapon(int id){
-	std::cout << "Teste" ;
 	if(weapon_inventory_position(id) >= 0){
 		this->unused_weapons.erase(unused_weapons.begin() + weapon_inventory_position(id));
 	} else{
@@ -112,7 +85,4 @@ void Inventario::display_inventory(){
 	for(i = 0; i<unused_weapons.size(); i++){
 		this->unused_weapons[i].display_weapon();
 	}
-
-	std::cout << "Pocoes de vida - Tamanho: " << this->life_pot.get_life() << " - Quantidade: " << this->get_life_quantity() << std::endl;
-	std::cout << "Pocoes de stamina - Tamanho: " << this->stamina_pot.get_stamina() << " - Quantidade: " << this->get_stamina_quantity() << "\n" << std::endl;
 }

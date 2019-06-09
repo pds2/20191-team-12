@@ -1,4 +1,3 @@
-#include "Pocao.h"
 #include "Inventario.h"
 #include "Personagem.h"
 #include "Arma.h"
@@ -42,7 +41,6 @@ int Personagem::get_life(){
 void Personagem::set_life(int life_change){
 	if(life_change <= 0){
 		this->life = 0;
-		// call fim de jogo...
 	} else{
 		this->life = life_change;
 	}
@@ -69,45 +67,10 @@ int Personagem::get_stamina(){
 }
 
 void Personagem::set_stamina(int stamina_change){
-
-	if(stamina_change > 0){ 
+	if(stamina_change <= 0){ 
+		this->stamina = 0;
+	} else{
 		this->stamina = stamina_change;
-	}
-}
-
-// ACESSO E MUDANÇA DE POCOES
-
-int Personagem::get_life_on_pot(){
-	return this->inventory.get_life();
-}
-
-int Personagem::get_stamina_on_pot(){
-	return this->inventory.get_stamina();
-}
-
-int Personagem::get_life_pot_quantity(){
-	return this->inventory.get_life_quantity();
-}
-
-int Personagem::get_stamina_pot_quantity(){
-	return this->inventory.get_stamina_quantity();
-}
-
-void Personagem::set_life_pot_quantity(int num){
-	if(num < 0){
-		std::cout << "O personagem nao pode ter um numero negativo de pocoes. Pocoes reduzidas a 0." << std::endl;
-		this->inventory.set_life_quantity(0);
-	} else{
-		this->inventory.set_life_quantity(num);
-	}
-}
-
-void Personagem::set_stamina_pot_quantity(int num){
-	if(num < 0){
-		std::cout << "O personagem nao pode ter um numero negativo de pocoes. Pocoes reduzidas a 0." << std::endl;
-		this->inventory.set_stamina_quantity(0);
-	} else{
-		this->inventory.set_stamina_quantity(num);
 	}
 }
 
@@ -234,24 +197,6 @@ Habilidade Personagem::get_skill(int k){
 }
 
 // Funcoes de uso direto
-
-void Personagem::use_life_potion(){
-	if(this->inventory.get_life_quantity() < 1){
-		std::cout << "Nao ha pocao para ser usada." << std::endl;
-	} else{
-		this->set_life(this->life + this->get_life_on_pot());
-		this->inventory.set_life_quantity(this->inventory.get_life_quantity() - 1);
-	}
-}
-
-void Personagem::use_stamina_potion(){
-	if(this->inventory.get_stamina_quantity() < 1){
-		std::cout << "Nao ha pocao para ser usada." << std::endl;
-	} else{
-		this->set_stamina(this->stamina + this->get_stamina_on_pot());
-		this->inventory.set_stamina_quantity(this->inventory.get_stamina_quantity() - 1);
-	}
-}
 
 void Personagem::add_armor(Armadura A){
 	this->inventory.add_armor(A);
