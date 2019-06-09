@@ -20,11 +20,11 @@ int batalha(Personagem &heroi, Mob &npc){
 	while(npc.get_life() > 0 && heroi.get_life() > 0){
 		std::cout << "Vida: " << heroi.get_life() << "    Vida Inimigo: " << npc.get_life() << "\n";
 		std::cout << "Stamina: " << heroi.get_stamina() << "\n";
-		std::cout << "-------------------------------------------------\n";
+		std::cout << "+-----------------------------------------------+\n";
 		std::cout << "| 1 - Atacar                      2 - Habildade |\n";
 		std::cout << "|                                               |\n";
-		std::cout << "| 3 - Inventario                  4 - Fugir     |\n";
-		std::cout << "-------------------------------------------------\n Sua escolha: ";
+		std::cout << "|                 3 - Fugir                     |\n";
+		std::cout << "+-----------------------------------------------+\n Sua escolha: ";
 		checker(&op, 1, 4);
 		switch(op){
 			case 1: atacar(heroi, npc);
@@ -32,15 +32,13 @@ int batalha(Personagem &heroi, Mob &npc){
 					break;
 			case 2: menu2(heroi, npc);
 					break;
-			case 3: menu3(heroi, npc);
-					break;
-			case 4: return 2; // Fugiu
+			case 3: return 2; // Fugiu
 		}
 	};
-	if(heroi.get_life() < 0){ // Herói morreu
+	if(heroi.get_life() <= 0){ // Herói morreu
 		return 0;
 	}
-	if(npc.get_life() < 0){ // Inimigo morreu
+	if(npc.get_life() <= 0){ // Inimigo morreu
 		return 1;
 	}
 }
@@ -91,21 +89,6 @@ void menu2(Personagem &heroi, Mob &npc){ // Menu da opção 2
 		}
 	}while(erro == 1);
 
-}
-
-void menu3(Personagem &heroi, Mob &npc){ // Display do inventário de poções
-	int op;
-		std::cout << "-------------------------------------------------\n";
-		std::cout << "| 1 - Poção de vida: " << heroi.get_life_pot_quantity() << "x                        |\n" << " 2 - Poção de stamina : " << heroi.get_stamina_pot_quantity() << "x                     |\n";
-		std::cout << "-------------------------------------------------\n";
-		checker(&op, 1, 2);
-	switch(op){
-		case 1: heroi.use_life_potion(); // Usa poção de vida
-				break;
-		case 2: heroi.use_stamina_potion(); // Usa poção de stamina
-				break;
-	}
-	atacar_mob(heroi,npc);
 }
 
 int atacar_hab(Personagem &heroi, Mob &npc, Habilidade hab){ // Herói ataca habilidade no inimigo
