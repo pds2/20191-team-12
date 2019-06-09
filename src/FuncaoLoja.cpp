@@ -14,7 +14,8 @@
 #include "FuncaoLoja.h"
 #include <vector>
 
-// Textos
+// Funcoes de texto
+
 void present_store(){
 	std::cout << "-Vendedor: Bem vindo a loja, aventureiro. Aqui e possivel comprar diversos itens para melhorar ou recuperar os atributos do seu personagem, tais como: \n";
 }
@@ -57,6 +58,68 @@ void remaining_gold(Personagem A){
 	}
 }
 
+// Função de acesso
+
+void reading_file(std::ifstream &file,  std::vector<std::string> &archives_name, std::vector<int> &archives_id, std::vector<int> &archives_price, std::vector<int> &archives_attribute){
+
+std::string line, field, ss, _name;
+int _id, _attribute, _price;
+
+	while (getline(file, line)){
+		std::stringstream ss(line);
+		getline(ss, field, ',');
+		_id = stoi(field);
+		getline(ss, _name, ',');
+		getline(ss, field, ',');
+		_attribute = stoi(field);
+		getline(ss, field, ',');
+		_price = stoi(field);
+
+		archives_name.push_back(_name);
+		archives_id.push_back(_id);
+		archives_attribute.push_back(_attribute);
+		archives_price.push_back(_price);
+	}
+}
+
+std::vector<Arma> create_objects_weapon(){
+	std::vector<std::string> archives_name;
+	std::vector<int> archives_id;
+	std::vector<int> archives_price;
+	std::vector<int> archives_attribute;
+
+	std::ifstream file;
+    file.open("../20191-team-12/Files/weapons.txt");
+	reading_file(file, archives_name, archives_id, archives_price, archives_attribute);
+
+	std::vector<Arma> weapon_store_vector;
+	for(int i= 0; i < archives_id.size(); ++i){
+		weapon_store_vector.push_back(Arma(archives_id[i], archives_name[i], archives_attribute[i], archives_price[i]));
+	}
+
+	file.close();
+	return weapon_store_vector;    
+}
+
+std::vector<Armadura> create_objects_armor(){
+	std::vector<std::string> archives_name;
+	std::vector<int> archives_id;
+	std::vector<int> archives_price;
+	std::vector<int> archives_attribute;
+
+	std::ifstream file;
+	file.open("../20191-team-12/Files/armor.txt");
+	reading_file(file, archives_name, archives_id, archives_price, archives_attribute);
+
+	std::vector<Armadura> armor_store_vector;
+	for(int i= 0; i < archives_id.size(); ++i){
+		armor_store_vector.push_back(Armadura(archives_id[i], archives_name[i], archives_attribute[i], archives_price[i]));
+	}
+	return armor_store_vector;
+}
+
+// Funções de compra e venda
+
 void buy_weapon(Personagem &A, std::vector<Arma> &weapons){
 	int buy_id = -1;
 
@@ -65,13 +128,11 @@ void buy_weapon(Personagem &A, std::vector<Arma> &weapons){
 		return;
 	}
 
-// Encontrando o item a ser comprado, funcionamento do loop depende a)da validação acima, b)da disposição de ID do arquivo de carregamento
 	int i = 0;
 	while(buy_id != weapons[i].get_id()){
 		i++;
 	}
 
-// Checando se a compra pode ser feita;
 	if(A.check_gold(weapons[i].get_price())){
 		A.equip_weapon(weapons[i]);
 		A.set_gold(A.get_gold() - weapons[i].get_price());
@@ -92,13 +153,11 @@ void buy_armor(Personagem &A, std::vector<Armadura> &armors){
 		return;
 	}
 
-// Encontrando o item a ser comprado, funcionamento do loop depende a)da validação acima, b)da disposição de ID do arquivo de carregamento
 	int i = 0;
 	while(buy_id != armors[i].get_id()){
 		i++;
 	}
 
-// Checando se a compra pode ser feita;
 	if(A.check_gold(armors[i].get_price())){
 		A.equip_armor(armors[i]);
 		A.set_gold(A.get_gold() - armors[i].get_price());
@@ -223,41 +282,29 @@ void sell_weapon(Personagem &A, std::vector<Arma> inventory_weapon){
 	}
 }
 
+<<<<<<< HEAD
 void store_weapon(Personagem &A){
 	std::ifstream file;
 	file.open("../20191-team-12/Files/weapons.txt"); // Fase de teste: especificar diretório do arquivo ao utilizar essa função
 
 	std::vector<Arma> weapons;
+=======
+// Menus Específicos
+>>>>>>> 57ab1ed5bc94cb85ad9d4aabcb38883c36adbcd3
 
-	std::string line, field, ss, _name;
-	int _id, _attack, _price;
-
-// Criando as armas a partir dos parametros do .txt
-	while (getline(file, line)){
-		std::stringstream ss(line);
-		getline(ss, field, ',');
-		_id = stoi(field);
-		getline(ss, _name, ',');
-		getline(ss, field, ',');
-		_attack = stoi(field);
-		getline(ss, field, ',');
-		_price = stoi(field);
- 
-	weapons.push_back(Arma(_id, _name, _attack, _price)); 
-	}
-
-// Mostrando as armas criadas
+void store_weapon(Personagem &A){
 	int i = 0;
+
+	std::vector<Arma> weapons = create_objects_weapon();
 	for(i=0; i<weapons.size(); i++){
 		weapons[i].display_weapon();
 	}
-
-// Recebendo compra ou cancelamento
 	instruction_store(A);
 	buy_weapon(A, weapons);
 }
 
 void store_armor(Personagem &A){
+<<<<<<< HEAD
 	std::ifstream file;
 	file.open("../20191-team-12/Files/armor.txt"); // Fase de teste: especificar diretório do arquivo ao utilizar essa função
 
@@ -278,7 +325,11 @@ void store_armor(Personagem &A){
 		armors.push_back(Armadura(_id, _name, _defense, _price)); // Cria as armaduras a partir dos parametros do .txt
 	}
 
+=======
+>>>>>>> 57ab1ed5bc94cb85ad9d4aabcb38883c36adbcd3
 	int i = 0;
+
+	std::vector<Armadura> armors = create_objects_armor();
 	for(i=0; i<armors.size(); i++){ // Mostra as armas
 		armors[i].display_armor();
 	}
