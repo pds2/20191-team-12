@@ -20,7 +20,7 @@ void pausar(){
 bool exit_game(){
     int c;
     std::cout << "Deseja continuar? (1 - SIM / 0 - NAO)" << std::endl;
-    checker(c, 0, 1);
+    checker(&c, 0, 1);
     if (c == 1){
         std::cout << "Game: Boa Escolha forasteiro!" << std::endl;
         return true;
@@ -44,9 +44,9 @@ void result_battle(int n, int* fase, int* vidas, int* dinheiro){
     }
 }
 
-void quiz(int* n){
+void quiz(int n){
     int op;
-    if(*n == 1){
+    if(n == 1){
         std::cout << "\nQual o time de futebol que o Clegane menos gosta?\n";
         std::cout << "-------------------------------------------------\n";
 		std::cout << "| 1 - Corintians                      2 - Botafogo  |\n";
@@ -61,7 +61,7 @@ void quiz(int* n){
             std::cout << "Sabio: Eh tao lerdo quanto parece..." << std::endl;
         }
     }
-    else if(*n == 2){
+    else if(n == 2){
         std::cout << "\nO que nos dizemos ao Deus da Morte?" << std::endl;
         std::cout << "-------------------------------------------------------------\n";
 		std::cout << "| 1 - Nao assisto Death Note     2 - Sem tempo, irmao        |\n";
@@ -77,7 +77,7 @@ void quiz(int* n){
             std::cout << "Melissa: ..." << std::endl;
         }
     }
-    else if(*n == 3){
+    else if(n == 3){
         std::cout << "??? : Vallar Morghulis\n";
         std::cout << "-----------------------------------------------------\n";
 		std::cout << "| 1- Nao sei falar russo		3- Valar Dothraki	   |\n";
@@ -94,7 +94,7 @@ void quiz(int* n){
         }
 
     }
-    else if(*n == 4){
+    else if(n == 4){
         std::cout << "Qual o nome de um dos dragoes da Daniela?" << std::endl;
         std::cout << "-----------------------------------------\n";
 		std::cout << "| 1- Dracarys			3- Drohgo		   |\n";
@@ -110,7 +110,7 @@ void quiz(int* n){
             std::cout << "" << std::endl;
         }        
     }
-    else if(*n == 5){
+    else if(n == 5){
         std::cout << "Quem eh a mulher vermelha?" << std::endl;
         std::cout << "-----------------------------------------------------\n";
 		std::cout << "| 1- Feiticeira Escarlate		3- Melisandre		   |\n";
@@ -129,7 +129,6 @@ void quiz(int* n){
     else {
         std::cout << "Erro na definicao do quiz. Cheque seus parametros. Erro na posicao: " << op << std::endl;
     }
-    *n = *n + 1;
 }
 
 void Fase_1(Personagem &player, int t_num){
@@ -160,7 +159,7 @@ void Fase_1(Personagem &player, int t_num){
     std::cout << std::endl << "~DORNE - LAR DA CASA MACHADO~" << std::endl;
     std::cout << "Maria: Aqui nos resolvemos os nossos conflitos com batalhas. Ao longo do caminho voce tambem podera treinar para aperfeicoar suas habilidades ou ganhar dinheiro" << std::endl;
     std::cout << "Maria: Mercadores tambem estao sempre disponiveis, neles voce pode comprar novas armas, armaduras e pocoes. Tais servicos estaram disponiveis sempre que precisar! Vamos fazer um teste:" <<std::endl;
-    show_menu(player, enemies[0], t_num);
+    show_menu(player, enemies[0], t_num, 1);
     std::cout << "Maria: Agora que voce ja esta preparado, podemos seguir a nossa jornada\n";
     pausar();
     system ("clear");
@@ -200,6 +199,15 @@ void Fase_1(Personagem &player, int t_num){
 
 void Fase_2(Personagem &player, int t_num){
 
+    Npc enemies[n_enemies];
+    for(int i =0; i < n_enemies; i++){
+    enemies[i].set_life(30);
+    enemies[i].set_defense(5);
+    enemies[i].set_max_attack(8);
+    enemies[i].set_min_attack(5);
+    enemies[i].set_name("Bandido");
+    }
+    
     std::cout << "\n ~CIDADE VELHA~" << std::endl;
     std::cout << "Maria: Chegamos a cidade velha, vamos procurar alguem para nos ajudar" << std::endl;
     std::cout << "Sabio: Sejam bem vindos. Do que precisam? Tenho que voltar a fazer nada urgentemente" << std::endl;
