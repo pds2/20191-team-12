@@ -7,7 +7,6 @@
 
 int batalha(Personagem &heroi, Mob &npc);
 void menu2(Personagem &heroi, Mob &npc);
-void menu3(Personagem &heroi, Mob &npc);
 int true_damage(int ataque, int defesa);
 void atacar(Personagem &heroi, Mob &npc);
 void atacar_mob(Personagem &heroi, Mob &npc);
