@@ -304,7 +304,6 @@ void store_weapon(Personagem &A){
 }
 
 void store_armor(Personagem &A){
-<<<<<<< HEAD
 	std::ifstream file;
 	file.open("../20191-team-12/Files/armor.txt"); // Fase de teste: especificar diretório do arquivo ao utilizar essa função
 
@@ -325,8 +324,6 @@ void store_armor(Personagem &A){
 		armors.push_back(Armadura(_id, _name, _defense, _price)); // Cria as armaduras a partir dos parametros do .txt
 	}
 
-=======
->>>>>>> 57ab1ed5bc94cb85ad9d4aabcb38883c36adbcd3
 	int i = 0;
 
 	std::vector<Armadura> armors = create_objects_armor();
