@@ -3,6 +3,9 @@
 #include "FuncaoLoja.h"
 #include "Personagem.h"
 #include "jogo.h" //para utilizar a função exit_game();
+#include "menu.h"
+#include "npc.h"
+#include "treino.h"
 
 void show_init(){
     //codigo (pagina inicial do jogo)
