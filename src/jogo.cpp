@@ -13,7 +13,7 @@
 
 
 void pausar(){
-   std::cout << "\nPRESSIONE QUALQUER TECLA PARA CONTINUAR"<< std::endl;
+   std::cout << "\nPRESSIONE ENTER PARA CONTINUAR"<< std::endl;
     getchar();
 }
 
@@ -142,24 +142,30 @@ void Fase_1(Personagem &player, int t_num){
     enemies[i].set_name("Bandido");
     }
     
-    Habilidade hab1(" Voadora",30,15);
-    //Habilidade hab2 ("pedrada", 20, 6);
-    player.add_skill(hab1);
+    Habilidade voadora(" Voadora",30,15);
+    
+    player.add_skill(voadora);
     
 
-    std::cout << "~ALGUM LUGAR NO MAR DE DORNE~" <<std::endl;
+    std::cout << "\n~ALGUM LUGAR NO MAR DE DORNE~" <<std::endl;
     std::cout << "Maria: Bem Vindo a sua jornada," << player.get_name() << ". Voce foi invocado para este mundo para combater o mal eminente que assola nossos reinos" << std::endl;
     std::cout << "Maria: Eu sou a sarcedotisa Maria e vou lhe auxiliar na sua jornada. Na sua vida anterior voce era um otaku fracassado, mas de alguma forma lhe acharam digno de nos salvar" <<std::endl;
     std::cout << "Voce: Err... " << std::endl;
     std::cout << "Maria: Segundo a profecia, voce tera que passar por 7 provacoes antes de ser livre para voltar ao seu mundo. Primeiro vamos para dorne para conseguir alguns equipamentos." << std::endl;
     std::cout << "Maria: Nao se esqueca: O inverno esta chegando e a C&A tem varias promocoes em casacos" << std::endl;
     pausar();
+    pausar();
     system ("clear");
 
     std::cout << std::endl << "~DORNE - LAR DA CASA MACHADO~" << std::endl;
     std::cout << "Maria: Aqui nos resolvemos os nossos conflitos com batalhas. Ao longo do caminho voce tambem podera treinar para aperfeicoar suas habilidades ou ganhar dinheiro" << std::endl;
     std::cout << "Maria: Mercadores tambem estao sempre disponiveis, neles voce pode comprar novas armas, armaduras e pocoes. Tais servicos estaram disponiveis sempre que precisar! Vamos fazer um teste:" <<std::endl;
-    show_menu(player, enemies[0], t_num, 1);
+    int op;
+    while(op != 0){
+        show_menu(player, enemies[0], t_num, 1);
+        std::cout << "Deseja acessar o menu novamente?(0 - NAO/ 1 - SIM)" << std::endl;
+        checker(&op, 0,1);
+    }
     std::cout << "Maria: Agora que voce ja esta preparado, podemos seguir a nossa jornada\n";
     pausar();
     system ("clear");
@@ -176,6 +182,8 @@ void Fase_1(Personagem &player, int t_num){
     for( int i = 0; i < n_enemies; i++){
         int check = batalha(player, enemies[i]);
         if ( check == 0){//perdeu
+            std::cout << "\n\nVOCE FOI DERROTADO! OBRIGADO POR JOGAR!!" << std::endl;
+            pausar();
             exit(0);
         }else if(check == 1){//ganhou
             std::cout << "\n Parabens pela vitoria!\n"<< std::endl;
@@ -195,26 +203,37 @@ void Fase_1(Personagem &player, int t_num){
     std::cout << "Maria:  Vamos para a Cidade Velha buscar mais informacoes" <<std::endl;
     std::cout << "Narrador: Assim, seguiram para Cidade Velha, para encontrar com os sabios de la" << std::endl;  
     
+    std::cout << "\nVoce recebeu nova habilidade: kamehameha" << std::endl;
+    Habilidade kamehameha ("kamehameha", 40, 30);
+    player.add_skill(kamehameha);
 }
 
 void Fase_2(Personagem &player, int t_num){
 
     Npc enemies[n_enemies];
-    for(int i =0; i < n_enemies; i++){
-    enemies[i].set_life(30);
-    enemies[i].set_defense(5);
-    enemies[i].set_max_attack(8);
-    enemies[i].set_min_attack(5);
-    enemies[i].set_name("Bandido");
+    for(int i = 0; i < n_enemies; i++){
+        enemies[i].set_life(30);
+        enemies[i].set_defense(3);
+        enemies[i].set_max_attack(7);
+        enemies[i].set_min_attack(5);
+        enemies[i].set_name("Guarda");
     }
-    
+
+    Boss loiro_jose ("Loiro Jose", 10, 12, 6, 80);
+
+    pausar();
+    system ("clear");
+
     std::cout << "\n ~CIDADE VELHA~" << std::endl;
     std::cout << "Maria: Chegamos a cidade velha, vamos procurar alguem para nos ajudar" << std::endl;
     std::cout << "Sabio: Sejam bem vindos. Do que precisam? Tenho que voltar a fazer nada urgentemente" << std::endl;
-    std::cout << "Maria: Queremos saber mais sobre o motivo do " << player.get_name() << "ser invocado aqui" << std::endl;
+    std::cout << "Maria: Queremos saber mais sobre o motivo do " << player.get_name() << " ser invocado aqui" << std::endl;
     std::cout << " Sabio: Pois bem. Voce foi invocado para este mundo para derrotar o rei da night e impedir que o nosso reino se torne uma eterna balada sertaneja" << std::endl;
     std::cout << "Voce: humm..." << std::endl;
     std::cout << "Sabio: Antes de tudo quero saber se es digno" << std::endl;
+
+    pausar();
+    system ("clear");
 
     quiz(1);
 
@@ -223,27 +242,62 @@ void Fase_2(Personagem &player, int t_num){
     std::cout << "Voce: Err... obrigado... eu acho" << std::endl;
     std::cout << "Sabio: Nao acredito que ajudei um otaco. Vao embora daqui, tenho varios nada pra fazer. Adeus" << std::endl;
 
+    pausar();
+    pausar();
+    system ("clear");
+
+    int op;
+    while(op != 0){
+        show_menu(player, enemies[0], t_num, 1);
+        std::cout << "Deseja acessar o menu novamente?(0 - NAO/ 1 - SIM)" << std::endl;
+        checker(&op, 0,1);
+    }
+
     std::cout << "\n ~JARDINS ALTOS - LAR DA FAMILIA Tyrell ~ " << std::endl; 
-    std::cout << "Narrador: Chegando la encontram com Sir Loiro Jose. Eles explicam a situacao e voce eh desafio para uma batalha" << std::endl;
+    std::cout << "Narrador: Chegando la encontram com Sir Loiro Jose. Voces explicam a situacao e voce eh desafiado para uma batalha contra os guardas e depois Sir Loiro" << std::endl;
     std::cout << "Sir Louro Jose: Me prove que eh digno!" << std::endl;
+
+    pausar();
+    system ("clear");
 
     //funcao batalha 
     for( int i = 0; i < n_enemies; i++){
         int check = batalha(player, enemies[i]);
-        if (check == 0){//perdeu
+        if ( check == 0){//perdeu
+            std::cout << "\n\nVOCE FOI DERROTADO! OBRIGADO POR JOGAR!!" << std::endl;
+            pausar();
             exit(0);
-        }else{//fuigiu, volta a fase do comeco
+        }else if(check == 1){//ganhou
+            std::cout << "\n Parabens pela vitoria!\n"<< std::endl;
+            system ("clear");
+        }else{//fugiu, volta a fase do comeco
             Fase_1(player, 0);
         }
     }
 
+    int check = batalha(player, loiro_jose);
+        if ( check == 0){//perdeu
+            std::cout << "\n\nVOCE FOI DERROTADO! OBRIGADO POR JOGAR!!" << std::endl;
+            pausar();
+            exit(0);
+        }else if(check == 1){//ganhou
+            std::cout << "\n Parabens pela vitoria!\n"<< std::endl;
+            system ("clear");
+        }else{//fugiu, volta a fase do comeco
+            Fase_2(player, 0);
+        }
+    pausar();
+    system ("clear");
+
     std::cout << "Sir Louro Jose: Percebi que eh digno de minha ajuda." << std::endl;
-    std::cout << "Voce recebeu x moedas" << std::endl;
-    //somar o dinheiro do personagem
+    int cash = reward(2, 20);
+    
+    std::cout << "Voce recebeu" << cash << " moedas" << std::endl;
     std::cout <<"Maria: Vamos continuar rumo ao norte." << std::endl;    
 }
 
 void Fase_3(Personagem &player, int t_num){
+
     std::cout << "\n ~ARREDORES DA CIDADE DOS REIS - CAPITAL DO REINO~" << std::endl;
     std::cout << "Maria: Acho que estamos perto da capital. Podemos passar por la para procurar apoio" << std::endl;
     std::cout << "\n ~ NA CAPITAL ~ " << std::endl;
@@ -254,10 +308,19 @@ void Fase_3(Personagem &player, int t_num){
     std::cout << "Maria: Cuidado com as suas piadas sem graca, alguem pode perder a cabeca" << std::endl;
     std::cout << "Pessoa aleatoria: Vou sair de perto de voces" << std::endl;
 
+
+    pausar();
+    system("clear");
+
     std::cout << "\n Narrador: Eles decidem que a cidade nao eh muito acolhedora e decidem continuar a sua jornada" << std::endl;
     std::cout << "\n Narrador: No caminho eles encontram com uma mulher vestida de vermelho e ela os aborda" << std::endl;
     std::cout << "???: Meu nome eh Melissa. Meu lorde disse que por aqui encontraria alguem capaz de nos salvar. Mas antes devo ter certeza de que sao voces" <<std::endl;
-    //quiz 2
+    
+    quiz(2);
+
+    pausar();
+    system("clear");
+
     std::cout << "Narrador: Eles acompanham Melissa ate Pedra de Dinossauro onde esta Saulo Barao" <<std::endl;
     std::cout << "Saulo: Melissa, sao esses??" <<std::endl;
     std::cout << "Melissa: Sim, meu senhor" << std::endl;
@@ -265,9 +328,14 @@ void Fase_3(Personagem &player, int t_num){
     std::cout << "Voce: Vem Tranquilo" << std::endl;
     //funcao batalha
     
+    pausar();
+    system("clear");
+
     std::cout << "Saulo: Parece que era digno, afinal. Siga para Castelo de Rocha, tenho uma missao para voce: matar Tiao Lago" << std::endl;
     std::cout << "Voce: Porque eu faria isso?" << std::endl;
     std::cout << "Saulo: Porque se me ajudar eu apoiarei a sua causa" << std::endl;
+    int cash = reward(3, 30);
+    std::cout << "Voce recebeu" << cash << " moedas" << std::endl;
 }
 
 void Fase_4(Personagem &player, int t_num){
@@ -277,7 +345,17 @@ void Fase_4(Personagem &player, int t_num){
     std::cout << "Narrador: Voce tenta convencer o guarda a entrar, mas ele nao deixa. Entao voce se infiltra pelo calabouco e encontra " << std::endl;
     std::cout << "Voce: Tiao, venho em nome de Saulo Barao, voce encontrara o seu fim hoje" << std::endl;    
     std::cout << "Tiao: Quem eh voce?" << std::endl;
+    
+    pausar();
+    system("clear");
     //funcao batalha
+
+
+    int cash = reward(3, 30);
+    std::cout << "Voce recebeu" << cash << " moedas" << std::endl;
+
+    pausar();
+    system("clear");
 
     std::cout << "Narrador: Apos derrotar Tiao os guardas vem atras de voce. Voces dois fogem pelo mar e chegam as ilhas de ferro" << std::endl;
     std::cout << "\n ~NO PORTO~" << std::endl;
@@ -287,6 +365,8 @@ void Fase_4(Personagem &player, int t_num){
     std::cout << "Pessoa aleatoria 2: Mentira. Eu sei que a mulher dos dragoes vai derrotar todo mundo" << std::endl;
     std::cout << "Pessoa aleatoria 1: Unico dragao que conheco eh a minha esposa com raiva" << std::endl;
     std::cout << "Maria: Saulo foi derrotado, o que faremos agora?" << std::endl;
+
+
 }
 
 void Fase_5(Personagem &player, int t_num){
@@ -298,25 +378,47 @@ void Fase_5(Personagem &player, int t_num){
     std::cout << "Voce: Eu nao sei do que esta falando" << std::endl;
     std::cout << "**: Voce nao faz ideia da recompensa pela sua cabeca, se eu levar a sua cabeca para a Celia ela com certeza se casara comigo e me tornarei rei" <<std::endl;
     //funcao batalha
-    std::cout << "Narrador: Ganha dele e vira amigo do theon q vai levar ele pro norte" << std::endl;
+    std::cout << "Theo: Voce nao faz ideia de como sou grato!" << std::endl;
+    std::cout << "Voce: Quem eh voce?" << std::endl;
+    std::cout << "Theo: Policial disfarcado. Enconsta na parede bonita, vou te levar pro norte." << std::endl;
+    
 }
 void Fase_6(Personagem &player, int t_num){
     //chega no norte e ganha uma espada da pedra do dragao depois luta com o rei da noite
-    std::cout << "Narrador: chega no norte conhece a dany, recebe a espada com vidro de dragao e luta contra o rei da noite" <<std::endl;
+    std::cout << "Voce: Nossa que frio de congelar pinguim!" << std::endl;
+    std::cout << "Maria: Bem vindo ao norte, otario" << std::endl;
+    std::cout << "Theo: Venha vou te apresentar os meus amigos. Aqueles la sao o Joao das Neves e a Daniela. A Daniela quer o trono de Westeros. Nao mexa com ela que ela trem tres calango de fogo" << std::endl;
+    std::cout << "Voce: E o Joao ?" << std::endl;
+    std::cout << "Theo: O Joao tem saude" << std::endl;
+
+    std::cout << "Narrador: Passam alguns dias e finalmente, depois de sete temporadas, o rei da night chega a westeros. Voce deve derrota-lo." << std::endl;
+
     //funcao batalha
+
+    std::cout << "Narrador: apos a batalha todos lhe saudam como heroi. Entretanto, a luta continua. Voce deve apoiar Daniela a tomar o trono de Celia" <<std::endl;
+    //recebe coisas
 }
 void Fase_7(Personagem &player, int t_num){
     int escolha;
     //escolher entre trair ou apoiar a dani
-    std::cout << "Narrador: dany taca fogo em porto real e vc deve escolher entre apoia-la ou trai-la" << std::endl;
+    std::cout << "Narrador: Daniela faz churrasco de porto real e todos especulam que ela tenha ficado biruta." << std::endl;
+    std::cout << "Joao das Neves: *susurro* nao podemos mata-la, ela nos salvou" << std::endl;
+    std::cout << "Tiaozinho: e agora vai nos destruir" << std::endl;
+    std::cout << "Maria: Oh nao. O que devemos fazer?" << std::endl;
+  
     //menu de selecao
     if(escolha == 1){
-        //apoia a dany e luta com o jon
+        std::cout << "Voce: Vamos apoiar Daniela. Nunca gostei desse Joao das Neves" << std::endl;
+        //batalha
     } 
     else if (escolha == 2){
-        //trai a dany e luta com ela
+        std::cout << "Voce: Vamos mata-la. Nunca gostei daquele calango" << std::endl;
+        std::cout << "Narrador: Voce se junta aos traidores e luta contra Daniela" << std::endl;
     }
     else{
         std::cout <<"Narrador: Acho que voce nao entendeu... vou repetir pra ver se voce eh burro ou sonso" << std::endl;
+        Fase_7(player, 10);
+        pausar();
+        system("clear");
     }
 }

@@ -16,4 +16,5 @@ std::cin >> name;
 Personagem player(name); //construtor
 
     Fase_1(player, 3);
+    Fase_2(player, 4);
     }
