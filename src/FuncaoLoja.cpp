@@ -225,7 +225,7 @@ void sell_weapon(Personagem &A, std::vector<Arma> inventory_weapon){
 
 void store_weapon(Personagem &A){
 	std::ifstream file;
-	file.open("../src/weapons.txt"); // Fase de teste: especificar diretório do arquivo ao utilizar essa função
+	file.open("../Files/weapons.txt"); // Fase de teste: especificar diretório do arquivo ao utilizar essa função
 
 	std::vector<Arma> weapons;
 
@@ -259,7 +259,7 @@ void store_weapon(Personagem &A){
 
 void store_armor(Personagem &A){
 	std::ifstream file;
-	file.open("../src/armor.txt"); // Fase de teste: especificar diretório do arquivo ao utilizar essa função
+	file.open("../Files/armor.txt"); // Fase de teste: especificar diretório do arquivo ao utilizar essa função
 
 	std::vector<Armadura> armors; 
 	std::string line, field, ss, _name;
