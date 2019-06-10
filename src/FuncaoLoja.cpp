@@ -288,7 +288,7 @@ void store_weapon(Personagem &A){
 	file.open("../20191-team-12/Files/weapons.txt"); // Fase de teste: especificar diretório do arquivo ao utilizar essa função
 
 	std::vector<Arma> weapons;
-
+}
 // Menus Específicos
 
 
