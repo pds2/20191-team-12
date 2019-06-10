@@ -282,15 +282,15 @@ void sell_weapon(Personagem &A, std::vector<Arma> inventory_weapon){
 	}
 }
 
-<<<<<<< HEAD
+
 void store_weapon(Personagem &A){
 	std::ifstream file;
 	file.open("../20191-team-12/Files/weapons.txt"); // Fase de teste: especificar diretório do arquivo ao utilizar essa função
 
 	std::vector<Arma> weapons;
-=======
+
 // Menus Específicos
->>>>>>> 57ab1ed5bc94cb85ad9d4aabcb38883c36adbcd3
+
 
 void store_weapon(Personagem &A){
 	int i = 0;
