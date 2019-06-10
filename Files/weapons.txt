@@ -1,7 +1,9 @@
-1,Espada de Madeira,20,20;
-2,Espada de Ferro,35,10;
-3,Espada de Aco,50,20;
-4,Adaga Envenenada,70,35;
-5,Adaga Perfurante,90,50; 
-6,Espada Valiriana,120,75;
-7,Espada de Vidro de Dragao,180,120;
+1,Espada de Ferro,15,20;
+2,Espada de Aco,30,50;
+3,Agulha(roubada dos Stark),60,100;
+4,Besta,100,200;
+5,Adaga Envenenada,150,350;
+6,Espada de fogo,200,550;
+7,Espada de Vidro de Dragao,250,700;
+8,Garra Longa(Valiriana),310,900;
+9,Espada do Azor Ahai,380,1200;
