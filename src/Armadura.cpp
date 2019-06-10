@@ -52,8 +52,8 @@ void Armadura::set_price(int _price){
 void Armadura::display_armor(){
 	std::string to_print1 = "Id: " + std::to_string(this->id);
 	std::string to_print2 = "Nome: " + this->name;
-	std::string to_print3 = "Attack: " + std::to_string(this->b_defense);
-	std::string to_print4 = "Price: " + std::to_string(this->price);
+	std::string to_print3 = "Defesa: " + std::to_string(this->b_defense);
+	std::string to_print4 = "Preco: " + std::to_string(this->price);
 
 	print_square(to_print1, to_print2, to_print3, to_print4);
 }
