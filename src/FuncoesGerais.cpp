@@ -51,31 +51,7 @@ void print_square(std::string to_print1, std::string to_print2, std::string to_p
 +-----------------------------------+)" << std::endl;
 }
 
-<<<<<<< HEAD
-//Continuar ou Abandonar
-
-void exit(){
-
-	int numero = -1;
-
-	std::cout << "Voce tem certeza que deseja abandonar o jogo?" << std::endl;
-	std::cout << "Digite 0 para NAO ABANDONAR ou 1 para ABANDONAR" << std::endl;
-	
-	checker(&numero, 0, 1);
-	if(numero == 0){ // 0 -> Não abandonar o jogo
-		return;
-	}else{
-		return;
-		std::cout << "Adeus, jovem medroso. O seu pai chora no banho ao lembrar que possui um(a) filho(a) covarde..." << std::endl;
-  		//system("PAUSE"); EM WINDOWS
-  		//system("CLS"); EM WINDOWS
-	}
-}
-
 int reward(int fase_num, int multiplicador, Personagem &player){ //função de recompensa de ouro
-=======
-int reward(int fase_num, int multiplicador){ //função de recompensa de ouro
->>>>>>> 323b6754e4351c736916496e53c71263f696d653
 	
 	srand (time(NULL));
 	const int goldinicial = (rand()% 10 + 10); // varia entre 10 e 20
