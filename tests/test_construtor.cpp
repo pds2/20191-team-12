@@ -28,7 +28,7 @@ TEST_CASE("Testando Setters e Getters de Arma"){
 	CHECK_EQ(A.get_name() , "Faca");
 	A.set_price(20);
 	CHECK_EQ(A.get_price() , 20);
-	A.set_attack(35)
+	A.set_attack(35);
 	CHECK_EQ(A.get_attack() , 35);
 	A.set_id(5);
 	CHECK_EQ(A.get_id() , 5);
@@ -89,7 +89,7 @@ TEST_CASE("Testando Setters e Getters de Npc"){
 
  	CHECK_EQ(N.get_name(), "Guarda");
  	CHECK_EQ(N.get_max_attack(), 40);
- 	CHECK_EQ(N.get_min_max(), 35);
+ 	CHECK_EQ(N.get_min_attack(), 35);
  	CHECK_EQ(N.get_defense(), 50);
  	CHECK_EQ(N.get_life(),100);
  	CHECK_EQ(N.type(), 0);
@@ -113,7 +113,7 @@ TEST_CASE("Testando Construtor de Boss"){
 
 	CHECK_EQ(B.get_name(), "Chefe");
 	CHECK_EQ(B.get_max_attack(), 80);
-	CHECK_EQ(B.get_min_atack(), 70);
+	CHECK_EQ(B.get_min_attack(), 70);
 	CHECK_EQ(B.get_defense(), 60);
 	CHECK_EQ(B.get_life(), 75);
 }
@@ -127,7 +127,7 @@ TEST_CASE("Testando metodos de Boss"){
 	B.set_defense(100);
 	B.set_life(200);
 	CHECK_EQ(B.get_max_attack(), 150);
-	CHECK_EQ(B.get_min_atack(), 130);
+	CHECK_EQ(B.get_min_attack(), 130);
 	CHECK_EQ(B.get_defense(), 100);
 	CHECK_EQ(B.get_life(), 200);
 	CHECK_EQ(B.type(), 1);
