@@ -11,7 +11,7 @@
 TEST_CASE("Testando o Construtor de Arma"){
   Arma A;
   CHECK_EQ(A.get_id() , 0);
-  CHECK_EQ(A.get_name() , "Sem Arma");
+  CHECK_EQ(A.get_name() , "Sem arma");
   CHECK_EQ(A.get_attack() , 0);
   CHECK_EQ(A.get_price(), 0);
 
@@ -43,7 +43,7 @@ TEST_CASE("Testando Construtor de Armadura"){
 
 	Armadura B;
   	CHECK_EQ(B.get_id() , 0);
-  	CHECK_EQ(B.get_name() ,  "Sem Armadura");
+  	CHECK_EQ(B.get_name() ,  "Sem armadura");
   	CHECK_EQ(B.get_defense() , 0);
   	CHECK_EQ(B.get_price() , 0 );
 }
