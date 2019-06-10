@@ -31,18 +31,42 @@ bool exit_game(){
         return false;
     }
 }
-void result_battle(int n, int* fase, int* vidas, int* dinheiro){
+void result_battle(int n, Personagem &player, int fase){
     //caso perca a batalha
     if (n == 0){
-        *vidas = *vidas - 1;
+        pausar();
+        std::cout << "\n\nVOCE FOI DERROTADO! OBRIGADO POR JOGAR!!" << std::endl;
+        exit(0);
     }
     //caso ganhe a batalha
     else if(n == 1){
-        *fase = *fase + 1;
+        std::cout << "\n Parabens pela vitoria!\n"<< std::endl;
+        pausar();
     }
     //caso fuja da batalha
     else if(n == 3){
-        *dinheiro = *dinheiro - 100;
+        switch (fase) {
+            case 1:
+                Fase_1(player, 0);
+                break;
+            case 2:
+                Fase_2(player, 0);
+                break;
+            case 3:
+                Fase_3(player, 0);
+                break;
+            case 4:
+                Fase_4(player, 0);
+                break;
+            case 5:
+                Fase_5(player, 0);
+                break;
+            case 6:
+                Fase_6(player, 0);
+                break;
+            default:
+                Fase_7(player, 0);
+        }
     }
 }
 
@@ -195,7 +219,7 @@ void Fase_1(Personagem &player, int t_num){
     Npc enemies[n_enemies];
     for(int i =0; i < n_enemies; i++){
     enemies[i].set_life(30);
-    enemies[i].set_defense(4);
+    enemies[i].set_defense(8);
     enemies[i].set_max_attack(8);
     enemies[i].set_min_attack(5);
     enemies[i].set_name("Bandido");
@@ -238,16 +262,7 @@ void Fase_1(Personagem &player, int t_num){
 
     for( int i = 0; i < n_enemies; i++){
         int check = batalha(player, enemies[i]);
-        if ( check == 0){//perdeu
-            std::cout << "\n\nVOCE FOI DERROTADO! OBRIGADO POR JOGAR!!" << std::endl;
-            pausar();
-            exit(0);
-        }else if(check == 1){//ganhou
-            std::cout << "\n Parabens pela vitoria!\n"<< std::endl;
-        system ("clear");
-        }else{//fugiu, volta a fase do comeco
-            Fase_1(player, 0);
-        }
+        result_battle(check, player, 1);
     }
     
     pausar();

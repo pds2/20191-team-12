@@ -14,7 +14,7 @@
 
 void pausar();
 bool exit_game();
-void result_battle(int n, int* fase, int* vidas, int* dinheiro);
+void result_battle(int n, Personagem &player, int fase);
 void quiz(int n);
 void add_skill_pers(Personagem &player, int fase);
 void add_skill_boss(Boss &boss, Habilidade &name);
