@@ -26,6 +26,7 @@ bool exit_game(){
         std::cout << "Game: Boa Escolha, forasteiro!" << std::endl;
         return true;
     }else{ 
+        std::cout << "Game: Adeus, jovem medroso. O seu pai chora no banho ao lembrar que possui um(a) filho(a) covarde..." << std::endl;
         exit(0);
         return false;
     }
