@@ -19,6 +19,7 @@ void pausar(){
     system("clear");
 }
 bool exit_game(){
+    //funcao para sair do jogo
     int c;
     std::cout << "Deseja continuar? (1 - SIM / 0 - NAO)" << std::endl;
     checker(&c, 0, 1);
@@ -30,7 +31,7 @@ bool exit_game(){
         return false;
     }
 }
-void result_battle(int n, Personagem &player, int fase){
+void result_battle(int n, Personagem &player, int fase){//funcao que checa o resultado da batalha
     //caso perca a batalha
     if (n == 0){
         pausar();
@@ -68,8 +69,7 @@ void result_battle(int n, Personagem &player, int fase){
         }
     }
 }
-
-void quiz(int n){
+void quiz(int n){//quizes chamados nas fases
     int op;
     if(n == 1){
         std::cout << "\nQual o time de futebol que o Clegane menos gosta?\n";
@@ -155,7 +155,7 @@ void quiz(int n){
         std::cout << "Erro na definicao do quiz. Cheque seus parametros. Erro na posicao: " << op << std::endl;
     }
 }
-void add_skill_pers(Personagem &player, int fase){
+void add_skill_pers(Personagem &player, int fase){//cria e adiciona skills de personagem
     //criando habilidades
     Habilidade voadora(" Voadora",30,15);
     Habilidade kamehameha ("Kamehameha", 40, 30);
@@ -184,7 +184,7 @@ void add_skill_pers(Personagem &player, int fase){
     else if(fase == 8)
         player.add_skill(escorpiao);
 }
-void add_skill_boss(Boss &boss, int fase){
+void add_skill_boss(Boss &boss, int fase){//cria e adiciona skills de boss
     //criando habilidades
     Habilidade pedrada(" Pedrada",30,15);
     Habilidade corte_suave (" Corte Suave", 40, 30);
@@ -281,12 +281,13 @@ void Fase_1(Personagem &player, int t_num){
     std::cout << "Maria:  Vamos para a Cidade Velha buscar mais informacoes" <<std::endl;
     std::cout << "Narrador: Assim, seguiram para Cidade Velha, para encontrar com os sabios de lah" << std::endl;  
     
-    int cash = reward(1, 20);
+    int cash = reward(1, 20, player);
+    add_skill_pers(player, 2);
     
     std::cout << "\nVoce recebeu " << cash << " moedas" << std::endl;
     std::cout << "\nVoce recebeu nova habilidade: Kamehameha" << std::endl;
    
-    add_skill_pers(player, 2);
+    show_menu_h();
 }
 
 void Fase_2(Personagem &player, int t_num){
@@ -369,7 +370,7 @@ void Fase_2(Personagem &player, int t_num){
     pausar();
 
     std::cout << "Sir Louro Jose: Percebi que eh digno de minha ajuda." << std::endl;
-    int cash = reward(2, 30);
+    int cash = reward(2, 30, player);
     
     std::cout << "Voce recebeu " << cash << " moedas" << std::endl;
     std::cout <<"Maria: Vamos continuar rumo ao norte." << std::endl;    
@@ -414,7 +415,7 @@ void Fase_3(Personagem &player, int t_num){
     std::cout << "???: Meu nome eh Melissa. Meu lorde disse que por aqui encontraria alguem capaz de nos salvar. Mas antes devo ter certeza de que sao voces" <<std::endl;
     
     quiz(2);
-    int cash = reward(3, 15);
+    int cash = reward(3, 15, player);
     std::cout << "\nVoce recebeu " << cash << " moedas" << std::endl;
 
     pausar();
@@ -443,7 +444,7 @@ void Fase_3(Personagem &player, int t_num){
     std::cout << "Voce: Porque eu faria isso?" << std::endl;
     std::cout << "Estenio: Porque se me ajudar eu apoiarei a sua causa" << std::endl;
     
-    cash = reward(3, 40);
+    cash = reward(3, 40, player);
     add_skill_pers(player, 3);
 
     std::cout << "\nVoce recebeu nova Habilidade: Katon" << std::endl;
@@ -489,7 +490,7 @@ void Fase_4(Personagem &player, int t_num){
     pausar();
 
     add_skill_pers(player, 4);
-    int cash = reward(4, 50);
+    int cash = reward(4, 50, player);
     std::cout << "\nVoce recebeu " << cash << " moedas" << std::endl;
     std::cout << "\nVoce recebeu nova Habilidade: Katon" << std::endl;
 

@@ -28,7 +28,7 @@ void treinar(Personagem &heroi, Npc &npc, int t_num, int fase_num){ //t_num = qu
 	srand (time(NULL));
 
 	do{ 
-		int gold = reward(fase_num, 2); //variação de gold em relação à fase
+		int gold = reward(fase_num, 2, heroi); //variação de gold em relação à fase
 													
 		if(batalha(heroi, enemies[t_num - 1]) == 0){
 			if(heroi.get_life() > 0){
