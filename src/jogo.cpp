@@ -45,6 +45,7 @@ void result_battle(int n, Personagem &player, int fase){
     }
     //caso fuja da batalha
     else if(n == 3){
+        std::cout << "\n\nchegou aqui\n\n";
         switch (fase) {
             case 1:
                 Fase_1(player, 0);
@@ -228,8 +229,8 @@ void Fase_1(Personagem &player, int t_num){
     add_skill_pers(player, 1);
     
 
-    std::cout << "\n~ALGUM LUGAR NO MAR DE DORNE~" <<std::endl;
-    std::cout << "Maria: Bem Vindo a sua jornada," << player.get_name() << ". Voce foi invocado para este mundo para combater o mal eminente que assola nossos reinos" << std::endl;
+    std::cout << "\n~\33[1;33mALGUM LUGAR NO MAR DE DORNE\33[m!~ " <<std::endl;
+    std::cout << "Maria: Bem Vindo a sua jornada," << player.get_name() << ". Voce foi invocado para este mundo para combater o mal iminente que assola nossos reinos" << std::endl;
     std::cout << "Maria: Eu sou a sarcedotisa Maria e vou lhe auxiliar na sua jornada. Na sua vida anterior voce era um otaku fracassado, mas de alguma forma lhe acharam digno de nos salvar" <<std::endl;
     std::cout << "Voce: Err... " << std::endl;
     std::cout << "Maria: Segundo a profecia, voce tera que passar por 7 provacoes antes de ser livre para voltar ao seu mundo. Primeiro vamos para dorne para conseguir alguns equipamentos." << std::endl;
@@ -241,6 +242,7 @@ void Fase_1(Personagem &player, int t_num){
     std::cout << std::endl << "~DORNE - LAR DA CASA MACHADO~" << std::endl;
     std::cout << "Maria: Aqui nos resolvemos os nossos conflitos com batalhas. Ao longo do caminho voce tambem podera treinar para aperfeicoar suas habilidades ou ganhar dinheiro" << std::endl;
     std::cout << "Maria: Mercadores tambem estao sempre disponiveis, neles voce pode comprar novas armas, armaduras e pocoes. Tais servicos estaram disponiveis sempre que precisar! Vamos fazer um teste:" <<std::endl;
+   
     int op;
     while(op != 0){
         show_menu(player, enemies[0], t_num, 1);
@@ -258,15 +260,23 @@ void Fase_1(Personagem &player, int t_num){
     std::cout << "Narrador: Um dos homens covardemente joga areia nos seus olhos e outro a apunha-la pelas costas" <<std::endl;
     std::cout << "Maria: O que esta esperando? Voce deve ajuda-la!!" << std::endl;
     pausar();
-    //system ("clear");
 
     for( int i = 0; i < n_enemies; i++){
         int check = batalha(player, enemies[i]);
-        result_battle(check, player, 1);
+        //result_battle(check, player, 1);
+        if ( check == 0){//perdeu
+            pausar();
+            std::cout << "\n\nVOCE FOI DERROTADO! OBRIGADO POR JOGAR!!" << std::endl;
+            exit(0);
+        }else if(check == 1){//ganhou
+            std::cout << "\n Parabens pela vitoria!\n"<< std::endl;
+            system ("clear");
+        }else{//fugiu, volta a fase do comeco
+            Fase_1(player, 0);
+        }
     }
     
     pausar();
-    //system ("clear");
 
     std::cout << "Eliana: Eu nao precisava da sua ajuda, posso me defender sozinha" << std::endl;
     std::cout << "Narrador:  Eliana vai embora e te deixa sozinho" << std::endl;
@@ -277,7 +287,6 @@ void Fase_1(Personagem &player, int t_num){
     
     std::cout << "\nVoce recebeu nova habilidade: kamehameha" << std::endl;
    
-    //player.add_skill(kamehameha);
     add_skill_pers(player, 2);
 }
 

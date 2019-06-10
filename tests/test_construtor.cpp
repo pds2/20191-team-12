@@ -42,7 +42,7 @@ TEST_CASE("Testando Construtor de Armadura"){
 	CHECK_EQ(A.get_price() , 5);
 
 	Armadura B;
-  	CHECK_EQ(B.get_id , 0);
+  	CHECK_EQ(B.get_id() , 0);
   	CHECK_EQ(B.get_name() ,  "Sem Armadura");
   	CHECK_EQ(B.get_defense() , 0);
   	CHECK_EQ(B.get_price() , 0 );
@@ -51,7 +51,7 @@ TEST_CASE("Testando Construtor de Armadura"){
 TEST_CASE("Testando o Construtor de Personagem") {
 	Personagem P ("Alan Turing");
 	CHECK_EQ(P.get_name(), "Alan Turing");
-	CHECK_EQ(P.get_life(), 200);
+	CHECK_EQ(P.get_life(), 100);
 	CHECK_EQ(P.get_defense(),20);
 	CHECK_EQ(P.get_attack(), 20);
 	CHECK_EQ(P.get_stamina(), 100);
