@@ -7,7 +7,7 @@
 
 // Validação
 
-void checker(int *variavel, int p1, int p2){
+void checker(int *variavel, int p1, int p2){//funcao generica para checar opcoes
 	int numero = *variavel;
 	std::string numero_;
 	while(true){
@@ -51,13 +51,15 @@ void print_square(std::string to_print1, std::string to_print2, std::string to_p
 +-----------------------------------+)" << std::endl;
 }
 
-int reward(int fase_num, int multiplicador){ //função de recompensa de ouro
+int reward(int fase_num, int multiplicador, Personagem &player){ //função de recompensa de ouro
 	
 	srand (time(NULL));
 	const int goldinicial = (rand()% 10 + 10); // varia entre 10 e 20
 	float resultado;
 
 	resultado = pow(multiplicador,(fase_num - 1)) * goldinicial;
+
+	player.set_gold((player.get_gold()) + (int)resultado);
 
     return (int)resultado;
 }
