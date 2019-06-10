@@ -1,7 +1,9 @@
-1,,10,5;
-2,Armadura Enferrujada,20,15;
-3,Malha de Ferro,30,30;
-4,Armadura de Aco,40,55;
-5,Armadura de Aco Reforjado,50,75;
-6,Armadura da Guarda Real,70,120;
-7,Armadura do Montanha,380,100;
+1,Roupa de Couro,10,10;
+2,Casaco da Patrulha da Noite,30,40;
+2,Armadura Fina,50,80;
+3,Malha de Ferro,70,120;
+4,Malha de Aço,120,200;
+5,Armadura de Aco,150,300;
+6,Armadura de Aco Reforjado,180,400;
+7,Armadura da Guarda Real,250,700;
+8,Armadura do Montanha,380,1000;
