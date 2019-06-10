@@ -2,6 +2,10 @@
 #define FUNCAO_LOJA_H
 
 #include <vector>
+#include <fstream>
+#include "Personagem.h"
+#include "Arma.h"
+#include "Armadura.h"
 
 // Funções de texto
 void present_store();
