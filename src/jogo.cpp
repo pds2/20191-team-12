@@ -512,6 +512,8 @@ void Fase_4(Personagem &player, int t_num){
     std::cout << "\nVoce recebeu nova Habilidade: Katon" << std::endl;
 
     pausar();
+    quiz(4);
+    pausar();
 
     std::cout << "Narrador: Apos derrotar Tiao os guardas vem atras de voce." << std::endl;
 
@@ -607,6 +609,8 @@ void Fase_5(Personagem &player, int t_num){
     std::cout << "\nVoce recebeu " << cash << " moedas" << std::endl;
     std::cout << "\nVoce recebeu nova Habilidade: Katon" << std::endl;
 
+    pausar();
+    quiz(5);
     pausar();
 
     std::cout << "Theo: Voce nao faz ideia de como sou grato!" << std::endl;
