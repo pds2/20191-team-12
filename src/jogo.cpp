@@ -23,7 +23,7 @@ bool exit_game(){
     std::cout << "Deseja continuar? (1 - SIM / 0 - NAO)" << std::endl;
     checker(&c, 0, 1);
     if (c == 1){
-        std::cout << "Game: Boa Escolha forasteiro!" << std::endl;
+        std::cout << "Game: Boa Escolha, forasteiro!" << std::endl;
         return true;
     }else{ 
         exit(0);
@@ -44,7 +44,6 @@ void result_battle(int n, Personagem &player, int fase){
     }
     //caso fuja da batalha
     else if(n == 3){
-        std::cout << "\n\nchegou aqui\n\n";
         switch (fase) {
             case 1:
                 Fase_1(player, 0);
