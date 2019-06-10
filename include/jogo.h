@@ -13,6 +13,7 @@
 
 
 void pausar();
+void flush();
 bool exit_game();
 void result_battle(int n, int* fase, int* vidas, int* dinheiro);
 void quiz(int n);

@@ -13,10 +13,20 @@
 
 
 void pausar(){
-   std::cout << "\nPRESSIONE ENTER PARA CONTINUAR"<< std::endl;
-    getchar();
+    //funcao para pausar o texto
+    //fflush(stdin);
+    //flush();
+    char c;
+    std::cout << "\nPRESSIONE ENTER PARA CONTINUAR"<< std::endl;
+    c = std::cin.get();
+    std::cin.clear();
+    system("clear");
 }
-
+void flush() {
+    //funçao para limpar o buffer de entrada.
+    int ch;
+    while ( ( ch = fgetc ( stdin ) ) != EOF && ch != '\n') {}
+}
 bool exit_game(){
     int c;
     std::cout << "Deseja continuar? (1 - SIM / 0 - NAO)" << std::endl;
@@ -154,8 +164,8 @@ void Fase_1(Personagem &player, int t_num){
     std::cout << "Maria: Segundo a profecia, voce tera que passar por 7 provacoes antes de ser livre para voltar ao seu mundo. Primeiro vamos para dorne para conseguir alguns equipamentos." << std::endl;
     std::cout << "Maria: Nao se esqueca: O inverno esta chegando e a C&A tem varias promocoes em casacos" << std::endl;
     pausar();
-    pausar();
-    system ("clear");
+    //pausar();
+    //system ("clear");
 
     std::cout << std::endl << "~DORNE - LAR DA CASA MACHADO~" << std::endl;
     std::cout << "Maria: Aqui nos resolvemos os nossos conflitos com batalhas. Ao longo do caminho voce tambem podera treinar para aperfeicoar suas habilidades ou ganhar dinheiro" << std::endl;
@@ -168,7 +178,7 @@ void Fase_1(Personagem &player, int t_num){
     }
     std::cout << "Maria: Agora que voce ja esta preparado, podemos seguir a nossa jornada\n";
     pausar();
-    system ("clear");
+    //system ("clear");
 
     std::cout << "??? : *Grito*" << std::endl;
     std::cout << "Maria: Parece que alguem precisa de ajuda. Vamos ver o que esta acontecendo." << std::endl;
@@ -177,7 +187,7 @@ void Fase_1(Personagem &player, int t_num){
     std::cout << "Narrador: Um dos homens covardemente joga areia nos seus olhos e outro a apunha-la pelas costas" <<std::endl;
     std::cout << "Maria: O que esta esperando? Voce deve ajuda-la!!" << std::endl;
     pausar();
-    system ("clear");
+    //system ("clear");
 
     for( int i = 0; i < n_enemies; i++){
         int check = batalha(player, enemies[i]);
@@ -194,7 +204,7 @@ void Fase_1(Personagem &player, int t_num){
     }
     
     pausar();
-    system ("clear");
+    //system ("clear");
 
     std::cout << "Eliana: Eu nao precisava da sua ajuda, posso me defender sozinha" << std::endl;
     std::cout << "Narrador:  Eliana vai embora e te deixa sozinho" << std::endl;
@@ -213,7 +223,7 @@ void Fase_2(Personagem &player, int t_num){
     Npc enemies[n_enemies];
     for(int i = 0; i < n_enemies; i++){
         enemies[i].set_life(30);
-        enemies[i].set_defense(3);
+        enemies[i].set_defense(4);
         enemies[i].set_max_attack(7);
         enemies[i].set_min_attack(5);
         enemies[i].set_name("Guarda");
@@ -243,7 +253,7 @@ void Fase_2(Personagem &player, int t_num){
     std::cout << "Sabio: Nao acredito que ajudei um otaco. Vao embora daqui, tenho varios nada pra fazer. Adeus" << std::endl;
 
     pausar();
-    pausar();
+    //pausar();
     system ("clear");
 
     int op;

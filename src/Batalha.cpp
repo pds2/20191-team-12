@@ -44,7 +44,7 @@ int batalha(Personagem &heroi, Mob &npc){
 }
 
 int true_damage(int ataque, float defesa){ // Desconta a defesa do ataque e retorna o dano real (taxa de defesa da armadura = 4*sqrt(defesa))
-	defesa = 4*sqrt(defesa);
+	defesa = 4*(sqrt(defesa));
 	int true_damage = ataque*(1-(defesa/100.0));
 	return true_damage;
 }

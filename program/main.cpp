@@ -12,6 +12,7 @@ std::cout << "Bem Vindo ao universo de Game of Thrones! Este jogo eh uma parodia
 std::cout << "Derrote os sete reinos e domine Westeros! O nosso jogo eh bem realista. Aqui voce soh tem uma chance" << std::endl;
 std::cout << "Escolha um nome para seu personagem:";
 std::cin >> name;
+std::cin.clear();
 
 Personagem player(name); //construtor
 
