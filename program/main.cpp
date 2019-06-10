@@ -19,7 +19,4 @@ int main(){
     Fase_2(player, 4);
     Fase_3(player, 5);
     Fase_4(player, 6);
-    Fase_5(player, 7);
-    Fase_6(player, 8);
-    Fase_7(player, 9);
 }
