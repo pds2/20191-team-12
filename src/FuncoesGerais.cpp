@@ -9,21 +9,18 @@
 
 void checker(int *variavel, int p1, int p2){
 	int numero = *variavel;
-	
+	std::string numero_;
 	while(true){
 		try{
-			std::cin >> numero;
-			if(std::cin.fail()){
-				std::cin.clear();
-				std::cin.ignore(10000, '\n');
-				throw "Entrada invalida";
-			} else if(numero < p1 || numero > p2){
+			std::getline(std::cin, numero_);
+			numero = std::atoi(numero_.c_str());
+
+			if(numero < p1 || numero > p2){
 				throw "Entrada invalida.";
 			} else {
 				break;
 			}
-		}
-		catch(const char* e){
+		} catch(const char* e){
 			std::cout << "Erro: " << e << std::endl;
 			std::cout << "Escolha uma entrada valida!" << std::endl;
 		}

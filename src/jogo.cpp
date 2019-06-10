@@ -14,18 +14,10 @@
 
 void pausar(){
     //funcao para pausar o texto
-    //fflush(stdin);
-    //flush();
     char c;
     std::cout << "\nPRESSIONE ENTER PARA CONTINUAR"<< std::endl;
     c = std::cin.get();
-    std::cin.clear();
     system("clear");
-}
-void flush() {
-    //funçao para limpar o buffer de entrada.
-    int ch;
-    while ( ( ch = fgetc ( stdin ) ) != EOF && ch != '\n') {}
 }
 bool exit_game(){
     int c;
@@ -140,21 +132,76 @@ void quiz(int n){
         std::cout << "Erro na definicao do quiz. Cheque seus parametros. Erro na posicao: " << op << std::endl;
     }
 }
+void add_skill_pers(Personagem &player, int fase){
+    //criando habilidades
+    Habilidade voadora(" Voadora",30,15);
+    Habilidade kamehameha ("Kamehameha", 40, 30);
+    Habilidade katon ("Katon", 48, 35);
+    Habilidade choque_trovao ("Choque do trovao", 55, 40);
+    Habilidade golem ("Invocar Golem", 67, 50);
+    Habilidade soco_saitama ("Soco do Saitama", 120, 120);
+    Habilidade dracarys ("Dracarys", 140, 130);
+    Habilidade escorpiao ("Atirar escorpiao", 140, 130);
 
+    //adicionando habilidades
+    if(fase == 1)
+        player.add_skill(voadora);
+    else if(fase == 2)
+        player.add_skill(kamehameha);
+    else if(fase == 3)
+        player.add_skill(katon);
+    else if(fase == 4)
+        player.add_skill(choque_trovao);
+    else if (fase == 5)
+        player.add_skill(golem);
+    else if (fase == 6)
+        player.add_skill(soco_saitama);
+    else if(fase == 7)
+        player.add_skill(dracarys);
+    else if(fase == 8)
+        player.add_skill(escorpiao);
+}
+void add_skill_boss(Boss &boss, int fase){
+    //criando habilidades
+    Habilidade pedrada(" Pedrada",30,15);
+    Habilidade corte_suave (" Corte Suave", 40, 30);
+    Habilidade corte_tubarao (" Corte Tubarao", 48, 35);
+    Habilidade corte_trovao (" Corte do Trovao", 55, 40);
+    Habilidade chute_flam (" Chute flamejante", 67, 50);
+    Habilidade furacao (" Furacao de gelo", 120, 120);
+    Habilidade dracarys (" Dracarys", 140, 130);
+    Habilidade escorpiao (" Atirar Escorpiao", 140, 130);
+
+    //adicionando habilidades
+    if(fase == 1)
+        boss.set_skill(pedrada);
+    else if(fase == 2)
+        boss.set_skill(corte_suave);
+    else if(fase == 3)
+        boss.set_skill(corte_tubarao);
+    else if(fase == 4)
+        boss.set_skill(corte_trovao);
+    else if (fase == 5)
+        boss.set_skill(chute_flam);
+    else if (fase == 6)
+        boss.set_skill(furacao);
+    else if(fase == 7)
+        boss.set_skill(escorpiao);
+    else if(fase == 8)
+        boss.set_skill(dracarys);
+}
 void Fase_1(Personagem &player, int t_num){
 
     Npc enemies[n_enemies];
     for(int i =0; i < n_enemies; i++){
     enemies[i].set_life(30);
-    enemies[i].set_defense(5);
+    enemies[i].set_defense(4);
     enemies[i].set_max_attack(8);
     enemies[i].set_min_attack(5);
     enemies[i].set_name("Bandido");
     }
     
-    Habilidade voadora(" Voadora",30,15);
-    
-    player.add_skill(voadora);
+    add_skill_pers(player, 1);
     
 
     std::cout << "\n~ALGUM LUGAR NO MAR DE DORNE~" <<std::endl;
@@ -214,8 +261,9 @@ void Fase_1(Personagem &player, int t_num){
     std::cout << "Narrador: Assim, seguiram para Cidade Velha, para encontrar com os sabios de la" << std::endl;  
     
     std::cout << "\nVoce recebeu nova habilidade: kamehameha" << std::endl;
-    Habilidade kamehameha ("kamehameha", 40, 30);
-    player.add_skill(kamehameha);
+   
+    //player.add_skill(kamehameha);
+    add_skill_pers(player, 2);
 }
 
 void Fase_2(Personagem &player, int t_num){
@@ -224,12 +272,13 @@ void Fase_2(Personagem &player, int t_num){
     for(int i = 0; i < n_enemies; i++){
         enemies[i].set_life(30);
         enemies[i].set_defense(4);
-        enemies[i].set_max_attack(7);
-        enemies[i].set_min_attack(5);
+        enemies[i].set_max_attack(10);
+        enemies[i].set_min_attack(7);
         enemies[i].set_name("Guarda");
     }
 
     Boss loiro_jose ("Loiro Jose", 10, 12, 6, 80);
+    add_skill_boss(loiro_jose, 2);
 
     pausar();
     system ("clear");
@@ -274,8 +323,8 @@ void Fase_2(Personagem &player, int t_num){
     for( int i = 0; i < n_enemies; i++){
         int check = batalha(player, enemies[i]);
         if ( check == 0){//perdeu
-            std::cout << "\n\nVOCE FOI DERROTADO! OBRIGADO POR JOGAR!!" << std::endl;
             pausar();
+            std::cout << "\n\nVOCE FOI DERROTADO! OBRIGADO POR JOGAR!!" << std::endl;
             exit(0);
         }else if(check == 1){//ganhou
             std::cout << "\n Parabens pela vitoria!\n"<< std::endl;
@@ -287,8 +336,8 @@ void Fase_2(Personagem &player, int t_num){
 
     int check = batalha(player, loiro_jose);
         if ( check == 0){//perdeu
-            std::cout << "\n\nVOCE FOI DERROTADO! OBRIGADO POR JOGAR!!" << std::endl;
             pausar();
+            std::cout << "\n\nVOCE FOI DERROTADO! OBRIGADO POR JOGAR!!" << std::endl;
             exit(0);
         }else if(check == 1){//ganhou
             std::cout << "\n Parabens pela vitoria!\n"<< std::endl;
@@ -331,19 +380,19 @@ void Fase_3(Personagem &player, int t_num){
     pausar();
     system("clear");
 
-    std::cout << "Narrador: Eles acompanham Melissa ate Pedra de Dinossauro onde esta Saulo Barao" <<std::endl;
-    std::cout << "Saulo: Melissa, sao esses??" <<std::endl;
+    std::cout << "Narrador: Eles acompanham Melissa ate Pedra de Dinossauro onde esta Estenio Barao" <<std::endl;
+    std::cout << "Estenio: Melissa, sao esses??" <<std::endl;
     std::cout << "Melissa: Sim, meu senhor" << std::endl;
-    std::cout << "Saulo: Esse dai me parece muito franzino, nao vai aguentar nem um golpe de espada" << std::endl;
+    std::cout << "Estenio: Esse dai me parece muito franzino, nao vai aguentar nem um golpe de espada" << std::endl;
     std::cout << "Voce: Vem Tranquilo" << std::endl;
     //funcao batalha
     
     pausar();
     system("clear");
 
-    std::cout << "Saulo: Parece que era digno, afinal. Siga para Castelo de Rocha, tenho uma missao para voce: matar Tiao Lago" << std::endl;
+    std::cout << "Estenio: Parece que era digno, afinal. Siga para Castelo de Rocha, tenho uma missao para voce: matar Tiao Lago" << std::endl;
     std::cout << "Voce: Porque eu faria isso?" << std::endl;
-    std::cout << "Saulo: Porque se me ajudar eu apoiarei a sua causa" << std::endl;
+    std::cout << "Estenio: Porque se me ajudar eu apoiarei a sua causa" << std::endl;
     int cash = reward(3, 30);
     std::cout << "Voce recebeu" << cash << " moedas" << std::endl;
 }
@@ -353,7 +402,7 @@ void Fase_4(Personagem &player, int t_num){
     std::cout << "Guarda: Forasteiro, identifique-se" << std::endl;
     std::cout << "Voce: Sou o " << player.get_name() << "venho tratar de negocios com o Lorde Tiao" << std::endl;
     std::cout << "Narrador: Voce tenta convencer o guarda a entrar, mas ele nao deixa. Entao voce se infiltra pelo calabouco e encontra " << std::endl;
-    std::cout << "Voce: Tiao, venho em nome de Saulo Barao, voce encontrara o seu fim hoje" << std::endl;    
+    std::cout << "Voce: Tiao, venho em nome de Estenio Barao, voce encontrara o seu fim hoje" << std::endl;    
     std::cout << "Tiao: Quem eh voce?" << std::endl;
     
     pausar();
@@ -369,12 +418,12 @@ void Fase_4(Personagem &player, int t_num){
 
     std::cout << "Narrador: Apos derrotar Tiao os guardas vem atras de voce. Voces dois fogem pelo mar e chegam as ilhas de ferro" << std::endl;
     std::cout << "\n ~NO PORTO~" << std::endl;
-    std::cout << "Pessoa aleatoria 1 : Saulo cometeu o erro de atacar a cidades dos reis e foi derrotado" << std::endl;
-    std::cout << "Pessoa aleatoria 2: Quem eh Saulo?" << std::endl;
+    std::cout << "Pessoa aleatoria 1 : Estenio cometeu o erro de atacar a cidades dos reis e foi derrotado" << std::endl;
+    std::cout << "Pessoa aleatoria 2: Quem eh Estenio?" << std::endl;
     std::cout << "Pessoa aleatoria 1:  Me impressiona sua falta de cultura" << std::endl;
     std::cout << "Pessoa aleatoria 2: Mentira. Eu sei que a mulher dos dragoes vai derrotar todo mundo" << std::endl;
     std::cout << "Pessoa aleatoria 1: Unico dragao que conheco eh a minha esposa com raiva" << std::endl;
-    std::cout << "Maria: Saulo foi derrotado, o que faremos agora?" << std::endl;
+    std::cout << "Maria: Estenio foi derrotado, o que faremos agora?" << std::endl;
 
 
 }

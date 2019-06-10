@@ -18,11 +18,11 @@ INC := -I include/ -I third_party/
 
 $(OBJDIR)/%.o: $(SRCDIR)/%.$(SRCEXT)
 	@mkdir -p $(@D)
-	$(CC) $(CFLAGS) $(INC) -c -o $@ $<
+	@$(CC) $(CFLAGS) $(INC) -c -o $@ $<
 
 main: $(OBJECTS)
 	@mkdir -p $(BINDIR)
-	$(CC) $(CFLAGS) $(INC) $(MAIN) $^ -o $(BINDIR)/main
+	@$(CC) $(CFLAGS) $(INC) $(MAIN) $^ -o $(BINDIR)/main
 
 tests: $(OBJECTS)
 	@mkdir -p $(BINDIR)
@@ -36,9 +36,9 @@ coverage:
 	@gcov $(SOURCES) -l -p -o build/
 	@lcov -c --no-external --directory . --output-file coverage/coverage.info
 	@genhtml coverage/coverage.info --output-directory coverage/
-	$(RM) *.gcda *.gcno
+	@$(RM) *.gcda *.gcno
 
 clean:
-	$(RM) -r $(OBJDIR)/* $(BINDIR)/* coverage/* *.gcda *.gcno
+	@$(RM) -r $(OBJDIR)/* $(BINDIR)/* coverage/* *.gcda *.gcno
 
 .PHONY: clean coverage

@@ -38,12 +38,17 @@ int batalha(Personagem &heroi, Mob &npc){
 	if(heroi.get_life() <= 0){ // Herói morreu
 		return 0;
 	}
-	if(npc.get_life() <= 0){ // Inimigo morreu
+	else if(npc.get_life() <= 0){ // Inimigo morreu
 		return 1;
 	}
+	else
+	{
+		return 2;
+	}
+	
 }
 
-int true_damage(int ataque, float defesa){ // Desconta a defesa do ataque e retorna o dano real (taxa de defesa da armadura = 4*sqrt(defesa))
+int true_damage(int ataque, double defesa){ // Desconta a defesa do ataque e retorna o dano real (taxa de defesa da armadura = 4*sqrt(defesa))
 	defesa = 4*(sqrt(defesa));
 	int true_damage = ataque*(1-(defesa/100.0));
 	return true_damage;
@@ -52,7 +57,7 @@ int true_damage(int ataque, float defesa){ // Desconta a defesa do ataque e reto
 void atacar(Personagem& heroi, Mob& npc){ // Herói ataca o inimigo
 	srand (time(NULL));
 	int ataque = rand() % 11 + (heroi.get_attack()-5);
-	float defesa = rand() % 11 + (npc.get_defense() - 5);
+	double defesa = rand() % 11 + (npc.get_defense() - 5);
 	npc.set_life(npc.get_life() - true_damage(ataque, defesa));
 	std::cout << "Seu ataque causou " << true_damage(ataque, defesa) << " de dano!\n\n";
 }
@@ -60,7 +65,7 @@ void atacar(Personagem& heroi, Mob& npc){ // Herói ataca o inimigo
 void atacar_mob(Personagem &heroi, Mob &npc){ // Inimigo ataca o herói
 	srand (time(NULL));
 	int ataque = rand() % 11 + npc.get_min_attack();
-	float defesa = rand() % 11 + (heroi.get_defense() - 5);
+	double defesa = rand() % 11 + (heroi.get_defense() - 5);
 	heroi.set_life(heroi.get_life() - true_damage(ataque, defesa));
 	std::cout << "Você recebeu " << true_damage(ataque, defesa) << " de dano do inimigo!\n";
 }
@@ -95,7 +100,7 @@ int atacar_hab(Personagem &heroi, Mob &npc, Habilidade hab){ // Herói ataca hab
 	if(heroi.get_stamina() >= hab.get_spend()){	
 		srand(time(NULL));
 		int ataque = hab.get_damage();
-		float defesa = rand() % 11 + (npc.get_defense() - 5);
+		double defesa = rand() % 11 + (npc.get_defense() - 5);
 		npc.set_life(npc.get_life() - true_damage(ataque,defesa));
 		int gasto = heroi.get_stamina() - hab.get_spend();
 		heroi.set_stamina(gasto);
@@ -110,7 +115,7 @@ int atacar_hab(Personagem &heroi, Mob &npc, Habilidade hab){ // Herói ataca hab
 void atacar_hab_boss(Personagem& heroi, Boss& x){ // Boss ataca habilidade no herói
 	srand(time(NULL));
 	int ataque = x.get_hdamage();
-	float defesa = rand() % 11 + (heroi.get_defense() - 5);
+	double defesa = rand() % 11 + (heroi.get_defense() - 5);
 	heroi.set_life(heroi.get_life() - true_damage(ataque, defesa));
 	std::cout<< x.get_name() <<" te causou um dano de "<< true_damage(ataque,defesa) <<" com uma habilidade"<< std::endl;
 }
