@@ -231,7 +231,7 @@ void checker(int *variavel, int p1, int p2){//funcao generica para checar opcoes
 	*variavel = numero;
 }
 
-int reward(int fase_num, int multiplicador, Personagem &player){ //função de recompensa de ouro
+int reward(int fase_num, float multiplicador, Personagem &player){ //função de recompensa de ouro
 	
 	srand (time(NULL));
 	const int goldinicial = (rand()% 10 + 10); // varia entre 10 e 20
