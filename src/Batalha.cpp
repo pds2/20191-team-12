@@ -82,7 +82,6 @@ void menu2(Personagem &heroi, Mob &npc){ // Menu da opção 2
 		if(op == heroi.get_nskill()){
 		return;	
 		}
-1
 		erro = atacar_hab(heroi, npc, heroi.get_skill(op));
 		
 		

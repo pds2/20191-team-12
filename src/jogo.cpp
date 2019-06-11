@@ -9,231 +9,24 @@
 #include "FuncoesGerais.h"
 #include "menu.h"
 
-#define n_enemies 3
-
-
-void pausar(){
-    //funcao para pausar o texto
-    std::cout << "\nPRESSIONE ENTER PARA CONTINUAR"<< std::endl;
-    std::cin.get();
-    system("clear");
-}
-bool exit_game(){
-    //funcao para sair do jogo
-    int c;
-    std::cout << "Deseja continuar? (1 - SIM / 0 - NAO)" << std::endl;
-    checker(&c, 0, 1);
-    if (c == 1){
-        std::cout << "Game: Boa Escolha, forasteiro!" << std::endl;
-        return true;
-    }else{ 
-        std::cout << "Game: Adeus, jovem medroso. O seu pai chora no banho ao lembrar que possui um(a) filho(a) covarde..." << std::endl;
-        exit(0);
-        return false;
-    }
-}
-void result_battle(int n, Personagem &player, int fase){//funcao que checa o resultado da batalha
-    //caso perca a batalha
-    if (n == 0){
-        pausar();
-        std::cout << "\n\nVOCE FOI DERROTADO! OBRIGADO POR JOGAR!!" << std::endl;
-        exit(0);
-    }
-    //caso ganhe a batalha
-    else if(n == 1){
-        std::cout << "\n Parabens pela vitoria!\n"<< std::endl;
-        pausar();
-    }
-    //caso fuja da batalha
-    else if(n == 3){
-        switch (fase) {
-            case 1:
-                Fase_1(player, 0);
-                break;
-            case 2:
-                Fase_2(player, 0);
-                break;
-            case 3:
-                Fase_3(player, 0);
-                break;
-            case 4:
-                Fase_4(player, 0);
-                break;
-            case 5:
-                Fase_5(player, 0);
-                break;
-            case 6:
-                Fase_6(player, 0);
-                break;
-            default:
-                Fase_7(player, 0);
-        }
-    }
-}
-void quiz(int n){//quizes chamados nas fases
-    int op;
-    if(n == 1){
-        std::cout << "\nQual o time de futebol que o Clegane menos gosta?\n";
-        std::cout << "-------------------------------------------------\n";
-		std::cout << "| 1 - Corintians                      2 - Botafogo  |\n";
-		std::cout << "|                                                   |\n";
-		std::cout << "| 3 - Flamengo                 	    4 - Atlético  |\n";
-		std::cout << "-------------------------------------------------\n Sua escolha: ";
-		checker(&op, 1, 4);
-        if(op == 2){
-            std::cout << "Sabio: Vejo que tem um otimo senso de humor. Vou ajuda-lo" << std::endl;
-        }
-        else{
-            std::cout << "Sabio: Eh tao lerdo quanto parece..." << std::endl;
-        }
-    }
-    else if(n == 2){
-        std::cout << "\nO que nos dizemos ao Deus da Morte?" << std::endl;
-        std::cout << "-------------------------------------------------------------\n";
-		std::cout << "| 1 - Nao assisto Death Note     2 - Sem tempo, irmao        |\n";
-		std::cout << "|                                                   	   |\n";
-		std::cout << "| 3 - Hoje nao                   4 - Conheca a minha espada  |\n";
-		std::cout << "-------------------------------------------------------------\n Sua escolha: ";
-		checker(&op, 1, 4);
-
-        if(op == 3){
-            std::cout << "Melissa: Vejo que de fato conhece os principios do nosso senhor" << std::endl;
-        }
-        else{
-            std::cout << "Melissa: ..." << std::endl;
-        }
-    }
-    else if(n == 3){
-        std::cout << "??? : Vallar Morghulis\n";
-        std::cout << "-----------------------------------------------------\n";
-		std::cout << "| 1- Nao sei falar russo		3- Valar Dothraki	   |\n";
-		std::cout << "|								                       |\n";
-		std::cout << "|	2- Valar Doeharis		    4- Bom dia             |\n";	
-        std::cout << "------------------------------------------------------\n Sua escolha: ";
-		checker(&op, 1, 4);
-
-        if(op == 2){
-            std::cout << "???: Eh bom encontrar companheiros de causa" << std::endl;
-        }
-        else{
-            std::cout << "???: Eu devo ter te confundido" << std::endl;
-        }
-
-    }
-    else if(n == 4){
-        std::cout << "Qual o nome de um dos dragoes da Daniela?" << std::endl;
-        std::cout << "-----------------------------------------\n";
-		std::cout << "| 1- Dracarys			3- Drohgo		   |\n";
-		std::cout << "|						        		   |\n";
-		std::cout << "|	2- Drogon			4- Dragon		   |\n";
-		std::cout << "-----------------------------------------\n Sua escolha: ";
-		checker(&op, 1, 4);
-
-        if(op == 2){
-            std::cout << "Narrador: Parabens, Biologo" << std::endl;
-        }
-        else{
-            std::cout << "Narrador: errroooou kkkkkk" << std::endl;
-        }        
-    }
-    else if(n == 5){
-        std::cout << "Quem eh a mulher vermelha?" << std::endl;
-        std::cout << "-----------------------------------------------------\n";
-		std::cout << "| 1- Feiticeira Escarlate		3- Melisandre		   |\n";
-		std::cout << "|								                       |\n";
-		std::cout << "|	2- Red Woman			    4- Sacerdotisa do fogo |\n";
-		std::cout << "-----------------------------------------------------\n Sua escolha: ";
-		checker(&op, 1, 4);
-
-         if(op == 3){
-            std::cout << "Narrador: Parabens!" << std::endl;
-        }
-        else{
-            std::cout << "Narrador: Voce eh burro, cara... que loucura" << std::endl;
-        } 
-    }
-    else {
-        std::cout << "Erro na definicao do quiz. Cheque seus parametros. Erro na posicao: " << op << std::endl;
-    }
-}
-void add_skill_pers(Personagem &player, int fase){//cria e adiciona skills de personagem
-    //criando habilidades
-    Habilidade voadora(" Voadora",30,15);
-    Habilidade kamehameha ("Kamehameha", 40, 30);
-    Habilidade katon ("Katon", 48, 35);
-    Habilidade choque_trovao ("Choque do trovao", 55, 40);
-    Habilidade golem ("Invocar Golem", 67, 50);
-    Habilidade soco_saitama ("Soco do Saitama", 120, 120);
-    Habilidade dracarys ("Dracarys", 140, 130);
-    Habilidade escorpiao ("Atirar escorpiao", 140, 130);
-
-    //adicionando habilidades
-    if(fase == 1)
-        player.add_skill(voadora);
-    else if(fase == 2)
-        player.add_skill(kamehameha);
-    else if(fase == 3)
-        player.add_skill(katon);
-    else if(fase == 4)
-        player.add_skill(choque_trovao);
-    else if (fase == 5)
-        player.add_skill(golem);
-    else if (fase == 6)
-        player.add_skill(soco_saitama);
-    else if(fase == 7)
-        player.add_skill(dracarys);
-    else if(fase == 8)
-        player.add_skill(escorpiao);
-}
-void add_skill_boss(Boss &boss, int fase){//cria e adiciona skills de boss
-    //criando habilidades
-    Habilidade pedrada(" Pedrada",30,15);
-    Habilidade corte_suave (" Corte Suave", 40, 30);
-    Habilidade corte_tubarao (" Corte Tubarao", 48, 35);
-    Habilidade corte_trovao (" Corte do Trovao", 55, 40);
-    Habilidade chute_flam (" Chute flamejante", 67, 50);
-    Habilidade furacao (" Furacao de gelo", 120, 120);
-    Habilidade dracarys (" Dracarys", 140, 130);
-    Habilidade escorpiao (" Atirar Escorpiao", 140, 130);
-
-    //adicionando habilidades
-    if(fase == 1)
-        boss.set_skill(pedrada);
-    else if(fase == 2)
-        boss.set_skill(corte_suave);
-    else if(fase == 3)
-        boss.set_skill(corte_tubarao);
-    else if(fase == 4)
-        boss.set_skill(corte_trovao);
-    else if (fase == 5)
-        boss.set_skill(chute_flam);
-    else if (fase == 6)
-        boss.set_skill(furacao);
-    else if(fase == 7)
-        boss.set_skill(dracarys);
-    else if(fase == 8)
-        boss.set_skill(escorpiao);
-}
 void Fase_1(Personagem &player, int t_num){
 
     Npc enemies[n_enemies];
     for(int i =0; i < n_enemies; i++){
-    enemies[i].set_life(30);
+    enemies[i].set_life(50);
     enemies[i].set_defense(8);
     enemies[i].set_max_attack(8);
     enemies[i].set_min_attack(5);
     enemies[i].set_name("Bandido");
     }
     
-    add_skill_pers(player, 1);
-    
-
     std::cout << "\n~ALGUM LUGAR NO MAR DE DORNE~ " <<std::endl;
     std::cout << "Maria: Bem Vindo a sua jornada," << player.get_name() << ". Voce foi invocado para este mundo para combater o mal iminente que assola nossos reinos" << std::endl;
     std::cout << "Maria: Eu sou a sarcedotisa Maria e vou lhe auxiliar na sua jornada. Na sua vida anterior voce era um otaku fracassado, mas de alguma forma lhe acharam digno de nos salvar" <<std::endl;
     std::cout << "Voce: Err... " << std::endl;
     std::cout << "Maria: Segundo a profecia, voce tera que passar por 7 provacoes antes de ser livre para voltar ao seu mundo. Primeiro vamos para dorne para conseguir alguns equipamentos." << std::endl;
     std::cout << "Maria: Nao se esqueca: O inverno esta chegando e a C&A tem varias promocoes em casacos" << std::endl;
+    
     pausar();
 
 
@@ -273,7 +66,6 @@ void Fase_1(Personagem &player, int t_num){
             Fase_1(player, 0);
         }
     }
-    
 
     std::cout << "Eliana: Eu nao precisava da sua ajuda, posso me defender sozinha" << std::endl;
     std::cout << "Narrador:  Eliana vai embora e te deixa sozinho" << std::endl;
@@ -282,27 +74,31 @@ void Fase_1(Personagem &player, int t_num){
     std::cout << "Maria:  Vamos para a Cidade Velha buscar mais informacoes" <<std::endl;
     std::cout << "Narrador: Assim, seguiram para Cidade Velha, para encontrar com os sabios de lah" << std::endl;  
     
-    int cash = reward(1, 20, player);
+    int cash = reward(1, 2, player);
+    add_skill_pers(player, 1);
     add_skill_pers(player, 2);
     
     std::cout << "\nVoce recebeu " << cash << " moedas" << std::endl;
-    std::cout << "\nVoce recebeu nova habilidade: Kamehameha" << std::endl;
-   
+    std::cout << "Voce recebeu nova habilidade: Voadora" << std::endl;
+    std::cout << "Voce recebeu nova habilidade: Kamehameha" << std::endl;
+    
+    player.display_stats();
     show_menu_h();
 }
 
 void Fase_2(Personagem &player, int t_num){
 
+    Npc treino("Inimigo", 10, 5, 8, 40);
     Npc enemies[n_enemies];
     for(int i = 0; i < n_enemies; i++){
-        enemies[i].set_life(35);
+        enemies[i].set_life(65);
         enemies[i].set_defense(8);
         enemies[i].set_max_attack(10);
         enemies[i].set_min_attack(7);
         enemies[i].set_name("Guarda");
     }
 
-    Boss loiro_jose ("Loiro Jose", 20, 12, 12, 100);
+    Boss loiro_jose ("Loiro Jose", 17, 12, 12, 100);
     add_skill_boss(loiro_jose, 2);
 
     pausar();
@@ -317,7 +113,7 @@ void Fase_2(Personagem &player, int t_num){
 
     pausar();
 
-    quiz(1);
+    quiz(1, player);
 
     pausar();
 
@@ -330,7 +126,7 @@ void Fase_2(Personagem &player, int t_num){
 
     int op = 1;
     while(op != 0){
-        show_menu(player, enemies[0], t_num, 2);
+        show_menu(player, treino, t_num, 2);
         std::cout << "Deseja acessar o menu novamente?(0 - NAO/ 1 - SIM)" << std::endl;
         checker(&op, 0,1);
     }
@@ -411,7 +207,7 @@ void Fase_3(Personagem &player, int t_num){
     std::cout << "Pessoa aleatoria: Vou sair de perto de voces" << std::endl;
 
     pausar();
-    quiz(3);
+    quiz(3, player);
     pausar();
     int op = 1;
     while(op != 0){
@@ -425,7 +221,7 @@ void Fase_3(Personagem &player, int t_num){
     std::cout << "\n Narrador: No caminho eles encontram com uma mulher vestida de vermelho e ela os aborda" << std::endl;
     std::cout << "???: Meu nome eh Melissa. Meu lorde disse que por aqui encontraria alguem capaz de nos salvar. Mas antes devo ter certeza de que sao voces" <<std::endl;
     
-    quiz(2);
+    quiz(2, player);
     int cash = reward(3, 15, player);
     std::cout << "\nVoce recebeu " << cash << " moedas" << std::endl;
 
@@ -513,7 +309,7 @@ void Fase_4(Personagem &player, int t_num){
     std::cout << "\nVoce recebeu nova Habilidade: Katon" << std::endl;
 
     pausar();
-    quiz(4);
+    quiz(4, player);
     pausar();
 
     std::cout << "Narrador: Apos derrotar Tiao os guardas vem atras de voce." << std::endl;
@@ -611,7 +407,7 @@ void Fase_5(Personagem &player, int t_num){
     std::cout << "\nVoce recebeu nova Habilidade: Katon" << std::endl;
 
     pausar();
-    quiz(5);
+    quiz(5, player);
     pausar();
 
     std::cout << "Theo: Voce nao faz ideia de como sou grato!" << std::endl;
@@ -712,7 +508,7 @@ void Fase_7(Personagem &player, int t_num){
     std::cout << "\nVoce deseja trair a Daniela? (1 - Sim/ 0 - Nao)" << std::endl;
     checker(&escolha, 0,1);
 
-    if(escolha == 1){
+    if(escolha == 0){
         std::cout << "Voce: Vamos apoiar Daniela. Nunca gostei desse Joao das Neves" << std::endl;
         Boss joao ("Joao das Neves", 80, 50, 40, 600);
         add_skill_boss(joao, 8);
@@ -732,7 +528,7 @@ void Fase_7(Personagem &player, int t_num){
             Fase_7(player, 0);
         }
     } 
-    else if (escolha == 2){
+    else if (escolha == 1){
         std::cout << "Voce: Vamos mata-la. Nunca gostei daquele calango" << std::endl;
         std::cout << "Narrador: Voce se junta aos traidores e lutar contra Daniela" << std::endl;
         Boss daniela ("Daniela", 80, 50, 40, 600);

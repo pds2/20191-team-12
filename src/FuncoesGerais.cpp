@@ -5,6 +5,195 @@
 #include <math.h>
 #include "jogo.h"
 
+
+#define n_enemies 3
+
+//funcoes jogo
+
+void pausar(){
+    //funcao para pausar o texto
+    std::cout << "\nPRESSIONE ENTER PARA CONTINUAR"<< std::endl;
+    std::cin.get();
+    system("clear");
+}
+bool exit_game(){
+    //funcao para sair do jogo
+    int c;
+    std::cout << "Deseja continuar? (1 - SIM / 0 - NAO)" << std::endl;
+    checker(&c, 0, 1);
+    if (c == 1){
+        std::cout << "Game: Boa Escolha, forasteiro!" << std::endl;
+        return true;
+    }else{ 
+        std::cout << "Game: Adeus, jovem medroso. O seu pai chora no banho ao lembrar que possui um(a) filho(a) covarde..." << std::endl;
+        exit(0);
+        return false;
+    }
+}
+void result_battle(int result, Personagem &player, int fase){//funcao que checa o resultado da batalha
+    //caso perca a batalha
+    if (result == 0){
+        pausar();
+        std::cout << "\n\nVOCE FOI DERROTADO! OBRIGADO POR JOGAR!!" << std::endl;
+        exit(0);
+    }
+    //caso ganhe a batalha
+    else if(result == 1){
+        std::cout << "\n Parabens pela vitoria!\n"<< std::endl;
+        pausar();
+    }
+    //caso fuja da batalha
+    else if(result == 3){
+        switch (fase) {
+            case 1:
+                Fase_1(player, 0);
+                break;
+            case 2:
+                Fase_2(player, 0);
+                break;
+            case 3:
+                Fase_3(player, 0);
+                break;
+            case 4:
+                Fase_4(player, 0);
+                break;
+            case 5:
+                Fase_5(player, 0);
+                break;
+            case 6:
+                Fase_6(player, 0);
+                break;
+            default:
+                Fase_7(player, 0);
+        }
+    }
+}
+void quiz(int n, Personagem &player){//quizes chamados nas fases
+    int op;
+    if(n == 1){
+        std::cout << "\nQual o time de futebol que o Clegane menos gosta?\n";
+        std::cout << "-------------------------------------------------\n";
+		std::cout << "| 1 - Corintians                      2 - Botafogo  |\n";
+		std::cout << "|                                                   |\n";
+		std::cout << "| 3 - Flamengo                 	    4 - Atlético  |\n";
+		std::cout << "-------------------------------------------------\n Sua escolha: ";
+		checker(&op, 1, 4);
+        if(op == 2){
+            std::cout << "Sabio: Vejo que tem um otimo senso de humor. Vou ajuda-lo" << std::endl;
+            int cash = reward(2, 1, player);
+            std::cout << "\nVoce recebeu " << cash << " moedas" << std::endl;
+        }
+        else{
+            std::cout << "Sabio: Eh tao lerdo quanto parece..." << std::endl;
+        }
+    }
+    else if(n == 2){
+        std::cout << "\nO que nos dizemos ao Deus da Morte?" << std::endl;
+        std::cout << "-------------------------------------------------------------\n";
+		std::cout << "| 1 - Nao assisto Death Note     2 - Sem tempo, irmao        |\n";
+		std::cout << "|                                                   	   |\n";
+		std::cout << "| 3 - Hoje nao                   4 - Conheca a minha espada  |\n";
+		std::cout << "-------------------------------------------------------------\n Sua escolha: ";
+		checker(&op, 1, 4);
+
+        if(op == 3){
+            std::cout << "Melissa: Vejo que de fato conhece os principios do nosso senhor" << std::endl;
+            int cash = reward(3, 2, player);
+            std::cout << "\nVoce recebeu " << cash << " moedas" << std::endl;
+        }
+        else{
+            std::cout << "Melissa: ..." << std::endl;
+        }
+    }
+    else if(n == 3){
+        std::cout << "??? : Vallar Morghulis\n";
+        std::cout << "-----------------------------------------------------\n";
+		std::cout << "| 1- Nao sei falar russo		3- Valar Dothraki	   |\n";
+		std::cout << "|								                       |\n";
+		std::cout << "|	2- Valar Doeharis		    4- Bom dia             |\n";	
+        std::cout << "------------------------------------------------------\n Sua escolha: ";
+		checker(&op, 1, 4);
+
+        if(op == 2){
+            std::cout << "???: Eh bom encontrar companheiros de causa" << std::endl;
+            int cash = reward(4, 2, player);
+            std::cout << "\nVoce recebeu " << cash << " moedas" << std::endl;
+        }
+        else{
+            std::cout << "???: Eu devo ter te confundido" << std::endl;
+        }
+
+    }
+    else if(n == 4){
+        std::cout << "Qual o nome de um dos dragoes da Daniela?" << std::endl;
+        std::cout << "-----------------------------------------\n";
+		std::cout << "| 1- Dracarys			3- Drohgo		   |\n";
+		std::cout << "|						        		   |\n";
+		std::cout << "|	2- Drogon			4- Dragon		   |\n";
+		std::cout << "-----------------------------------------\n Sua escolha: ";
+		checker(&op, 1, 4);
+
+        if(op == 2){
+            std::cout << "Narrador: Parabens, Biologo" << std::endl;
+            int cash = reward(4, 2, player);
+            std::cout << "\nVoce recebeu " << cash << " moedas" << std::endl;
+        }
+        else{
+            std::cout << "Narrador: errroooou kkkkkk" << std::endl;
+        }        
+    }
+    else if(n == 5){
+        std::cout << "Quem eh a mulher vermelha?" << std::endl;
+        std::cout << "-----------------------------------------------------\n";
+		std::cout << "| 1- Feiticeira Escarlate		3- Melisandre		   |\n";
+		std::cout << "|								                       |\n";
+		std::cout << "|	2- Red Woman			    4- Sacerdotisa do fogo |\n";
+		std::cout << "-----------------------------------------------------\n Sua escolha: ";
+		checker(&op, 1, 4);
+
+         if(op == 3){
+            std::cout << "Narrador: Parabens!" << std::endl;
+            int cash = reward(5, 2, player);
+            std::cout << "\nVoce recebeu " << cash << " moedas" << std::endl;
+        }
+        else{
+            std::cout << "Narrador: Voce eh burro, cara... que loucura" << std::endl;
+        } 
+    }
+    else {
+        std::cout << "Erro na definicao do quiz. Cheque seus parametros. Erro na posicao: " << op << std::endl;
+    }
+}
+void add_skill_pers(Personagem &player, int fase){//cria e adiciona skills de personagem
+    //criando habilidades
+    Habilidade voadora(" Voadora",30,15);
+    Habilidade kamehameha ("Kamehameha", 40, 30);
+    Habilidade katon ("Katon", 48, 35);
+    Habilidade choque_trovao ("Choque do trovao", 55, 40);
+    Habilidade golem ("Invocar Golem", 67, 50);
+    Habilidade soco_saitama ("Soco do Saitama", 120, 120);
+    Habilidade dracarys ("Dracarys", 140, 130);
+    Habilidade escorpiao ("Atirar escorpiao", 140, 130);
+
+    //adicionando habilidades
+    if(fase == 1)
+        player.add_skill(voadora);
+    else if(fase == 2)
+        player.add_skill(kamehameha);
+    else if(fase == 3)
+        player.add_skill(katon);
+    else if(fase == 4)
+        player.add_skill(choque_trovao);
+    else if (fase == 5)
+        player.add_skill(golem);
+    else if (fase == 6)
+        player.add_skill(soco_saitama);
+    else if(fase == 7)
+        player.add_skill(dracarys);
+    else if(fase == 8)
+        player.add_skill(escorpiao);
+}
+
 // Validação
 
 void checker(int *variavel, int p1, int p2){//funcao generica para checar opcoes
@@ -28,7 +217,35 @@ void checker(int *variavel, int p1, int p2){//funcao generica para checar opcoes
 	
 	*variavel = numero;
 }
+void add_skill_boss(Boss &boss, int fase){//cria e adiciona skills de boss
+    //criando habilidades
+    Habilidade pedrada(" Pedrada",30,15);
+    Habilidade corte_suave (" Corte Suave", 40, 30);
+    Habilidade corte_tubarao (" Corte Tubarao", 48, 35);
+    Habilidade corte_trovao (" Corte do Trovao", 55, 40);
+    Habilidade chute_flam (" Chute flamejante", 67, 50);
+    Habilidade furacao (" Furacao de gelo", 120, 120);
+    Habilidade dracarys (" Dracarys", 140, 130);
+    Habilidade escorpiao (" Atirar Escorpiao", 140, 130);
 
+    //adicionando habilidades
+    if(fase == 1)
+        boss.set_skill(pedrada);
+    else if(fase == 2)
+        boss.set_skill(corte_suave);
+    else if(fase == 3)
+        boss.set_skill(corte_tubarao);
+    else if(fase == 4)
+        boss.set_skill(corte_trovao);
+    else if (fase == 5)
+        boss.set_skill(chute_flam);
+    else if (fase == 6)
+        boss.set_skill(furacao);
+    else if(fase == 7)
+        boss.set_skill(dracarys);
+    else if(fase == 8)
+        boss.set_skill(escorpiao);
+}
 // Impressão
 
 std::string adjust_square(std::string to_print, int num){
