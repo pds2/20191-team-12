@@ -255,6 +255,8 @@ void Fase_3(Personagem &player, int t_num){
 }
 
 void Fase_4(Personagem &player, int t_num){
+
+    Npc npc_treino("Inimigo", 10, 5, 8, 50);
     Npc enemies[n_enemies];
     for(int i = 0; i < n_enemies; i++){
         enemies[i].set_life(60);
@@ -279,7 +281,7 @@ void Fase_4(Personagem &player, int t_num){
     pausar();
     int op = 1;
     while(op != 0){
-        show_menu(player, enemies[0], t_num, 4);
+        show_menu(player, npc_treino, t_num, 4);
         std::cout << "Deseja acessar o menu novamente?(0 - NAO/ 1 - SIM)" << std::endl;
         checker(&op, 0,1);
     }
@@ -342,6 +344,8 @@ void Fase_4(Personagem &player, int t_num){
 }
 
 void Fase_5(Personagem &player, int t_num){
+
+    Npc npc_treino("Inimigo", 10, 5, 8, 150);
     Npc enemies[n_enemies];
     for(int i = 0; i < n_enemies; i++){
         enemies[i].set_life(70);
@@ -416,6 +420,8 @@ void Fase_5(Personagem &player, int t_num){
     pausar();
 }
 void Fase_6(Personagem &player, int t_num){
+
+    Npc npc_treino("Inimigo", 10, 5, 8, 150);
     Npc enemies[n_enemies];
     for(int i = 0; i < n_enemies; i++){
         enemies[i].set_life(80);
@@ -484,8 +490,10 @@ void Fase_6(Personagem &player, int t_num){
     pausar();
 }
 void Fase_7(Personagem &player, int t_num){
+
     int escolha;
     int op = 1;
+    Npc npc_treino("Inimigo", 10, 5, 8, 150);
     Npc enemies[n_enemies];
     for(int i = 0; i < n_enemies; i++){
         enemies[i].set_life(35);

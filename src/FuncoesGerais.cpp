@@ -158,14 +158,14 @@ void add_skill_pers(Personagem &player, int fase){//cria e adiciona skills de pe
 }
 void add_skill_boss(Boss &boss, int fase){//cria e adiciona skills de boss
     //criando habilidades
-    Habilidade pedrada(" Pedrada",30,15);
-    Habilidade corte_suave (" Corte Suave", 40, 30);
-    Habilidade corte_tubarao (" Corte Tubarao", 48, 35);
-    Habilidade corte_trovao (" Corte do Trovao", 55, 40);
-    Habilidade chute_flam (" Chute flamejante", 67, 50);
-    Habilidade furacao (" Furacao de gelo", 120, 120);
-    Habilidade dracarys (" Dracarys", 140, 130);
-    Habilidade escorpiao (" Atirar Escorpiao", 140, 130);
+    Habilidade pedrada(" Pedrada",30,0);
+    Habilidade corte_suave (" Corte Suave", 40, 0);
+    Habilidade corte_tubarao (" Corte Tubarao", 48, 0);
+    Habilidade corte_trovao (" Corte do Trovao", 80, 0);
+    Habilidade chute_flam (" Chute flamejante", 99, 0);
+    Habilidade furacao (" Furacao de gelo", 120, 0);
+    Habilidade dracarys (" Dracarys", 300, 0);
+    Habilidade escorpiao (" Atirar Escorpiao", 300, 0);
 
     //adicionando habilidades
     if(fase == 1)
