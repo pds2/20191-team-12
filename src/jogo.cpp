@@ -129,10 +129,10 @@ void quiz(int n){//quizes chamados nas fases
 		checker(&op, 1, 4);
 
         if(op == 2){
-            std::cout << "" << std::endl;
+            std::cout << "Narrador: Parabens, Biologo" << std::endl;
         }
         else{
-            std::cout << "" << std::endl;
+            std::cout << "Narrador: errroooou kkkkkk" << std::endl;
         }        
     }
     else if(n == 5){
@@ -145,10 +145,10 @@ void quiz(int n){//quizes chamados nas fases
 		checker(&op, 1, 4);
 
          if(op == 3){
-            std::cout << "" << std::endl;
+            std::cout << "Narrador: Parabens!" << std::endl;
         }
         else{
-            std::cout << "" << std::endl;
+            std::cout << "Narrador: Voce eh burro, cara... que loucura" << std::endl;
         } 
     }
     else {

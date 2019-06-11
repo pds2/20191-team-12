@@ -1,6 +1,6 @@
 #include <iostream>
-#include <jogo.h>
-#include <Personagem.h>
+#include "jogo.h"
+#include "Personagem.h"
 
 #define CONTINUAR 1
 
