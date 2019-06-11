@@ -80,7 +80,7 @@ void Fase_1(Personagem &player, int& t_num){
     std::cout << "Maria:  Vamos para a Cidade Velha buscar mais informacoes" <<std::endl;
     std::cout << "Narrador: Assim, seguiram para Cidade Velha, para encontrar com os sabios de lah" << std::endl;  
     
-    int cash = reward(1, 2, player);
+    int cash = reward(1, 1.5, player);
     add_skill_pers(player, 1);
     
     std::cout << "\nVoce recebeu " << cash << " moedas" << std::endl;
@@ -169,18 +169,18 @@ void Fase_2(Personagem &player, int& t_num){
         }else{//fugiu, volta a fase do comeco
             Fase_2(player, a);
         }
-    pausar();
 
     std::cout << "Sir Louro Jose: Percebi que eh digno de minha ajuda." << std::endl;
     std::cout <<"Maria: Vamos continuar rumo ao norte." << std::endl;    
 
-    int cash = reward(2, 2, player);
+    int cash = reward(2, 1.5, player);
     add_skill_pers(player, 2);
     
     std::cout << "Voce recebeu " << cash << " moedas" << std::endl;
     std::cout << "\nVoce recebeu nova Habilidade: Kamehameha" << std::endl;
     player.display_stats();
-
+    show_menu_h();
+    
     pausar();
 }
 
@@ -244,19 +244,18 @@ void Fase_3(Personagem &player, int& t_num){
             Fase_3(player, a);
         }
 
-    pausar();
-
     std::cout << "Estenio: Parece que era digno, afinal. Siga para Castelo de Rocha, tenho uma missao para voce: matar Tiao Lago" << std::endl;
     std::cout << "Voce: Porque eu faria isso?" << std::endl;
     std::cout << "Estenio: Porque se me ajudar eu apoiarei a sua causa" << std::endl;
     
-    int cash = reward(3, 2, player);
+    int cash = reward(3, 1.5, player);
     add_skill_pers(player, 3);
 
     std::cout << "\nVoce recebeu nova Habilidade: Katon" << std::endl;
     std::cout << "Voce recebeu " << cash << " moedas" << std::endl;
 
     player.display_stats();
+    show_menu_h();
     pausar();
 }
 
@@ -309,7 +308,7 @@ void Fase_4(Personagem &player, int& t_num){
     pausar();
 
     add_skill_pers(player, 4);
-    int cash = reward(4, 2, player);
+    int cash = reward(4, 1.5, player);
     std::cout << "\nVoce recebeu " << cash << " moedas" << std::endl;
     std::cout << "\nVoce recebeu nova Habilidade: Choque do Trovao" << std::endl;
 
@@ -333,8 +332,6 @@ void Fase_4(Personagem &player, int& t_num){
             Fase_4(player, a);
         }
     }
-
-    pausar();
 
     std::cout << "Voces dois fogem pelo mar e chegam as ilhas de ferro" << std::endl;
     std::cout << "\n ~NO PORTO~" << std::endl;
@@ -412,7 +409,7 @@ void Fase_5(Personagem &player, int& t_num){
     
 
     add_skill_pers(player, 5);
-    int cash = reward(5, 2, player);
+    int cash = reward(5, 1.5, player);
 
     std::cout << "\nVoce recebeu " << cash << " moedas" << std::endl;
     std::cout << "\nVoce recebeu nova Habilidade: Invocar Golem" << std::endl;
@@ -426,6 +423,7 @@ void Fase_5(Personagem &player, int& t_num){
     std::cout << "Theo: Policial disfarcado. Enconsta na parede bonita, vou te levar pro norte." << std::endl;
     
     player.display_stats();
+    show_menu_h();
     pausar();
 }
 void Fase_6(Personagem &player, int& t_num){
@@ -492,12 +490,13 @@ void Fase_6(Personagem &player, int& t_num){
     std::cout << "Narrador: apos a batalha todos lhe saudam como heroi. Entretanto, a luta continua. Voce deve apoiar Daniela a tomar o trono de Celia" <<std::endl;
     
     add_skill_pers(player, 6);
-    int cash = reward(6, 3, player);
+    int cash = reward(6, 1.5, player);
 
     std::cout << "\nVoce recebeu " << cash << " moedas" << std::endl;
     std::cout << "\nVoce recebeu nova Habilidade: Soco do Saitama" << std::endl;
 
     player.display_stats();
+    show_menu_h();
     pausar();
 }
 void Fase_7(Personagem &player, int& t_num){
