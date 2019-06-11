@@ -11,10 +11,10 @@
 
 #define n_enemies 3
 
-void Fase_1(Personagem &player, int t_num);
-void Fase_2(Personagem &player, int t_num);
-void Fase_3(Personagem &player, int t_num);
-void Fase_4(Personagem &player, int t_num);
-void Fase_5(Personagem &player, int t_num);
-void Fase_6(Personagem &player, int t_num);
-void Fase_7(Personagem &player, int t_num);
+void Fase_1(Personagem &player, int& t_num);
+void Fase_2(Personagem &player, int& t_num);
+void Fase_3(Personagem &player, int& t_num);
+void Fase_4(Personagem &player, int& t_num);
+void Fase_5(Personagem &player, int& t_num);
+void Fase_6(Personagem &player, int& t_num);
+void Fase_7(Personagem &player, int& t_num);
