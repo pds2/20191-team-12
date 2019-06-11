@@ -6,6 +6,7 @@
 #include "FuncoesGerais.h"
 #include "Personagem.h"
 #include "npc.h"
+#include "jogo.h"
 
 
 void treinar(Personagem &heroi, Npc &npc, int t_num, int fase_num){ //t_num = quantidade de numero de treino
@@ -24,20 +25,26 @@ void treinar(Personagem &heroi, Npc &npc, int t_num, int fase_num){ //t_num = qu
 		return;
 	}	
 
-	int op;
+	int op, result;
 	srand (time(NULL));
 
 	do{ 
 		int gold = reward(fase_num, 2, heroi); //variação de gold em relação à fase
-													
-		if(batalha(heroi, enemies[t_num - 1]) == 0){
-			if(heroi.get_life() > 0){
-				heroi.set_gold(heroi.get_gold() - gold);
-				std::cout << "Voce envergonhou os 7 Deuses e seus pais. Voce perdeu " << gold << "moedas." << std::endl; 
-			}
-		}else{
+		result = batalha(heroi, enemies[t_num - 1]);
+		if(result == 0){
+			std::cout << "Voce envergonhou os 7 Deuses e seus pais. Voce perdeu o jogo..." << std::endl;
+			pausar();
+			exit(0);
+
+		}											
+		else if(result == 1){
 			heroi.set_gold(heroi.get_gold() + gold);
 			std::cout << "Parabens, voce matou uma pessoa! Voce recebeu " << gold << " moedas." << std::endl;
+		}else{
+			float lost_gold_percentage = 0.2;
+			float lost_gold = (float)heroi.get_gold() * lost_gold_percentage;
+			heroi.set_gold(heroi.get_gold() - (int)lost_gold);
+			std::cout << "Voce jogou avioezinhos de dinheiro para distrair o inimigo e saiu correndo! Voce continua vivo, mas perdeu " << lost_gold << " moedas." << std::endl;
 		}
 		t_num--;
 
