@@ -28,7 +28,9 @@ int batalha(Personagem &heroi, Mob &npc){
 		checker(&op, 1, 4);
 		switch(op){
 			case 1: atacar(heroi, npc);
-					atacar_mob(heroi, npc);
+					if(npc.get_life() > 0){
+						atacar_mob(heroi, npc);
+					}
 					break;
 			case 2: menu2(heroi, npc);
 					break;
@@ -80,7 +82,7 @@ void menu2(Personagem &heroi, Mob &npc){ // Menu da opção 2
 		if(op == heroi.get_nskill()){
 		return;	
 		}
-
+1
 		erro = atacar_hab(heroi, npc, heroi.get_skill(op));
 		
 		
