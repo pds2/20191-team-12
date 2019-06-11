@@ -29,7 +29,7 @@ void treinar(Personagem &heroi, Npc &npc, int t_num, int fase_num){ //t_num = qu
 	srand (time(NULL));
 
 	do{ 
-		; //variação de gold em relação à fase
+		//variação de gold em relação à fase
 		result = batalha(heroi, enemies[t_num - 1]);
 		if(result == 0){
 			std::cout << "Voce envergonhou os 7 Deuses e seus pais. Voce perdeu o jogo..." << std::endl;
