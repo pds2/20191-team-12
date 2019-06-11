@@ -11,6 +11,7 @@
 
 #define n_enemies 3
 
+void jogo();
 void Fase_1(Personagem &player, int& t_num);
 void Fase_2(Personagem &player, int& t_num);
 void Fase_3(Personagem &player, int& t_num);
