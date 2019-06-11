@@ -35,12 +35,12 @@ void quiz(int n, Personagem &player){//quizes chamados nas fases
     int op;
     if(n == 1){
         std::cout << "\nQual o time de futebol que o Clegane menos gosta?\n";
-        std::cout << "-------------------------------------------------\n";
-		std::cout << "| 1 - Corintians                      2 - Botafogo  |\n";
-		std::cout << "|                                                   |\n";
-		std::cout << "| 3 - Flamengo                 	    4 - Atlético  |\n";
-		std::cout << "-------------------------------------------------\n Sua escolha: ";
-		checker(&op, 1, 4);
+        std::cout << "+---------------------------------------------------+\n";
+	std::cout << "| 1 - Corintians                      2 - Botafogo  |\n";
+	std::cout << "|                                                   |\n";
+	std::cout << "| 3 - Flamengo                 	    4 - Atlético  |\n";
+	std::cout << "+---------------------------------------------------+\n Sua escolha: ";
+	checker(&op, 1, 4);
         if(op == 2){
             std::cout << "Sabio: Vejo que tem um otimo senso de humor. Vou ajuda-lo" << std::endl;
             int cash = reward(2, 1.2, player);
@@ -52,12 +52,12 @@ void quiz(int n, Personagem &player){//quizes chamados nas fases
     }
     else if(n == 2){
         std::cout << "\nO que nos dizemos ao Deus da Morte?" << std::endl;
-        std::cout << "-------------------------------------------------------------\n";
-		std::cout << "| 1 - Nao assisto Death Note     2 - Sem tempo, irmao        |\n";
-		std::cout << "|                                                   	   |\n";
-		std::cout << "| 3 - Hoje nao                   4 - Conheca a minha espada  |\n";
-		std::cout << "-------------------------------------------------------------\n Sua escolha: ";
-		checker(&op, 1, 4);
+        std::cout << "+------------------------------------------------------------+\n";
+	std::cout << "| 1 - Nao assisto Death Note     2 - Sem tempo, irmao        |\n";
+	std::cout << "|                                                   	   |\n";
+	std::cout << "| 3 - Hoje nao                   4 - Conheca a minha espada  |\n";
+	std::cout << "+------------------------------------------------------------+\n Sua escolha: ";
+	checker(&op, 1, 4);
 
         if(op == 3){
             std::cout << "Melissa: Vejo que de fato conhece os principios do nosso senhor" << std::endl;
@@ -70,11 +70,11 @@ void quiz(int n, Personagem &player){//quizes chamados nas fases
     }
     else if(n == 3){
         std::cout << "??? : Vallar Morghulis\n";
-        std::cout << "-----------------------------------------------------\n";
-		std::cout << "| 1- Nao sei falar russo		3- Valar Dothraki	   |\n";
-		std::cout << "|								                       |\n";
-		std::cout << "|	2- Valar Doeharis		    4- Bom dia             |\n";	
-        std::cout << "------------------------------------------------------\n Sua escolha: ";
+        std::cout << "+----------------------------------------------------+\n";
+	std::cout << "| 1- Nao sei falar russo		3- Valar Dothraki  |\n";
+	std::cout << "|			      	                           |\n";
+	std::cout << "|	2- Valar Doeharis		4- Bom dia         |\n";	
+        std::cout << "+----------------------------------------------------+\n Sua escolha: ";
 		checker(&op, 1, 4);
 
         if(op == 2){
@@ -89,11 +89,11 @@ void quiz(int n, Personagem &player){//quizes chamados nas fases
     }
     else if(n == 4){
         std::cout << "Qual o nome de um dos dragoes da Daniela?" << std::endl;
-        std::cout << "-----------------------------------------\n";
-		std::cout << "| 1- Dracarys			3- Drohgo		   |\n";
-		std::cout << "|						        		   |\n";
-		std::cout << "|	2- Drogon			4- Dragon		   |\n";
-		std::cout << "-----------------------------------------\n Sua escolha: ";
+        std::cout << "+----------------------------------------+\n";
+	std::cout << "| 1- Dracarys		3- Drohgo      |\n";
+	std::cout << "|				      	       |\n";
+	std::cout << "|	2- Drogon		4- Dragon      |\n";
+	std::cout << "+----------------------------------------+\n Sua escolha: ";
 		checker(&op, 1, 4);
 
         if(op == 2){
@@ -107,11 +107,11 @@ void quiz(int n, Personagem &player){//quizes chamados nas fases
     }
     else if(n == 5){
         std::cout << "Quem eh a mulher vermelha?" << std::endl;
-        std::cout << "-----------------------------------------------------\n";
-		std::cout << "| 1- Feiticeira Escarlate		3- Melisandre		   |\n";
-		std::cout << "|								                       |\n";
-		std::cout << "|	2- Red Woman			    4- Sacerdotisa do fogo |\n";
-		std::cout << "-----------------------------------------------------\n Sua escolha: ";
+        std::cout << "+----------------------------------------------------+\n";
+	std::cout << "| 1- Feiticeira Escarlate	    3- Melisandre          |\n";
+	std::cout << "|							   |\n";
+	std::cout << "|	2- Red Woman		    4- Sacerdotisa do fogo |\n";
+	std::cout << "+----------------------------------------------------+\n Sua escolha: ";
 		checker(&op, 1, 4);
 
          if(op == 3){
