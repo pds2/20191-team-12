@@ -30,44 +30,7 @@ bool exit_game(){
         return false;
     }
 }
-void result_battle(int result, Personagem &player, int fase){//funcao que checa o resultado da batalha
-    //caso perca a batalha
-    if (result == 0){
-        pausar();
-        std::cout << "\n\nVOCE FOI DERROTADO! OBRIGADO POR JOGAR!!" << std::endl;
-        exit(0);
-    }
-    //caso ganhe a batalha
-    else if(result == 1){
-        std::cout << "\n Parabens pela vitoria!\n"<< std::endl;
-        pausar();
-    }
-    //caso fuja da batalha
-    else if(result == 3){
-        switch (fase) {
-            case 1:
-                Fase_1(player, 0);
-                break;
-            case 2:
-                Fase_2(player, 0);
-                break;
-            case 3:
-                Fase_3(player, 0);
-                break;
-            case 4:
-                Fase_4(player, 0);
-                break;
-            case 5:
-                Fase_5(player, 0);
-                break;
-            case 6:
-                Fase_6(player, 0);
-                break;
-            default:
-                Fase_7(player, 0);
-        }
-    }
-}
+
 void quiz(int n, Personagem &player){//quizes chamados nas fases
     int op;
     if(n == 1){
@@ -166,14 +129,14 @@ void quiz(int n, Personagem &player){//quizes chamados nas fases
 }
 void add_skill_pers(Personagem &player, int fase){//cria e adiciona skills de personagem
     //criando habilidades
-    Habilidade voadora(" Voadora",30,15);
-    Habilidade kamehameha ("Kamehameha", 40, 30);
-    Habilidade katon ("Katon", 48, 35);
-    Habilidade choque_trovao ("Choque do trovao", 55, 40);
+    Habilidade voadora(" Voadora",30,10);
+    Habilidade kamehameha ("Kamehameha", 40, 15);
+    Habilidade katon ("Katon", 70, 25);
+    Habilidade choque_trovao ("Choque do trovao", 100, 40);
     Habilidade golem ("Invocar Golem", 67, 50);
-    Habilidade soco_saitama ("Soco do Saitama", 120, 120);
-    Habilidade dracarys ("Dracarys", 140, 130);
-    Habilidade escorpiao ("Atirar escorpiao", 140, 130);
+    Habilidade soco_saitama ("Soco do Saitama", 220, 50);
+    Habilidade dracarys ("Dracarys", 400, 60);
+    Habilidade escorpiao ("Atirar escorpiao", 400, 60);
 
     //adicionando habilidades
     if(fase == 1)
@@ -193,40 +156,16 @@ void add_skill_pers(Personagem &player, int fase){//cria e adiciona skills de pe
     else if(fase == 8)
         player.add_skill(escorpiao);
 }
-
-// Validação
-
-void checker(int *variavel, int p1, int p2){//funcao generica para checar opcoes
-	int numero = *variavel;
-	std::string numero_;
-	while(true){
-		try{
-			std::getline(std::cin, numero_);
-			numero = std::atoi(numero_.c_str());
-
-			if(numero < p1 || numero > p2){
-				throw "Entrada invalida.";
-			} else {
-				break;
-			}
-		} catch(const char* e){
-			std::cout << "Erro: " << e << std::endl;
-			std::cout << "Escolha uma entrada valida!" << std::endl;
-		}
-	}
-	
-	*variavel = numero;
-}
 void add_skill_boss(Boss &boss, int fase){//cria e adiciona skills de boss
     //criando habilidades
-    Habilidade pedrada(" Pedrada",30,15);
-    Habilidade corte_suave (" Corte Suave", 40, 30);
-    Habilidade corte_tubarao (" Corte Tubarao", 48, 35);
-    Habilidade corte_trovao (" Corte do Trovao", 55, 40);
-    Habilidade chute_flam (" Chute flamejante", 67, 50);
-    Habilidade furacao (" Furacao de gelo", 120, 120);
-    Habilidade dracarys (" Dracarys", 140, 130);
-    Habilidade escorpiao (" Atirar Escorpiao", 140, 130);
+    Habilidade pedrada(" Pedrada",30,0);
+    Habilidade corte_suave (" Corte Suave", 40, 0);
+    Habilidade corte_tubarao (" Corte Tubarao", 48, 0);
+    Habilidade corte_trovao (" Corte do Trovao", 80, 0);
+    Habilidade chute_flam (" Chute flamejante", 99, 0);
+    Habilidade furacao (" Furacao de gelo", 120, 0);
+    Habilidade dracarys (" Dracarys", 300, 0);
+    Habilidade escorpiao (" Atirar Escorpiao", 300, 0);
 
     //adicionando habilidades
     if(fase == 1)
@@ -268,13 +207,37 @@ void print_square(std::string to_print1, std::string to_print2, std::string to_p
 +-----------------------------------+)" << std::endl;
 }
 
+// Validação
+
+void checker(int *variavel, int p1, int p2){//funcao generica para checar opcoes
+	int numero = *variavel;
+	std::string numero_;
+	while(true){
+		try{
+			std::getline(std::cin, numero_);
+			numero = std::atoi(numero_.c_str());
+
+			if(numero < p1 || numero > p2){
+				throw "Entrada invalida.";
+			} else {
+				break;
+			}
+		} catch(const char* e){
+			std::cout << "Erro: " << e << std::endl;
+			std::cout << "Escolha uma entrada valida!" << std::endl;
+		}
+	}
+	
+	*variavel = numero;
+}
+
 int reward(int fase_num, int multiplicador, Personagem &player){ //função de recompensa de ouro
 	
 	srand (time(NULL));
 	const int goldinicial = (rand()% 10 + 10); // varia entre 10 e 20
 	float resultado;
 
-	resultado = pow(multiplicador,(fase_num - 1)) * goldinicial;
+	resultado = pow(multiplicador,(fase_num)) * goldinicial;
 
 	player.set_gold((player.get_gold()) + (int)resultado);
 

@@ -11,6 +11,7 @@
 
 void Fase_1(Personagem &player, int t_num){
 
+    Npc npc_treino("Inimigo", 10, 5, 8, 30);
     Npc enemies[n_enemies];
     for(int i =0; i < n_enemies; i++){
     enemies[i].set_life(50);
@@ -36,7 +37,7 @@ void Fase_1(Personagem &player, int t_num){
    
     int op = 1;
     while(op != 0){
-        show_menu(player, enemies[0], t_num, 1);
+        show_menu(player, npc_treino, t_num, 1);
         std::cout << "Deseja acessar o menu novamente?(0 - NAO/ 1 - SIM)" << std::endl;
         checker(&op, 0,1);
     }
@@ -76,11 +77,9 @@ void Fase_1(Personagem &player, int t_num){
     
     int cash = reward(1, 2, player);
     add_skill_pers(player, 1);
-    add_skill_pers(player, 2);
     
     std::cout << "\nVoce recebeu " << cash << " moedas" << std::endl;
     std::cout << "Voce recebeu nova habilidade: Voadora" << std::endl;
-    std::cout << "Voce recebeu nova habilidade: Kamehameha" << std::endl;
     
     player.display_stats();
     show_menu_h();
@@ -88,7 +87,7 @@ void Fase_1(Personagem &player, int t_num){
 
 void Fase_2(Personagem &player, int t_num){
 
-    Npc treino("Inimigo", 10, 5, 8, 40);
+    Npc npc_treino("Inimigo", 10, 5, 8, 40);
     Npc enemies[n_enemies];
     for(int i = 0; i < n_enemies; i++){
         enemies[i].set_life(65);
@@ -98,7 +97,7 @@ void Fase_2(Personagem &player, int t_num){
         enemies[i].set_name("Guarda");
     }
 
-    Boss loiro_jose ("Loiro Jose", 17, 12, 12, 100);
+    Boss loiro_jose ("Loiro Jose", 20, 15, 12, 100);
     add_skill_boss(loiro_jose, 2);
 
     pausar();
@@ -126,7 +125,7 @@ void Fase_2(Personagem &player, int t_num){
 
     int op = 1;
     while(op != 0){
-        show_menu(player, treino, t_num, 2);
+        show_menu(player, npc_treino, t_num, 2);
         std::cout << "Deseja acessar o menu novamente?(0 - NAO/ 1 - SIM)" << std::endl;
         checker(&op, 0,1);
     }
@@ -169,27 +168,21 @@ void Fase_2(Personagem &player, int t_num){
     std::cout << "Sir Louro Jose: Percebi que eh digno de minha ajuda." << std::endl;
     std::cout <<"Maria: Vamos continuar rumo ao norte." << std::endl;    
 
-    int cash = reward(2, 30, player);
+    int cash = reward(2, 2, player);
     add_skill_pers(player, 2);
     
     std::cout << "Voce recebeu " << cash << " moedas" << std::endl;
     std::cout << "\nVoce recebeu nova Habilidade: Kamehameha" << std::endl;
+    player.display_stats();
 
     pausar();
 }
 
 void Fase_3(Personagem &player, int t_num){
 
-    Npc enemies[n_enemies];
-    for(int i = 0; i < n_enemies; i++){
-        enemies[i].set_life(40);
-        enemies[i].set_defense(8);
-        enemies[i].set_max_attack(12);
-        enemies[i].set_min_attack(9);
-        enemies[i].set_name("Ladrao");
-    }
+    Npc npc_treino("Inimigo", 10, 5, 8, 50);
 
-    Boss estenio ("Estenio Barao", 25, 15, 12, 250);
+    Boss estenio ("Estenio Barao", 23, 15, 12, 250);
     add_skill_boss(estenio, 2);
 
 
@@ -211,7 +204,7 @@ void Fase_3(Personagem &player, int t_num){
     pausar();
     int op = 1;
     while(op != 0){
-        show_menu(player, enemies[0], t_num, 3);
+        show_menu(player, npc_treino, t_num, 3);
         std::cout << "Deseja acessar o menu novamente?(0 - NAO/ 1 - SIM)" << std::endl;
         checker(&op, 0,1);
     }
@@ -222,8 +215,7 @@ void Fase_3(Personagem &player, int t_num){
     std::cout << "???: Meu nome eh Melissa. Meu lorde disse que por aqui encontraria alguem capaz de nos salvar. Mas antes devo ter certeza de que sao voces" <<std::endl;
     
     quiz(2, player);
-    int cash = reward(3, 15, player);
-    std::cout << "\nVoce recebeu " << cash << " moedas" << std::endl;
+    
 
     pausar();
 
@@ -251,19 +243,24 @@ void Fase_3(Personagem &player, int t_num){
     std::cout << "Voce: Porque eu faria isso?" << std::endl;
     std::cout << "Estenio: Porque se me ajudar eu apoiarei a sua causa" << std::endl;
     
-    cash = reward(3, 40, player);
+    int cash = reward(3, 2, player);
     add_skill_pers(player, 3);
 
     std::cout << "\nVoce recebeu nova Habilidade: Katon" << std::endl;
     std::cout << "Voce recebeu " << cash << " moedas" << std::endl;
+
+    player.display_stats();
+    pausar();
 }
 
 void Fase_4(Personagem &player, int t_num){
+
+    Npc npc_treino("Inimigo", 10, 5, 8, 50);
     Npc enemies[n_enemies];
     for(int i = 0; i < n_enemies; i++){
-        enemies[i].set_life(50);
+        enemies[i].set_life(60);
         enemies[i].set_defense(10);
-        enemies[i].set_max_attack(17);
+        enemies[i].set_max_attack(12);
         enemies[i].set_min_attack(10);
         enemies[i].set_name("Guarda");
     }
@@ -271,7 +268,7 @@ void Fase_4(Personagem &player, int t_num){
     Boss tiao ("Tiao Lago", 30, 20, 15, 200);
     add_skill_boss(tiao, 3);
 
-    pausar();
+    
     
     std::cout << "\n~CASTELO DE ROCHA - LAR DA FAMILIA LAGO~" << std::endl;
     std::cout << "Guarda: Forasteiro, identifique-se" << std::endl;
@@ -283,7 +280,7 @@ void Fase_4(Personagem &player, int t_num){
     pausar();
     int op = 1;
     while(op != 0){
-        show_menu(player, enemies[0], t_num, 4);
+        show_menu(player, npc_treino, t_num, 4);
         std::cout << "Deseja acessar o menu novamente?(0 - NAO/ 1 - SIM)" << std::endl;
         checker(&op, 0,1);
     }
@@ -304,9 +301,9 @@ void Fase_4(Personagem &player, int t_num){
     pausar();
 
     add_skill_pers(player, 4);
-    int cash = reward(4, 50, player);
+    int cash = reward(4, 2, player);
     std::cout << "\nVoce recebeu " << cash << " moedas" << std::endl;
-    std::cout << "\nVoce recebeu nova Habilidade: Katon" << std::endl;
+    std::cout << "\nVoce recebeu nova Habilidade: Choque do Trovao" << std::endl;
 
     pausar();
     quiz(4, player);
@@ -340,20 +337,24 @@ void Fase_4(Personagem &player, int t_num){
     std::cout << "Pessoa aleatoria 1: Unico dragao que conheco eh a minha esposa com raiva" << std::endl;
     std::cout << "Maria: Estenio foi derrotado, o que faremos agora?" << std::endl;
 
+    player.display_stats();
     show_menu_h();
+    pausar();
 }
 
 void Fase_5(Personagem &player, int t_num){
+
+    Npc npc_treino("Inimigo", 10, 5, 8, 150);
     Npc enemies[n_enemies];
     for(int i = 0; i < n_enemies; i++){
-        enemies[i].set_life(35);
+        enemies[i].set_life(70);
         enemies[i].set_defense(8);
         enemies[i].set_max_attack(10);
         enemies[i].set_min_attack(7);
         enemies[i].set_name("Guarda");
     }
 
-    Boss euron ("Euron", 20, 12, 12, 80);
+    Boss euron ("Euron", 20, 12, 12, 150);
     add_skill_boss(euron, 5);
 
     pausar();
@@ -401,10 +402,10 @@ void Fase_5(Personagem &player, int t_num){
     
 
     add_skill_pers(player, 5);
-    int cash = reward(5, 60, player);
+    int cash = reward(5, 2, player);
 
     std::cout << "\nVoce recebeu " << cash << " moedas" << std::endl;
-    std::cout << "\nVoce recebeu nova Habilidade: Katon" << std::endl;
+    std::cout << "\nVoce recebeu nova Habilidade: Invocar Golem" << std::endl;
 
     pausar();
     quiz(5, player);
@@ -414,19 +415,22 @@ void Fase_5(Personagem &player, int t_num){
     std::cout << "Voce: Quem eh voce?" << std::endl;
     std::cout << "Theo: Policial disfarcado. Enconsta na parede bonita, vou te levar pro norte." << std::endl;
     
+    player.display_stats();
     pausar();
 }
 void Fase_6(Personagem &player, int t_num){
+
+    Npc npc_treino("Inimigo", 10, 5, 8, 150);
     Npc enemies[n_enemies];
     for(int i = 0; i < n_enemies; i++){
-        enemies[i].set_life(35);
+        enemies[i].set_life(80);
         enemies[i].set_defense(8);
         enemies[i].set_max_attack(10);
         enemies[i].set_min_attack(7);
         enemies[i].set_name("Walking Dead");
     }
 
-    Boss night_k ("Rei da Night", 80, 50, 40, 600);
+    Boss night_k ("Rei da Night", 80, 50, 40, 2000);
     add_skill_boss(night_k, 6);
     
     std::cout << "Voce: Nossa que frio de congelar pinguim!" << std::endl;
@@ -476,14 +480,19 @@ void Fase_6(Personagem &player, int t_num){
     std::cout << "Narrador: apos a batalha todos lhe saudam como heroi. Entretanto, a luta continua. Voce deve apoiar Daniela a tomar o trono de Celia" <<std::endl;
     
     add_skill_pers(player, 6);
-    int cash = reward(5, 70, player);
+    int cash = reward(6, 3, player);
 
     std::cout << "\nVoce recebeu " << cash << " moedas" << std::endl;
-    std::cout << "\nVoce recebeu nova Habilidade: Katon" << std::endl;
+    std::cout << "\nVoce recebeu nova Habilidade: Soco do Saitama" << std::endl;
+
+    player.display_stats();
+    pausar();
 }
 void Fase_7(Personagem &player, int t_num){
+
     int escolha;
     int op = 1;
+    Npc npc_treino("Inimigo", 10, 5, 8, 150);
     Npc enemies[n_enemies];
     for(int i = 0; i < n_enemies; i++){
         enemies[i].set_life(35);
@@ -510,7 +519,9 @@ void Fase_7(Personagem &player, int t_num){
 
     if(escolha == 0){
         std::cout << "Voce: Vamos apoiar Daniela. Nunca gostei desse Joao das Neves" << std::endl;
-        Boss joao ("Joao das Neves", 80, 50, 40, 600);
+        add_skill_pers(player, 7);
+        std::cout << "\nVoce recebeu nova Habilidade: Dracarys" << std::endl;
+        Boss joao ("Joao das Neves", 120, 50, 200, 1500);
         add_skill_boss(joao, 8);
         
         pausar();
@@ -531,7 +542,8 @@ void Fase_7(Personagem &player, int t_num){
     else if (escolha == 1){
         std::cout << "Voce: Vamos mata-la. Nunca gostei daquele calango" << std::endl;
         std::cout << "Narrador: Voce se junta aos traidores e lutar contra Daniela" << std::endl;
-        Boss daniela ("Daniela", 80, 50, 40, 600);
+        std::cout << "\nVoce recebeu nova Habilidade: Atirar Escorpiao" << std::endl;
+        Boss daniela ("Daniela", 120, 50, 200, 1500);
         add_skill_boss(daniela, 7);
 
         pausar();
