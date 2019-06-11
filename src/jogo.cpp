@@ -577,6 +577,7 @@ void Fase_7(Personagem &player, int &t_num){
         std::cout << "Voce: Vamos mata-la. Nunca gostei daquele calango" << std::endl;
         std::cout << "Narrador: Voce se junta aos traidores e lutar contra Daniela" << std::endl;
         std::cout << "\nVoce recebeu nova Habilidade: Atirar Escorpiao" << std::endl;
+        add_skill_pers(player, 8);
         Boss daniela ("Daniela", 120, 50, 200, 1500);
         add_skill_boss(daniela, 7);
 
