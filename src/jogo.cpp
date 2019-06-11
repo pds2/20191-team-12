@@ -12,10 +12,10 @@
 void jogo(){
     int t_num;
     std::string name;
+    show_init();
     std::getline(std::cin, name);
-
     Personagem player(name); //construtor
-
+    
     t_num = 3;
     Fase_1(player, t_num);
     t_num = 4;
