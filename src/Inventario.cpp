@@ -5,7 +5,7 @@
 #include <vector>
 
 Inventario::Inventario(){ // Todos os números abaixo podem ser mudados para balancear o inicio de jogo*
-	this->gold = 50; 
+	this->gold = 20; 
 }
 
 

@@ -11,10 +11,24 @@ Armadura::Armadura(){
 }
 
 Armadura::Armadura(int _id, std::string _name, int _b_defense, int _price){
-	this->id = _id;
+	if(_id < 0){
+		this->id = 0;
+	} else{
+		this->id = _id;
+	}
+
 	this->name = _name;
-	this->b_defense = _b_defense; 
-	this->price = _price;
+	if(_b_defense < 0){
+		this->b_defense = 0;
+	} else{
+		this->b_defense = _b_defense;
+	}
+
+	if(_price < 0){
+		this->price = 0;
+	} else{
+		this->price = _price;
+	}
 } 
 
 int Armadura::get_id(){
