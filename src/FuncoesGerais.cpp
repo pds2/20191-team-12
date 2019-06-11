@@ -43,7 +43,7 @@ void quiz(int n, Personagem &player){//quizes chamados nas fases
 		checker(&op, 1, 4);
         if(op == 2){
             std::cout << "Sabio: Vejo que tem um otimo senso de humor. Vou ajuda-lo" << std::endl;
-            int cash = reward(2, 1, player);
+            int cash = reward(2, 1.2, player);
             std::cout << "\nVoce recebeu " << cash << " moedas" << std::endl;
         }
         else{
@@ -61,7 +61,7 @@ void quiz(int n, Personagem &player){//quizes chamados nas fases
 
         if(op == 3){
             std::cout << "Melissa: Vejo que de fato conhece os principios do nosso senhor" << std::endl;
-            int cash = reward(3, 2, player);
+            int cash = reward(3, 1.2, player);
             std::cout << "\nVoce recebeu " << cash << " moedas" << std::endl;
         }
         else{
@@ -79,7 +79,7 @@ void quiz(int n, Personagem &player){//quizes chamados nas fases
 
         if(op == 2){
             std::cout << "???: Eh bom encontrar companheiros de causa" << std::endl;
-            int cash = reward(4, 2, player);
+            int cash = reward(4, 1.2, player);
             std::cout << "\nVoce recebeu " << cash << " moedas" << std::endl;
         }
         else{
@@ -98,7 +98,7 @@ void quiz(int n, Personagem &player){//quizes chamados nas fases
 
         if(op == 2){
             std::cout << "Narrador: Parabens, Biologo" << std::endl;
-            int cash = reward(4, 2, player);
+            int cash = reward(4, 1.2, player);
             std::cout << "\nVoce recebeu " << cash << " moedas" << std::endl;
         }
         else{
@@ -116,7 +116,7 @@ void quiz(int n, Personagem &player){//quizes chamados nas fases
 
          if(op == 3){
             std::cout << "Narrador: Parabens!" << std::endl;
-            int cash = reward(5, 2, player);
+            int cash = reward(5, 1.2, player);
             std::cout << "\nVoce recebeu " << cash << " moedas" << std::endl;
         }
         else{
