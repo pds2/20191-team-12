@@ -11,13 +11,6 @@
 
 #define n_enemies 3
 
-
-void pausar();
-bool exit_game();
-void result_battle(int result, Personagem &player, int fase);
-void quiz(int n, Personagem &player);
-void add_skill_pers(Personagem &player, int fase);
-void add_skill_boss(Boss &boss, Habilidade &name);
 void Fase_1(Personagem &player, int t_num);
 void Fase_2(Personagem &player, int t_num);
 void Fase_3(Personagem &player, int t_num);
