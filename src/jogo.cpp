@@ -82,7 +82,7 @@ void Fase_1(Personagem &player, int &t_num){
         //result_battle(check, player, 1);
         if ( check == 0){//perdeu
             pausar();
-            std::cout << "\n\nVOCE FOI DERROTADO! OBRIGADO POR JOGAR!!" << std::endl;
+            std::cout << "\n\nACABOU A MAMATA! MAS VALEU A TENTATIVA\n" << std::endl;
             exit(0);
         }else if(check == 1){//ganhou
             std::cout << "\n Parabens pela vitoria!\n"<< std::endl;
@@ -167,7 +167,7 @@ void Fase_2(Personagem &player, int &t_num){
         int check = batalha(player, enemies[i]);
         if ( check == 0){//perdeu
             pausar();
-            std::cout << "\n\nVOCE FOI DERROTADO! OBRIGADO POR JOGAR!!" << std::endl;
+            std::cout << "\n\nACABOU A MAMATA! MAS VALEU A TENTATIVA\n" << std::endl;
             exit(0);
         }else if(check == 1){//ganhou
             std::cout << "\n Parabens pela vitoria!\n"<< std::endl;
@@ -181,7 +181,7 @@ void Fase_2(Personagem &player, int &t_num){
     int check = batalha(player, loiro_jose);
         if ( check == 0){//perdeu
             pausar();
-            std::cout << "\n\nVOCE FOI DERROTADO! OBRIGADO POR JOGAR!!" << std::endl;
+            std::cout << "\n\nACABOU A MAMATA! MAS VALEU A TENTATIVA\n" << std::endl;
             exit(0);
         }else if(check == 1){//ganhou
             std::cout << "\n Parabens pela vitoria!\n"<< std::endl;
@@ -255,7 +255,7 @@ void Fase_3(Personagem &player, int &t_num){
     int check = batalha(player, estenio);
         if ( check == 0){//perdeu
             pausar();
-            std::cout << "\n\nVOCE FOI DERROTADO! OBRIGADO POR JOGAR!!" << std::endl;
+            std::cout << "\n\nACABOU A MAMATA! MAS VALEU A TENTATIVA\n" << std::endl;
             exit(0);
         }else if(check == 1){//ganhou
             std::cout << "\n Parabens pela vitoria!\n"<< std::endl;
@@ -316,7 +316,7 @@ void Fase_4(Personagem &player, int &t_num){
     int check = batalha(player, tiao);
         if ( check == 0){//perdeu
             pausar();
-            std::cout << "\n\nVOCE FOI DERROTADO! OBRIGADO POR JOGAR!!" << std::endl;
+            std::cout << "\n\nACABOU A MAMATA! MAS VALEU A TENTATIVA\n" << std::endl;
             exit(0);
         }else if(check == 1){//ganhou
             std::cout << "\n Parabens pela vitoria!\n"<< std::endl;
@@ -342,7 +342,7 @@ void Fase_4(Personagem &player, int &t_num){
         int check = batalha(player, enemies[i]);
         if ( check == 0){//perdeu
             pausar();
-            std::cout << "\n\nVOCE FOI DERROTADO! OBRIGADO POR JOGAR!!" << std::endl;
+            std::cout << "\n\nACABOU A MAMATA! MAS VALEU A TENTATIVA\n" << std::endl;
             exit(0);
         }else if(check == 1){//ganhou
             std::cout << "\n Parabens pela vitoria!\n"<< std::endl;
@@ -403,7 +403,7 @@ void Fase_5(Personagem &player, int &t_num){
         int check = batalha(player, enemies[i]);
         if ( check == 0){//perdeu
             pausar();
-            std::cout << "\n\nVOCE FOI DERROTADO! OBRIGADO POR JOGAR!!" << std::endl;
+            std::cout << "\n\nACABOU A MAMATA! MAS VALEU A TENTATIVA\n" << std::endl;
             exit(0);
         }else if(check == 1){//ganhou
             std::cout << "\n Parabens pela vitoria!\n"<< std::endl;
@@ -417,7 +417,7 @@ void Fase_5(Personagem &player, int &t_num){
     int check = batalha(player, euron);
         if ( check == 0){//perdeu
             pausar();
-            std::cout << "\n\nVOCE FOI DERROTADO! OBRIGADO POR JOGAR!!" << std::endl;
+            std::cout << "\n\nACABOU A MAMATA! MAS VALEU A TENTATIVA\n" << std::endl;
             exit(0);
         }else if(check == 1){//ganhou
             std::cout << "\n Parabens pela vitoria!\n"<< std::endl;
@@ -483,7 +483,7 @@ void Fase_6(Personagem &player, int &t_num){
         int check = batalha(player, enemies[i]);
         if ( check == 0){//perdeu
             pausar();
-            std::cout << "\n\nVOCE FOI DERROTADO! OBRIGADO POR JOGAR!!" << std::endl;
+            std::cout << "\n\nACABOU A MAMATA! MAS VALEU A TENTATIVA\n" << std::endl;
             exit(0);
         }else if(check == 1){//ganhou
             std::cout << "\n Parabens pela vitoria!\n"<< std::endl;
@@ -496,7 +496,7 @@ void Fase_6(Personagem &player, int &t_num){
     int check = batalha(player, night_k);
         if ( check == 0){//perdeu
             pausar();
-            std::cout << "\n\nVOCE FOI DERROTADO! OBRIGADO POR JOGAR!!" << std::endl;
+            std::cout << "\n\nACABOU A MAMATA! MAS VALEU A TENTATIVA\n" << std::endl;
             exit(0);
         }else if(check == 1){//ganhou
             std::cout << "\n Parabens pela vitoria!\n"<< std::endl;
@@ -563,7 +563,7 @@ void Fase_7(Personagem &player, int &t_num){
         int check = batalha(player, joao);
         if ( check == 0){//perdeu
             pausar();
-            std::cout << "\n\nVOCE FOI DERROTADO! OBRIGADO POR JOGAR!!" << std::endl;
+            std::cout << "\n\nACABOU A MAMATA! MAS VALEU A TENTATIVA\n" << std::endl;
             exit(0);
         }else if(check == 1){//ganhou
             std::cout << "\n Parabens pela vitoria!\n"<< std::endl;
@@ -586,7 +586,7 @@ void Fase_7(Personagem &player, int &t_num){
         int check = batalha(player, daniela);
         if ( check == 0){//perdeu
             pausar();
-            std::cout << "\n\nVOCE FOI DERROTADO! OBRIGADO POR JOGAR!!" << std::endl;
+            std::cout << "\n\nACABOU A MAMATA! MAS VALEU A TENTATIVA\n" << std::endl;
             exit(0);
         }else if(check == 1){//ganhou
             std::cout << "\n Parabens pela vitoria!\n"<< std::endl;
@@ -601,5 +601,5 @@ void Fase_7(Personagem &player, int &t_num){
         pausar();
         Fase_7(player, b);
     }
-    std::cout << "\nOBRIGADO POR JOGAR!! ESPERO QUE TENHA SE DIVERTIDO!" << std::endl;
+    std::cout << "\nNAO FEZ MAIS DO QUE A OBRIGACAO!! ESPERO QUE TENHA SE DIVERTIDO!\n" << std::endl;
 }
