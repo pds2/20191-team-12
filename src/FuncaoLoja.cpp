@@ -90,15 +90,22 @@ std::vector<Arma> create_objects_weapon(){
 
 	std::ifstream file;
     file.open("../20191-team-12/Files/weapons.txt");
-	reading_file(file, archives_name, archives_id, archives_price, archives_attribute);
+    if(!(file.is_open())){
+    	file.open("../20191-team-12-master/Files/weapons.txt");
+    }
 
 	std::vector<Arma> weapon_store_vector;
-	for(int i= 0; i < archives_id.size(); ++i){
-		weapon_store_vector.push_back(Arma(archives_id[i], archives_name[i], archives_attribute[i], archives_price[i]));
-	}
+    if(file.is_open()){
+		reading_file(file, archives_name, archives_id, archives_price, archives_attribute);
+	
+		for(int i= 0; i < archives_id.size(); ++i){
+			weapon_store_vector.push_back(Arma(archives_id[i], archives_name[i], archives_attribute[i], archives_price[i]));
+		}
 
-	file.close();
-	return weapon_store_vector;    
+		file.close();
+	}
+	
+	return weapon_store_vector;   
 }
 
 std::vector<Armadura> create_objects_armor(){
@@ -109,12 +116,21 @@ std::vector<Armadura> create_objects_armor(){
 
 	std::ifstream file;
 	file.open("../20191-team-12/Files/armor.txt");
-	reading_file(file, archives_name, archives_id, archives_price, archives_attribute);
+	if(!(file.is_open())){
+		file.open("../20191-team-12-master/Files/armor.txt");
+	}
 
 	std::vector<Armadura> armor_store_vector;
-	for(int i= 0; i < archives_id.size(); ++i){
-		armor_store_vector.push_back(Armadura(archives_id[i], archives_name[i], archives_attribute[i], archives_price[i]));
+	if(file.is_open()){
+		reading_file(file, archives_name, archives_id, archives_price, archives_attribute);
+
+		for(int i= 0; i < archives_id.size(); ++i){
+			armor_store_vector.push_back(Armadura(archives_id[i], archives_name[i], archives_attribute[i], archives_price[i]));
+		}
+
+		file.close();
 	}
+
 	return armor_store_vector;
 }
 
