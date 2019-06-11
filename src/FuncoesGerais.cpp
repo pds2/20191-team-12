@@ -237,7 +237,7 @@ int reward(int fase_num, int multiplicador, Personagem &player){ //função de r
 	const int goldinicial = (rand()% 10 + 10); // varia entre 10 e 20
 	float resultado;
 
-	resultado = pow(multiplicador,(fase_num - 1)) * goldinicial;
+	resultado = pow(multiplicador,(fase_num)) * goldinicial;
 
 	player.set_gold((player.get_gold()) + (int)resultado);
 

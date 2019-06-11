@@ -89,7 +89,7 @@ std::vector<Arma> create_objects_weapon(){
 	std::vector<int> archives_attribute;
 
 	std::ifstream file;
-    file.open("../20191-team-12-master/Files/weapons.txt");
+    file.open("../20191-team-12/Files/weapons.txt");
 	reading_file(file, archives_name, archives_id, archives_price, archives_attribute);
 
 	std::vector<Arma> weapon_store_vector;
@@ -108,7 +108,7 @@ std::vector<Armadura> create_objects_armor(){
 	std::vector<int> archives_attribute;
 
 	std::ifstream file;
-	file.open("../20191-team-12-master/Files/armor.txt");
+	file.open("../20191-team-12/Files/armor.txt");
 	reading_file(file, archives_name, archives_id, archives_price, archives_attribute);
 
 	std::vector<Armadura> armor_store_vector;
