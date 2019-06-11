@@ -38,7 +38,7 @@ void treinar(Personagem &heroi, Npc &npc, int &t_num, int fase_num){ //t_num = q
 
 			}											
 			else if(result == 1){
-				int gold = reward(fase_num, 0.8, heroi);
+				int gold = reward(fase_num, 1.4, heroi);
 				std::cout << "Parabens, voce matou uma pessoa! Voce recebeu " << gold << " moedas." << std::endl;
 			}else{
 				float lost_gold_percentage = 0.2;
