@@ -123,7 +123,7 @@ void Fase_2(Personagem &player, int &t_num){
     }
     int a = 0;
 
-    Boss loiro_jose ("Loiro Jose", 20, 15, 12, 100);
+    Boss loiro_jose ("Loiro Jose", 30, 15, 12, 100);
     add_skill_boss(loiro_jose, 2);
 
     pausar();
@@ -208,7 +208,7 @@ void Fase_3(Personagem &player, int &t_num){
 
     Npc npc_treino("Inimigo", 10, 5, 8, 50);
 
-    Boss estenio ("Estenio Barao", 23, 15, 12, 250);
+    Boss estenio ("Estenio Barao", 45, 25, 12, 250);
     add_skill_boss(estenio, 2);
 
     int a = 0;
@@ -292,7 +292,7 @@ void Fase_4(Personagem &player, int &t_num){
     }
     int a = 0;
 
-    Boss tiao ("Tiao Lago", 30, 20, 15, 200);
+    Boss tiao ("Tiao Lago", 45, 20, 15, 200);
     add_skill_boss(tiao, 3);
 
     
@@ -381,7 +381,7 @@ void Fase_5(Personagem &player, int &t_num){
 
     int a = 0;
 
-    Boss euron ("Euron", 20, 12, 12, 150);
+    Boss euron ("Euron", 60, 30, 12, 150);
     add_skill_boss(euron, 5);
 
     pausar();
@@ -460,7 +460,7 @@ void Fase_6(Personagem &player, int &t_num){
 
     int a = 0;
 
-    Boss night_k ("Rei da Night", 80, 50, 40, 2000);
+    Boss night_k ("Rei da Night", 180, 130, 40, 2000);
     add_skill_boss(night_k, 6);
     
     std::cout << "Voce: Nossa que frio de congelar pinguim!" << std::endl;
@@ -555,7 +555,7 @@ void Fase_7(Personagem &player, int &t_num){
         std::cout << "Voce: Vamos apoiar Daniela. Nunca gostei desse Joao das Neves" << std::endl;
         add_skill_pers(player, 7);
         std::cout << "\nVoce recebeu nova Habilidade: Dracarys" << std::endl;
-        Boss joao ("Joao das Neves", 120, 50, 200, 1500);
+        Boss joao ("Joao das Neves", 300, 150, 200, 1500);
         add_skill_boss(joao, 8);
         
         pausar();
@@ -578,7 +578,7 @@ void Fase_7(Personagem &player, int &t_num){
         std::cout << "Narrador: Voce se junta aos traidores e lutar contra Daniela" << std::endl;
         std::cout << "\nVoce recebeu nova Habilidade: Atirar Escorpiao" << std::endl;
         add_skill_pers(player, 8);
-        Boss daniela ("Daniela", 120, 50, 200, 1500);
+        Boss daniela ("Daniela", 300, 150, 200, 1500);
         add_skill_boss(daniela, 7);
 
         pausar();
