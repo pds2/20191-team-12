@@ -44,7 +44,7 @@ void treinar(Personagem &heroi, Npc &npc, int t_num, int fase_num){ //t_num = qu
 			float lost_gold_percentage = 0.2;
 			float lost_gold = (float)heroi.get_gold() * lost_gold_percentage;
 			heroi.set_gold(heroi.get_gold() - (int)lost_gold);
-			std::cout << "Voce jogou avioezinhos de dinheiro para distrair o inimigo e saiu correndo! Voce continua vivo, mas perdeu " << lost_gold << " moedas." << std::endl;
+			std::cout << "Voce jogou avioezinhos de dinheiro para distrair o inimigo e saiu correndo! Voce continua vivo, mas perdeu " << (int)lost_gold << " moedas." << std::endl;
 		}
 		t_num--;
 
