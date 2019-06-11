@@ -21,7 +21,7 @@ void show_menu(Personagem &heroi, Npc &npc, int& t_num, int fase_num){ //Menu qu
 	std::cout << std::endl;
 	std::cout << "+------------------------------------------+" << std::endl;
 	std::cout << "| 0 - Seguir jornada |  1 - Treino         |" << std::endl;
-	std::cout << "| 2 - Loja  		   |  3 - Sair do jogo   |" << std::endl;
+	std::cout << "| 2 - Loja           |  3 - Sair do jogo   |" << std::endl;
 	std::cout << "+------------------------------------------+" << std::endl;
 
 	checker(&numero, 0, 3);
