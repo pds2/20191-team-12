@@ -9,25 +9,30 @@
 #include "FuncoesGerais.h"
 #include "menu.h"
 
-int a = 0;
-int b = 10;
-
 void jogo(){
+    int t_num;
     std::string name;
     std::getline(std::cin, name);
 
     Personagem player(name); //construtor
 
-    Fase_1(player, 3);
-    Fase_2(player, 4);
-    Fase_3(player, 5);
-    Fase_4(player, 6);
-    Fase_5(player, 7);
-    Fase_6(player, 8);
-    Fase_7(player, 9);
+    t_num = 3;
+    Fase_1(player, t_num);
+    t_num = 4;
+    Fase_2(player, t_num);
+    t_num = 5;
+    Fase_3(player, t_num);
+    t_num = 6;
+    Fase_4(player, t_num);
+    t_num = 7;
+    Fase_5(player, t_num);
+    t_num = 8;
+    Fase_6(player, t_num);
+    t_num = 9;
+    Fase_7(player, t_num);
 }
 
-void Fase_1(Personagem &player, int t_num){
+void Fase_1(Personagem &player, int &t_num){
 
     Npc npc_treino("Inimigo", 10, 5, 8, 30);
     Npc enemies[n_enemies];
@@ -105,7 +110,7 @@ void Fase_1(Personagem &player, int t_num){
     show_menu_h();
 }
 
-void Fase_2(Personagem &player, int t_num){
+void Fase_2(Personagem &player, int &t_num){
 
     Npc npc_treino("Inimigo", 10, 5, 8, 40);
     Npc enemies[n_enemies];
@@ -199,7 +204,7 @@ void Fase_2(Personagem &player, int t_num){
     pausar();
 }
 
-void Fase_3(Personagem &player, int t_num){
+void Fase_3(Personagem &player, int &t_num){
 
     Npc npc_treino("Inimigo", 10, 5, 8, 50);
 
@@ -274,7 +279,7 @@ void Fase_3(Personagem &player, int t_num){
     pausar();
 }
 
-void Fase_4(Personagem &player, int t_num){
+void Fase_4(Personagem &player, int &t_num){
 
     Npc npc_treino("Inimigo", 10, 5, 8, 50);
     Npc enemies[n_enemies];
@@ -362,7 +367,7 @@ void Fase_4(Personagem &player, int t_num){
     pausar();
 }
 
-void Fase_5(Personagem &player, int t_num){
+void Fase_5(Personagem &player, int &t_num){
 
     Npc npc_treino("Inimigo", 10, 5, 8, 150);
     Npc enemies[n_enemies];
@@ -441,7 +446,7 @@ void Fase_5(Personagem &player, int t_num){
     show_menu_h();
     pausar();
 }
-void Fase_6(Personagem &player, int t_num){
+void Fase_6(Personagem &player, int &t_num){
 
     Npc npc_treino("Inimigo", 10, 5, 8, 150);
     Npc enemies[n_enemies];
@@ -514,7 +519,7 @@ void Fase_6(Personagem &player, int t_num){
     show_menu_h();
     pausar();
 }
-void Fase_7(Personagem &player, int t_num){
+void Fase_7(Personagem &player, int &t_num){
 
     int escolha;
     int op = 1;
