@@ -13,6 +13,7 @@ void menu_store();
 void seller_random_fail_speech();
 void confirmation_checkout();
 void instruction_store(Personagem A);
+void instruction_store_sell();
 void remaining_gold(Personagem A);
 
 // Função de acesso
