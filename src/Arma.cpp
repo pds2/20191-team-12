@@ -11,10 +11,24 @@ Arma::Arma(){
 }
 
 Arma::Arma(int _id, std::string _name, int _b_attack, int _price){
-	this->id = _id;
+	if(_id < 0){
+		this->id = 0;
+	} else{
+		this->id = _id;
+	}
+
 	this->name = _name;
-	this->b_attack = _b_attack;
-	this->price = _price;
+	if(_b_attack < 0){
+		this->b_attack = 0;
+	} else{
+		this->b_attack = _b_attack;
+	}
+
+	if(_price < 0){
+		this->price = 0;
+	} else{
+		this->price = _price;
+	}
 }
 
 int Arma::get_id(){

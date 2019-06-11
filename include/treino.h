@@ -11,6 +11,6 @@
 #include "npc.h"
 
 
-void treinar(Personagem &heroi, Npc &npc, int t_num, int fase_num);
+void treinar(Personagem &heroi, Npc &npc, int& t_num, int fase_num);
 
 #endif 
