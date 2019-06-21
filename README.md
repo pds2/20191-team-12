@@ -69,7 +69,7 @@ Sou um amante de jogos e desenvolvedor de software, por isso quero um jogo bem o
     - Utilizar a memória RAM de forma inteligente, sem desperdícios.
     - Boa estruturação de código para facilitar futuras alterações nas funcionalidades do jogo.
 
-[Ementa]: #descrição
-[Objetivos]: #compilação
-[Informes]: #tutorial
-[Avaliação]: #userstories
+[Descrição]: #descrição
+[Compilação]: #compilação
+[Tutorial]: #tutorial
+[UserStories]: #userstories
