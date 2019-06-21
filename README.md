@@ -13,6 +13,7 @@ Jogo de batalhas estilo RPG, inspirado na série game of thrones, tendo o modo c
 **O jogo é compatível apenas para sistemas Mac e Linux.** 
 Deve ser feito o Download do repositório na máquina desejada. Após isto, deve acessar o terminal, realizar o caminho até a pasta 20191-team-12, e digitar o comando "make". Em algumas versões de linux e mac, deve ser acrescentado "-B" junto ao comando make.
 Tendo isto concluído, o executável será gerado na pasta "bin". Para rodar o programa sem trocar de diretório é só utilizar "./bin/main" (sem as aspas).
+Para a realização dos testes a compilação é feita de forma semelhante, porém, adicinando "tests" depois do make.
 
 ## Tutorial
 O jogo é composto por sete fases, onde cada uma delas possuiu um boss. Em algumas fases também possuem quizes, com perguntas relacionadas à serie com recompensas pelos acertos. 
