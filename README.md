@@ -1,7 +1,7 @@
 | [Descrição] | [Compilação] | [Tutorial] | [UserStories] | 
 |-------------|--------------|------------|---------------|
 - - -
-#20191-team-12
+# 20191-team-12
 
 Projeto Final da Disciplina de Programação e Desenvolvimento de Software II
 
@@ -16,8 +16,8 @@ Tendo isto concluído, o executável será gerado na pasta "bin". Para rodar o p
 Para a realização dos testes a compilação é feita de forma semelhante, porém, adicinando "tests" depois do make.
 
 ## Tutorial
-O jogo é composto por sete fases, onde cada uma delas possuiu um boss. Em algumas fases também possuem quizes, com perguntas relacionadas à serie com recompensas pelos acertos. 
-A interface é totalmente textual, com textos bem explicativos que vão ensinando o funcionamento do jogo ao longo das fases. Dessa forma todos os comandos do usuário são recebidos pelo teclado. Também possuiu uma loja, na qual podem ser comprados armas, armaduras e poções e o final de cada fase é exibido os status do personagem e espólios obtidos. 
+O jogo é composto por sete fases, onde cada uma delas possui um boss. Em algumas fases também possuem quizes, com perguntas relacionadas à serie com recompensas pelos acertos. Cada fase começa com uma contextualização e os npcs vão explicando a sua jornada. 
+A interface é totalmente textual, dessa forma todos os comandos do usuário são recebidos pelo teclado. Também possui uma loja, na qual podem ser comprados armas, armaduras e poções, e é permitido treinar um numero variável de vezes em cada fase. Ao final de cada fase é exibido os status do personagem e espólios obtidos. Por fim, a todo momento o usuário é permitido sair do jogo ou fugir da batalha (opções no menu).
 
 ## UserStories
 1.
